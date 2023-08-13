@@ -1,9 +1,9 @@
-import '../../';
+import Main from "../Main/Main";
 
 function App() {
   return (
-    <div className="App">
-
+    <div className="app">
+        <Main />
     </div>
   );
 }
