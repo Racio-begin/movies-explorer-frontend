@@ -1,7 +1,9 @@
+import './PageNotFound.css';
+
 function PageNotFound({}) {
 
 	return(
-		<div className="page-404">
+		<div className="page-not-found">
 			PAGE 404
 		</div>
 	);

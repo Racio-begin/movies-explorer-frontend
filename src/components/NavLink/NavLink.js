@@ -1,7 +1,9 @@
+import './NavLink.css';
+
 function NavLink({}) {
 
 	return(
-		<div className="navtab">
+		<div className="navlink">
 			NAVLINK
 		</div>
 	);

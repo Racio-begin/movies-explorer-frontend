@@ -1,5 +1,7 @@
 import NavLink from "../NavLink/NavLink";
 
+import './NavTab.css';
+
 function NavTab({}) {
 
 	return(
