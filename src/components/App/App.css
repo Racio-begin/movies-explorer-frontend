@@ -13,7 +13,7 @@
 /* Поправить адаптивность! */
 @media screen and (max-width: 1070px) {
   .app {
-		padding: 35px 100px 45px;
+		padding: 0 100px 45px;
   }
 }
 

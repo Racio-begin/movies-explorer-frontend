@@ -1,18 +1,27 @@
 import Header from "../Header/Header";
 import Promo from "../Promo/Promo";
 import Footer from "../Footer/Footer";
+import AboutMe from "../AboutMe/AboutMe";
+import Techs from "../Techs/Techs";
+import AboutProjects from "../AboutProjects/AboutProjects";
 
 import './Main.css';
 
-function Main({}) {
+function Main({ }) {
 
-	return(
-		<div className="main">
-			MAIN
-			<Header />
-			<Promo />
-			<Footer />
-		</div>
+	return (
+		<>
+			<div className="main">
+				<Header />
+				<main>
+					<Promo />
+					<AboutProjects />
+					<Techs />
+					<AboutMe />
+				</main >
+				<Footer />
+			</div >
+		</>
 	);
 };
 
