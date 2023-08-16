@@ -3,6 +3,7 @@
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
+	box-sizing: border-box;
 }
 
 .header__logo {
@@ -39,18 +40,23 @@
 }
 
 .header__navbar {
-
+	width: 212px;
+	height: 18px;
 }
 
+/* Усредненный линк, так как в макете три(!) "разных" (а на самом деле нет) линка с разницей в один пиксель... */
 .header__link {
 	font-family: "Inter", "Arial", sans-serif;
 	font-weight: 500;
-	font-size: 12px;
-	line-height: 16px;
+	/* font-size: 12px; */
+	font-size: 13px;
+	/* line-height: 16px; */
+	line-height: 18px;
 	color: #fff;
 	text-decoration: none;
 }
 
 .header__movies {
+	display: flex;
 
 }

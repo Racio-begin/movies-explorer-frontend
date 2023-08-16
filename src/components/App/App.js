@@ -30,14 +30,14 @@ function App() {
 					element={Register}
 				/>
 				<Route
-					path='/movies' element={
-						<ProtectedRoute element={Movies}
-						/>}
+					path='/movies' element={Movies} 
+						// <ProtectedRoute element={Movies}
+						// />}
 				/>
 				<Route
-					path='/saved-movies' element={
-						<ProtectedRoute element={SavedMovies}
-						/>}
+					path='/saved-movies' element={SavedMovies}
+						// <ProtectedRoute element={SavedMovies}
+						// />}
 				/>
 				<Route
 					path='/profile' element={

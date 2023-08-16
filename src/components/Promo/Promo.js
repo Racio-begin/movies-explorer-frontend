@@ -2,12 +2,21 @@ import NavTab from "../NavTab/NavTab";
 
 import './Promo.css';
 
-function Promo({}) {
+function Promo({ }) {
 
-	return(
+	return (
 		<div className="promo">
-			PROMO
-			<NavTab />
+			<div className="promo__content">
+
+				<h1
+					className="promo__title">
+					Учебный проект студента
+					факультета Веб-разработки.
+				</h1>
+
+				<NavTab />
+
+			</div>
 		</div>
 	);
 };

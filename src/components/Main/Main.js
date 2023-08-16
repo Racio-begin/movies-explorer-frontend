@@ -10,7 +10,6 @@ import './Main.css';
 function Main({ }) {
 
 	return (
-		<>
 			<div className="main">
 				<Header />
 				<main>
@@ -21,7 +20,6 @@ function Main({ }) {
 				</main >
 				<Footer />
 			</div >
-		</>
 	);
 };
 

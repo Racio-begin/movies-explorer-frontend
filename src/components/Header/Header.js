@@ -28,11 +28,12 @@ function Header({ handleLogin, handleProfile }) {
 						</button>
 
 					</div>
-				}>
-				</Route>
+				}></Route>
 
 				<Route path="/movies" element={
 					<div className="header__movies">
+						<div>
+						</div>
 
 						<div className="header__navbar">
 							<Link className="header__link" to="/movies">Фильмы</Link>
@@ -46,12 +47,13 @@ function Header({ handleLogin, handleProfile }) {
 						</button>
 
 					</div>
-				}>
-				</Route>
+				}></Route>
 
 			</Routes>
+
 		</div>
 	);
+
 };
 
 export default Header;

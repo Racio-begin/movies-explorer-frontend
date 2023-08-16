@@ -1,0 +1,45 @@
+.about-projects {
+	height: 608px;
+	padding: 110px 70px;
+	display: flex;
+	flex-direction: column;
+	box-sizing: border-box;
+}
+
+.about-projects__title {
+	height: 50px;
+	font-family: "Inter", "Arial ", sans-serif;
+	font-weight: 400;
+	font-size: 22px;
+	border-bottom: 1px solid #DADADA;
+	line-height: normal;
+	letter-spacing: -0.88px;
+}
+
+.about-projects__description {
+	max-width: 550px;
+	height: 90px;
+	margin: 70px 0 110px;
+	display: flex;
+	flex-wrap: wrap;
+}
+
+.about-projects__description_title {
+	font-family: "Inter", "Arial ", sans-serif;
+	font-weight: 400;
+	font-size: 20px;
+	line-height: normal;
+	letter-spacing: -0.8px;
+}
+
+.about-projects__description_content {
+	font-family: "Inter", "Arial ", sans-serif;
+	font-weight: 400;
+	font-size: 14px;
+	line-height: 20px;
+	letter-spacing: -0.8px;
+}
+
+.about-projects__study-time {
+	height: 67px;
+}
