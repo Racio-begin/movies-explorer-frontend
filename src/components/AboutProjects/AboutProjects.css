@@ -1,6 +1,6 @@
 .about-projects {
 	height: 608px;
-	padding: 110px 70px;
+	padding: 110px 0;
 	display: flex;
 	flex-direction: column;
 	box-sizing: border-box;
@@ -17,11 +17,18 @@
 }
 
 .about-projects__description {
-	max-width: 550px;
 	height: 90px;
 	margin: 70px 0 110px;
 	display: flex;
 	flex-wrap: wrap;
+	justify-content: space-between;
+}
+
+.about-projects__description_container {
+	max-width: 550px;
+	display: flex;
+	flex-wrap: wrap;
+	row-gap: 26px;
 }
 
 .about-projects__description_title {
