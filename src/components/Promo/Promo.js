@@ -2,7 +2,7 @@ import NavTab from "../NavTab/NavTab";
 
 import './Promo.css';
 
-function Promo({ }) {
+function Promo() {
 
 	return (
 		<div className="promo">

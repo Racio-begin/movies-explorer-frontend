@@ -1,6 +1,6 @@
 import './AboutMe.css';
 
-function AboutMe({}) {
+function AboutMe() {
 
 	return(
 		<div className="about-me" id="about-me">

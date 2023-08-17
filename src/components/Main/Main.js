@@ -7,7 +7,7 @@ import AboutProjects from "../AboutProjects/AboutProjects";
 
 import './Main.css';
 
-function Main({ }) {
+function Main() {
 
 	return (
 			<div className="main">
