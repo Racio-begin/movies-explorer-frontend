@@ -1,10 +1,14 @@
+import Portfolio from '../Portfolio/Portfolio';
+import Student from '../Student/Student';
 import './AboutMe.css';
 
 function AboutMe() {
 
-	return(
+	return (
 		<div className="about-me" id="about-me">
-			ABOUT ME
+			<h2 className="about-me__title">Студент</h2>
+			<Student />
+			<Portfolio />
 		</div>
 	);
 };
