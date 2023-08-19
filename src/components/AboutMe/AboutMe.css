@@ -4,11 +4,14 @@
 
 .about-me__title {
 	height: 50px;
-	margin: 0 0 66px;
-	font-family: "Inter", "Arial ", sans-serif;
+	margin: 110px 0 66px;
 	font-weight: 400;
 	font-size: 22px;
 	border-bottom: 1px solid #DADADA;
 	line-height: normal;
 	letter-spacing: -0.88px;
+}
+
+.about-me__subtitle {
+
 }

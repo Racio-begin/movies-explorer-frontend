@@ -9,7 +9,6 @@
 .about-projects__title {
 	height: 50px;
 	margin: 110px 0 0;
-	font-family: "Inter", "Arial ", sans-serif;
 	font-weight: 400;
 	font-size: 22px;
 	border-bottom: 1px solid #DADADA;
@@ -33,7 +32,6 @@
 }
 
 .about-projects__description_title {
-	font-family: "Inter", "Arial ", sans-serif;
 	font-weight: 400;
 	font-size: 20px;
 	line-height: normal;
@@ -41,7 +39,6 @@
 }
 
 .about-projects__description_content {
-	font-family: "Inter", "Arial ", sans-serif;
 	font-weight: 400;
 	font-size: 14px;
 	line-height: 20px;
@@ -61,7 +58,6 @@
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	font-family: "Inter", "Arial ", sans-serif;
 	font-weight: 400;
 	font-size: 14px;
 	line-height: normal;
@@ -79,7 +75,6 @@
 .about-projects__study-time-content {
 	display: flex;
 	justify-content: center;
-	font-family: "Inter", "Arial ", sans-serif;
 	font-weight: 500;
 	font-size: 14px;
 	line-height: 17px;
