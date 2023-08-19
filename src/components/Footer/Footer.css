@@ -1,0 +1,35 @@
+.footer {
+	height: 172px;
+}
+
+.footer__title {
+	height: 36px;
+	margin: 79px 0 0;
+	display: flex;
+	justify-content: center;
+	color: #8B8B8B;
+	border-bottom: 1px solid #424242;
+}
+
+.footer__container {
+	height: 56px;
+	display: flex;
+	justify-content: space-between;
+}
+
+.footer__text-style {
+	font-weight: 400;
+	font-size: 13px;
+	line-height: normal;
+}
+
+.footer__links {
+	display: flex;
+	align-items: center;
+	gap: 20px;
+}
+
+.footer__link {
+	text-decoration: none;
+	color: #fff;
+}
