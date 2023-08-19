@@ -1,12 +1,35 @@
 .student {
-
+	display: flex;
+	justify-content: space-between;
 }
 
-.student__title {
-
+.student__info {
+	width: 600px;
 }
 
 .student__avatar {
 	width: 270px;
 	height: 327px;
+	background-image: url(../../images//user//my-avatar_wev-developer.jpg);
+	object-fit: cover;
+	border-radius: 10px;
+}
+
+.student__title {
+	font-family: "Inter", "Arial ", sans-serif;
+	font-weight: 400;
+	font-size: 50px;
+	line-height: 58px;
+}
+
+.student__subtitle {
+	margin: 18px 0 26px;
+	font-family: "Inter", "Arial ", sans-serif;
+	font-weight: 500;
+	font-size: 18px;
+	line-height: 20px;
+}
+
+.student__about {
+
 }

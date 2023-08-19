@@ -6,9 +6,9 @@ function Student() {
 	return (
 		<div className="student">
 			<div className="student__info">
-				<p className="student__title">Никита</p>
+				<h3 className="student__title">Никита</h3>
 				<p className="student__subtitle">Фронтенд-разработчик, 30&nbsp;лет</p>
-				<p className="student__about">Я&nbsp;крутой дядя. Уже не&nbsp;молод, новсё еще понимаю эти ваши мемы.
+				<p className="student__about">Я&nbsp;крутой дядя. Уже не&nbsp;молод, но всё еще понимаю эти ваши мемы.
 					Умею жать на&nbsp;клавиши так, чтобы ваши задумки, даже не&nbsp;самые приятные, мог увидеть весь мир. Даже против его воли.</p>
 				<a className="student__github-link"></a>
 			</div>

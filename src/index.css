@@ -2,3 +2,6 @@
 
 /*  Fonts  */
 @import url(./vendor/fonts/fonts.css);
+
+/*  Body (фон всего документа)  */
+@import url(./components/common/body.css);
