@@ -19,34 +19,33 @@ function App() {
 			<Routes>
 				<Route
 					path='/'
-					element={Main}
+					element={<Main />}
 				/>
-				{/* <Route
+				<Route
 					path='/sign-in'
-					element={Login}
-				/> */}
-				{/* <Route
+					element={<Login />}
+				/>
+				<Route
 					path='sign-up'
-					element={Register}
-				/> */}
-				{/* <Route
-					path='/movies' element={Movies} 
-						<ProtectedRoute element={Movies}
-						/>}
-				/> */}
-				{/* <Route
-					path='/saved-movies' element={SavedMovies}
-						<ProtectedRoute element={SavedMovies}
-						/>}
-				/> */}
-				{/* <Route
-					path='/profile' element={Profile}
-						<ProtectedRoute element={Profile}
-						/>}
-				/> */}
-				{/* <Route path="*" element={<PageNotFound />} /> */}
+					element={<Register />}
+				/>
+				<Route
+					path='/movies' element={<Movies />}
+				// 		<ProtectedRoute element={Movies}
+				// 		/>}
+				/>
+				<Route
+					path='/saved-movies' element={<SavedMovies />}
+				// <ProtectedRoute element={SavedMovies}
+				// />}
+				/>
+				<Route
+					path='/profile' element={<Profile />}
+				// <ProtectedRoute element={Profile}
+				// />}
+				/>
+				<Route path="*" element={<PageNotFound />} />
 			</Routes>
-			<Main />
 		</div>
 	);
 }

@@ -1,6 +1,6 @@
 import './Login.css';
 
-function Login({}) {
+function Login() {
 
 	return(
 		<div className="login">
