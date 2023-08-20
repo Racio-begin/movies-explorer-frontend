@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react';
-import { Route, Routes, useNavigate, Navigate } from 'react-router-dom';
+import React from 'react';
+import { Route, Routes } from 'react-router-dom';
 
-import ProtectedRoute from '../ProtectedRoute';
+// import ProtectedRoute from '../ProtectedRoute';
 
 import Main from "../Main/Main";
 import Movies from '../Movies/Movies';
@@ -21,30 +21,30 @@ function App() {
 					path='/'
 					element={Main}
 				/>
-				<Route
+				{/* <Route
 					path='/sign-in'
 					element={Login}
-				/>
-				<Route
+				/> */}
+				{/* <Route
 					path='sign-up'
 					element={Register}
-				/>
-				<Route
+				/> */}
+				{/* <Route
 					path='/movies' element={Movies} 
-						// <ProtectedRoute element={Movies}
-						// />}
-				/>
-				<Route
+						<ProtectedRoute element={Movies}
+						/>}
+				/> */}
+				{/* <Route
 					path='/saved-movies' element={SavedMovies}
-						// <ProtectedRoute element={SavedMovies}
-						// />}
-				/>
-				<Route
-					path='/profile' element={
+						<ProtectedRoute element={SavedMovies}
+						/>}
+				/> */}
+				{/* <Route
+					path='/profile' element={Profile}
 						<ProtectedRoute element={Profile}
 						/>}
-				/>
-				<Route path="*" element={<PageNotFound />} />
+				/> */}
+				{/* <Route path="*" element={<PageNotFound />} /> */}
 			</Routes>
 			<Main />
 		</div>

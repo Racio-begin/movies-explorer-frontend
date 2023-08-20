@@ -15,7 +15,7 @@ function Footer({ }) {
 
 			<div className="footer__container">
 
-				<p className="footer__text-style">
+				<p className="footer__copyright footer__text-style">
 					© {setCurrentYear()}
 				</p>
 
@@ -29,7 +29,7 @@ function Footer({ }) {
 					</a>
 					<a
 						className="footer__link footer__text-style"
-						href="https://github.com/"
+						href="https://github.com/Racio-begin"
 						lang="en"
 					>Github
 					</a>
