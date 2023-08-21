@@ -1,9 +1,9 @@
 .navtab {
-	width: 308px;
 	height: 36px;
 	margin-bottom: 30px;
 	display: flex;
 	justify-content: space-between;
+	gap: 10px;
 }
 
 .navtab__link {
@@ -20,4 +20,18 @@
 	font-size: 12px;
 	line-height: 16px;
 	cursor: pointer;
+}
+
+@media screen and (max-width: 568px) {
+  .navtab {
+		gap: 6px;
+		margin-bottom: 17px;
+  }
+
+	.navtab__link {
+		width: 82px;
+		height: 26px;
+		border-radius: 6px;
+		font-size: 10px;
+	}
 }

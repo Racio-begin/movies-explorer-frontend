@@ -7,7 +7,7 @@
   max-width: 1280px;
   min-height: 100vh;
 	margin: 0 auto;
-	/* text-rendering: optimizeLegibility; */
+	text-rendering: optimizeLegibility;
 }
 
 /* Поправить адаптивность! */

@@ -1,6 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import './NavTab.css';
+import '../common/animation-transition.css';
 
 function NavTab() {
 
@@ -24,13 +25,20 @@ function NavTab() {
 				>Технологии
 			</Link>
 
-			<Link
+			{/* <Link
 				to="about-me"
 				className="navtab__link"
 				// smooth={true}
 				// duration={500}
 				>Студент
-			</Link>
+			</Link> */}
+			<a
+				href="#about-me"
+				className="navtab__link animation-transition"
+				// smooth={true}
+				// duration={500}
+				>Студент
+			</a>
 
 		</div>
 	);
