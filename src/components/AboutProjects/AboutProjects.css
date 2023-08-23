@@ -3,7 +3,6 @@
 	/* padding: 110px 0; */
 	display: flex;
 	flex-direction: column;
-	/* box-sizing: border-box; */
 }
 
 .about-projects__title {
@@ -11,8 +10,8 @@
 	margin: 110px 0 0;
 	font-weight: 400;
 	font-size: 22px;
-	border-bottom: 1px solid #DADADA;
 	line-height: normal;
+	border-bottom: 1px solid #DADADA;
 	letter-spacing: -0.88px;
 }
 
@@ -48,13 +47,14 @@
 .about-projects__study-time {
 	height: 67px;
 	display: grid;
-	grid-row: 14px;
+	/* grid-row: 14px; */
 	grid-template-columns: 20% 80%;
 	grid-template-rows: auto;
 }
 
 .about-projects__study-time-title {
 	height: 36px;
+	margin: 0 0 14px;
 	display: flex;
 	justify-content: center;
 	align-items: center;
@@ -73,10 +73,30 @@
 }
 
 .about-projects__study-time-content {
+	margin: 0;
 	display: flex;
 	justify-content: center;
 	font-weight: 500;
 	font-size: 14px;
 	line-height: 17px;
 	color: #8B8B8B;
+}
+
+@media screen and (max-width: 1070px) {
+	.about-projects {
+		height: 585px;
+	}
+
+	.about-projects__title {
+		margin: 90px 0 0;
+	}
+
+	.about-projects__description {
+		margin: 70px 0 93px;
+		flex-wrap: nowrap;
+	}
+
+	.about-projects__study-time-title {	
+		margin: 0 0 14px;
+	}
 }
