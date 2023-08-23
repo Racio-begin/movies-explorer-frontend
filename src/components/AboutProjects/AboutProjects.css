@@ -1,6 +1,5 @@
 .about-projects {
 	height: 608px;
-	/* padding: 110px 0; */
 	display: flex;
 	flex-direction: column;
 }
@@ -16,21 +15,22 @@
 }
 
 .about-projects__description {
-	height: 90px;
+	min-height: 90px;
 	margin: 70px 0 110px;
 	display: flex;
-	flex-wrap: wrap;
-	justify-content: space-between;
+	gap: 0 40px;
 }
 
 .about-projects__description_container {
 	max-width: 550px;
 	display: flex;
-	flex-wrap: wrap;
-	row-gap: 26px;
+	flex-direction: column;
+	gap: 26px;
 }
 
 .about-projects__description_title {
+	margin: 0;
+	min-height: 24px;
 	font-weight: 400;
 	font-size: 20px;
 	line-height: normal;
@@ -38,6 +38,7 @@
 }
 
 .about-projects__description_content {
+	margin: 0;
 	font-weight: 400;
 	font-size: 14px;
 	line-height: 20px;
@@ -47,7 +48,6 @@
 .about-projects__study-time {
 	height: 67px;
 	display: grid;
-	/* grid-row: 14px; */
 	grid-template-columns: 20% 80%;
 	grid-template-rows: auto;
 }
@@ -93,10 +93,67 @@
 
 	.about-projects__description {
 		margin: 70px 0 93px;
-		flex-wrap: nowrap;
+		gap: 0 30px;
 	}
 
-	.about-projects__study-time-title {	
+	.about-projects__description_container {
+		gap: 22px;
+	}
+
+	.about-projects__description_content {
+		font-size: 12px;
+		line-height: 18px;
+		letter-spacing: normal;
+	}
+
+	.about-projects__study-time-title {
 		margin: 0 0 14px;
+	}
+}
+
+@media screen and (max-width: 568px) {
+	.about-projects {
+		height: 641px;
+	}
+
+	.about-projects__title {
+		margin: 70px 0 0;
+		font-size: 18px;
+		letter-spacing: -0.72px;
+	}
+
+	.about-projects__description {
+		flex-direction: column;
+		margin: 60px 0 60px;
+		gap: 56px;
+	}
+
+	.about-projects__description_container {
+		gap: 16px;
+	}
+
+	.about-projects__description_title {
+		font-size: 18px;
+		letter-spacing: -0.72px;
+	}
+
+	.about-projects__description_content {
+		font-size: 11px;
+		line-height: 16px;
+	}
+
+	.about-projects__study-time {
+		height: 35px;
+		grid-template-columns: 35% 65%;
+		grid-template-rows: auto;
+	}
+
+	.about-projects__study-time-title {
+		margin: 0 0 10px;
+		font-size: 11px;
+	}
+
+	.about-projects__study-time-content {
+		font-size: 11px;
 	}
 }
