@@ -4,10 +4,28 @@
 }
 
 .portfolio__title {
-	margin: 0 0 50px;
+	margin: 0 0 30px;
 	font-weight: 400;
 	font-size: 18px;
 	line-height: 20px;
 	font-feature-settings: 'clig' off, 'liga' off;
 	color: #8B8B8B;
+}
+
+@media screen and (max-width: 1070px) {
+	.portfolio {
+		height: 300px;
+		margin: 90px 0 0;
+	}
+}
+
+@media screen and (max-width: 568px) {
+	.portfolio {
+		/* height: 224px; */
+		margin: 70px 0 0;
+	}
+
+	.portfolio__title {
+		margin: 0 0 40px;
+	}
 }
