@@ -40,3 +40,25 @@
 	text-decoration: none;
 	color: #fff;
 }
+
+@media screen and (max-width: 568px) {
+	.footer {
+		height: 253px;
+	}
+
+	.footer__container {
+		height: 137px;
+		flex-direction: column-reverse;
+	}
+
+	.footer__copyright {
+		justify-content: center;
+		color: #8B8B8B;
+	}
+
+	.footer__links {
+		padding-top: 30px;
+		flex-direction: column;
+		gap: 12px;
+	}
+}
