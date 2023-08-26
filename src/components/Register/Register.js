@@ -1,25 +1,33 @@
 import './Register.css';
 import Form from '../Form/Form';
+import FormLabel from '../FormLabel/FormLabel';
 
-function Register({}) {
+function Register({ }) {
 
-	return(
+	return (
 		<Form
-		title="Добро пожаловать!"
-		buttonText="Зарегистрироваться"
-		question="Уже зарегистрированы?"
-		linkText=" Войти"
-		link="/sign-up"
+			title="Добро пожаловать!"
+			buttonText="Зарегистрироваться"
+			question="Уже зарегистрированы?"
+			linkText=" Войти"
+			link="/sign-up"
 		>
-			
-		{/* <div className="register">
-			<div className="register__title"></div>
-			<div className="register__form"></div>
-			<div className="register__join">
-				<div className="register__submit"></div>
-				<div className="register__redirect"></div>
-			</div>
-		</div> */}
+
+			<FormLabel
+				labelName="Имя"
+				spanMessage='Заполните поле "Имя"'
+			/>
+
+			<FormLabel
+				labelName="E-mail"
+				spanMessage='Адрес электронной почты должен содержать символ "@".'
+			/>
+
+			<FormLabel
+				labelName="Пароль"
+				spanMessage='Заполните поле "Пароль"'
+			/>
+
 		</Form>
 	);
 };
