@@ -8,9 +8,9 @@ function Register({ }) {
 		<Form
 			title="Добро пожаловать!"
 			buttonText="Зарегистрироваться"
-			question="Уже зарегистрированы?"
+			questionText="Уже зарегистрированы?"
+			link="/sign-in"
 			linkText=" Войти"
-			link="/sign-up"
 		>
 
 			<FormLabel

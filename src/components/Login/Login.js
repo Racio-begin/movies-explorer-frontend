@@ -9,14 +9,9 @@ function Login({ }) {
 			title="Рады видеть!"
 			buttonText="Войти"
 			questionText="Ещё не зарегистрированы?"
-			linkText=" Регистрация"
 			link="/sign-up"
+			linkText=" Регистрация"
 		>
-
-			<FormLabel
-				labelName="Имя"
-				spanMessage='Заполните поле "Имя"'
-			/>
 
 			<FormLabel
 				labelName="E-mail"
