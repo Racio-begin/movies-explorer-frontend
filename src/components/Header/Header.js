@@ -1,17 +1,13 @@
 import { Link, Route, Routes } from 'react-router-dom';
 import './Header.css';
-import logo from '../../images/logo.svg';
+import Logo from '../Logo/Logo';
 
 function Header({ handleLogin, handleProfile }) {
 
 	return (
 		<div className="header">
 
-			<img
-				className="header__logo"
-				src={logo}
-				alt="Логотип сайта Giga-movies"
-			/>
+			<Logo/>
 
 			<Routes>
 
