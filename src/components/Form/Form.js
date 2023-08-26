@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import './Form.css';
 import Logo from '../Logo/Logo';
 
-function Form({ title, buttonText, ...props }) {
+function Form({ title, buttonText, questionText, linkText, ...props }) {
 	return (
 		<div className="form">
 			<div className="form__header">
@@ -23,11 +23,12 @@ function Form({ title, buttonText, ...props }) {
 				{buttonText}
 			</button>
 
-			<p className="form__redirect">Уже зарегистрированы?
+			<p className="form__redirect">
+				{questionText}
 				<Link
 					className="form__redirect_link"
 					to="/sign-in">
-					Войти
+					{linkText}
 				</Link>
 			</p>
 
