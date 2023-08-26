@@ -5,5 +5,5 @@
 
 .logo:hover {
 	opacity: .8;
-	transition: all .35s ease;
+	transition: all .35s;
 }

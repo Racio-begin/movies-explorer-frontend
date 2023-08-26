@@ -29,6 +29,9 @@
 	height: 45px;
 	margin-top: 69px;
 	border-radius: 3px;
+	font-weight: 500;
+	font-size: 14px;
+	line-height: normal;
 	color: #fff;
 	background-color: #4285F4;
 	cursor: pointer;
@@ -36,7 +39,7 @@
 
 .form__button-submit:hover {
 	opacity: .8;
-	transition: all .35s ease;
+	transition: all .35s;
 }
 
 .form__redirect {
@@ -49,4 +52,28 @@
 	margin-left: 6px;
 	color: #4285F4;
 	text-decoration: none;
+}
+
+@media screen and (max-width: 1070px) {
+.form {
+	max-width: 396px;
+	padding-top: 232px;
+}
+
+	.form__header {
+		height: 138px;
+	}
+}
+
+@media screen and (max-width: 568px) {
+.form {
+	max-width: 260px;
+	padding-top: 56px;
+}
+
+	.form__header {
+		height: 197px;
+		align-items: center;
+		gap: 50px;
+	}
 }

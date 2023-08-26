@@ -9,11 +9,12 @@
 }
 
 .form-label__input {
-	height: 46px;
+	/* height: 46px; */
 	border-radius: 8px;
-	margin: 10px 0 10px;
+	border: 0;
+	margin: 10px 0 5px;
 	padding: 15px;
-	font-weight: 400;
+	font-weight: 500;
 	font-size: 13px;
 	line-height: normal;
 	color: #fff;
@@ -21,6 +22,6 @@
 }
 
 .form-label__input-error {
-	height: 22px;
+	/* height: 22px; */
 	color: #EE3465;
 }
