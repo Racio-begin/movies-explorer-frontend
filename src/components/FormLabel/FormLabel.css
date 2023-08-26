@@ -2,12 +2,16 @@
 	height: 90px;
 	display: flex;
 	flex-direction: column;
+	font-weight: 400;
+	font-size: 10px;
+	line-height: normal;
 	color: #8B8B8B;
 }
 
 .form-label__input {
 	height: 46px;
 	border-radius: 8px;
+	margin: 10px 0 10px;
 	color: #fff;
 	background-color: #2F2F2F;
 }
