@@ -28,6 +28,7 @@
 .form__button-submit {
 	height: 45px;
 	margin-top: 69px;
+	border: none;
 	border-radius: 3px;
 	font-weight: 500;
 	font-size: 14px;
@@ -45,6 +46,9 @@
 .form__redirect {
 	display: flex;
 	justify-content: center;
+	font-weight: 400;
+	font-size: 14px;
+	line-height: normal;
 	color: #8B8B8B;
 }
 
@@ -75,5 +79,16 @@
 		height: 197px;
 		align-items: center;
 		gap: 50px;
+	}
+
+	.form__button-submit {
+		font-size: 12px;
+	}
+
+	.form__redirect {
+		font-size: 12px;
+	}
+	.form__redirect_link {
+		margin-left: 7px;
 	}
 }

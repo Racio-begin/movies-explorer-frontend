@@ -1,8 +1,18 @@
-import { Link, Route, Routes } from 'react-router-dom';
+import { Link, Route, Routes, useNavigate } from 'react-router-dom';
 import './Header.css';
 import Logo from '../Logo/Logo';
 
-function Header({ handleLogin, handleProfile }) {
+function Header() {
+
+	const navigate = useNavigate();
+
+	function handleLogin () {
+		navigate('/sign-in');
+	};
+
+	function handleProfile () {
+		navigate('/profile');
+	};
 
 	return (
 		<div className="header">

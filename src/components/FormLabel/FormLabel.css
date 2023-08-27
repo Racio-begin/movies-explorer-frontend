@@ -1,5 +1,5 @@
 .form-label {
-	height: 90px;
+	min-height: 90px;
 	display: flex;
 	flex-direction: column;
 	font-weight: 400;
@@ -11,7 +11,7 @@
 .form-label__input {
 	/* height: 46px; */
 	border-radius: 8px;
-	border: 0;
+	border: none;
 	margin: 10px 0 5px;
 	padding: 15px;
 	font-weight: 500;
@@ -22,6 +22,6 @@
 }
 
 .form-label__input-error {
-	/* height: 22px; */
+	min-height: 22px;
 	color: #EE3465;
 }
