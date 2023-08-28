@@ -13,9 +13,9 @@
 }
 
 .card__image {
+	width: 360px;
 	height: 201px;
-	background-repeat: no-repeat;
-	background-size: cover;
+  object-fit: cover;
 }
 
 .card__like {
@@ -65,7 +65,37 @@
 	background-color: #2F2F2F;
 }
 
-@media screen and (max-width: 1260px) {
-	.card {}
+@media screen and (max-width: 1070px) {
+	.card {
+		width: 339px;
+		height: 228px;
+	}
+
+	.card__title-container {
+		padding: 14px 0 0;
+	}
+
+	.card__image {
+		width: 339px;
+		height: 190px;
+	}
+
+	.card__title {
+		text-overflow: ellipsis;
+		white-space: nowrap;
+		overflow: hidden;
+	}
+
+	@media screen and (max-width: 568px) {
+		.card {
+			width: 300px;
+			height: 202px;
+		}
+
+		.card__image {
+			width: 300px;
+			height: 168px;
+		}
+	}
 
 }
