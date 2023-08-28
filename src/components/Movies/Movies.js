@@ -1,5 +1,6 @@
 import './Movies.css';
 import Header from '../Header/Header';
+import SearchForm from '../SearchForm/SearchForm';
 import Footer from '../Footer/Footer';
 import Card from '../Card/Card';
 import image from '../../images/movies/img1.jpg';
@@ -9,30 +10,7 @@ function Movies() {
 	return (
 		<div className="movies">
 			<Header />
-
-			<div className="movies__search-container">
-
-				<div className="movies__search">
-					<input
-						className="movies__search-input"
-						type="search"
-						placeholder="Фильм"
-					/>
-					<button
-						className="movies__search-button"
-						type="submit"
-					/>
-				</div>
-
-				<div className="movies__filter">
-					<input
-						className="movies__check-box"
-						type="checkbox"
-					/>
-					<p className="movies__span">Короткометражки</p>
-				</div>
-
-			</div>
+			<SearchForm />
 
 			<ul className="movies__container">
 				<Card

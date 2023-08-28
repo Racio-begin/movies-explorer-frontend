@@ -1,10 +1,30 @@
 import './SearchForm.css';
 
-function SearchForm({}) {
+function SearchForm({ }) {
 
-	return(
-		<div className="search-form">
-			SEARCH FORM
+	return (
+		<div className="search">
+
+			<div className="search__container">
+				<input
+					className="search__input"
+					type="search"
+					placeholder="Фильм"
+				/>
+				<button
+					className="search__find-button"
+					type="submit"
+				/>
+			</div>
+
+			<div className="search__filter">
+				<input
+					className="search__check-box"
+					type="checkbox"
+				/>
+				<p className="search__span">Короткометражки</p>
+			</div>
+
 		</div>
 	);
 };
