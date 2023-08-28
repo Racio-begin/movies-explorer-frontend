@@ -4,6 +4,7 @@ import {
 	// Routes,
 	useNavigate
 } from 'react-router-dom';
+
 import './Navigation.css';
 
 function Navigation({ loggedIn }) {
@@ -21,12 +22,12 @@ function Navigation({ loggedIn }) {
 	function handleNavigation() {
 		if (loggedIn) {
 			return (
-				<div className="header__landing">
+				<div className="navigation__landing">
 
-					<Link className="header__link" to="/sign-up">Регистрация</Link>
+					<Link className="navigation__link" to="/sign-up">Регистрация</Link>
 
 					<button
-						className="header__login-button"
+						className="navigation__login-button"
 						type="button"
 						onClick={handleLogin}>
 						Войти
@@ -36,20 +37,20 @@ function Navigation({ loggedIn }) {
 			)
 		} else {
 			return (
-				<div className="header__movies">
-
-					<div className="header__navbar">
-						<Link className="header__link" to="/movies">Фильмы</Link>
-						<Link className="header__link" to="/saved-movies">Сохранённые фильмы</Link>
+				// <div className="header__movies">
+				<>
+					<div className="navigation__navbar">
+						<Link className="navigation__link" to="/movies">Фильмы</Link>
+						<Link className="navigation__link" to="/saved-movies">Сохранённые фильмы</Link>
 					</div>
 
 					<button
-						className="header__profile-button"
+						className="navigation__profile-button"
 						type="button"
 						onClick={handleProfile}>
 					</button>
-
-				</div>
+				</>
+				// {/* </div> */ }
 			);
 		}
 	};

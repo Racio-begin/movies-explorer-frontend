@@ -1,10 +1,12 @@
 .search {
 	height: 228px;
-	padding-top: 80px;
+	margin-bottom: 10px;
+	border-bottom: 1px solid #424242;;
 }
 
 .search__container {
 	height: 50px;
+	padding-top: 80px;
 	display: flex;
 	align-items: center;
 	justify-content: space-between;

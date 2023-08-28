@@ -6,56 +6,11 @@
 	box-sizing: border-box;
 }
 
-.header__landing {
-	display: flex;
-	align-items: center;
-}
-
 .header__register {
 	width: 77px;
 	height: 16px;
 }
 
-.header__login-button {
-	width: 76px;
-	height: 32px;
-	border-radius: 3px;
-	margin-left: 30px;
-	color: #000;
-	background-color: #3DDC84;
-	font-weight: 500;
-	font-size: 12px;
-	line-height: 16px;
-	cursor: pointer;
-}
-
-.header__profile-button {
-	width: 100px;
-	height: 32px;
-	border: none;
-	background-image: url(../../images/profile.svg);
-	background-size: cover;
-	background-color: transparent;
-	cursor: pointer;
-}
-
-.header__navbar {
-	width: 212px;
-	height: 18px;
-}
-
-/* Усредненный линк, так как в макете три(!) "разных" (а на самом деле нет) линка с разницей в один пиксель... */
-.header__link {
-	font-weight: 500;
-	font-size: 12px;
-	/* font-size: 13px; */
-	line-height: 16px;
-	/* line-height: 18px; */
-	color: #fff;
-	text-decoration: none;
-}
-
 .header__movies {
 	display: flex;
-
 }

@@ -1,6 +1,6 @@
 import './SearchForm.css';
 
-function SearchForm({ }) {
+function SearchForm() {
 
 	return (
 		<div className="search">
