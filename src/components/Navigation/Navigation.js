@@ -44,7 +44,7 @@ function Navigation({ loggedIn }) {
 					</div>
 
 					<button
-						className="header__profile"
+						className="header__profile-button"
 						type="button"
 						onClick={handleProfile}>
 					</button>

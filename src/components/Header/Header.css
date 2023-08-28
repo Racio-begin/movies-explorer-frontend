@@ -29,9 +29,15 @@
 	cursor: pointer;
 }
 
-/* .header__profile {
-
-} */
+.header__profile-button {
+	width: 100px;
+	height: 32px;
+	border: none;
+	background-image: url(../../images/profile.svg);
+	background-size: cover;
+	background-color: transparent;
+	cursor: pointer;
+}
 
 .header__navbar {
 	width: 212px;

@@ -1,4 +1,3 @@
-import { Link, Route, Routes, useNavigate } from 'react-router-dom';
 import './Header.css';
 import Logo from '../Logo/Logo';
 import Navigation from '../Navigation/Navigation';
