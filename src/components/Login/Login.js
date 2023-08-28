@@ -2,7 +2,7 @@ import './Login.css';
 import Form from '../Form/Form';
 import FormLabel from '../FormLabel/FormLabel';
 
-function Login({ }) {
+function Login() {
 
 	return (
 		<Form

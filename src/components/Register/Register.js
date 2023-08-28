@@ -2,7 +2,7 @@ import './Register.css';
 import Form from '../Form/Form';
 import FormLabel from '../FormLabel/FormLabel';
 
-function Register({ }) {
+function Register() {
 
 	return (
 		<Form
