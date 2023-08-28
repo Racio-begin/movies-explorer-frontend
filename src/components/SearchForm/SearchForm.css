@@ -44,10 +44,10 @@
 }
 
 .search__check-box {
-	width: 36px;
-  height: 20px;
+	width: 34px;
+  height: 14px;
   border: none;
-  border-radius: 16px;
+  border-radius: 14px;
   outline: none;
 	background: #C4C4C4;
   box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.08);
@@ -57,8 +57,8 @@
 }
 
 .search__check-box::after {
-  width: 16px;
-  height: 16px;
+  width: 10px;
+  height: 10px;
   border-radius: 50%;
   position: absolute;
   top: 2px;
@@ -74,8 +74,8 @@
 }
 
 .search__check-box:checked::after {
-  width: 16px;
-  height: 16px;
+  width: 10px;
+  height: 10px;
   top: 2px;
   right: 2px;
   position: absolute;
@@ -83,7 +83,7 @@
   content: "";
   border-radius: 50%;
   transition: 0.3s ease;
-  transform: translate(16px);
+  transform: translate(20px);
   background: #fff;
 }
 
