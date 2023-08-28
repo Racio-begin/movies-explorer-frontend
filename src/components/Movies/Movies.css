@@ -60,4 +60,9 @@
 	.movies {
 		padding: 0 10px 0;
 	}
+
+	.movies__more {
+		margin-top: 50px;
+		margin-bottom: 79px;
+	}
 }

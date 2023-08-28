@@ -9,6 +9,9 @@
 	height: 36px;
 	display: flex;
 	justify-content: center;
+	font-weight: 400;
+	font-size: 13px;
+	line-height: normal;
 	color: #8B8B8B;
 	border-bottom: 1px solid #424242;
 }
@@ -44,6 +47,12 @@
 @media screen and (max-width: 568px) {
 	.footer {
 		height: 253px;
+	}
+
+	.footer__title {
+		height: 36px;
+		justify-content: center;
+		font-size: 12px;
 	}
 
 	.footer__container {
