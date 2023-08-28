@@ -7,11 +7,11 @@ import AboutProjects from "../AboutProjects/AboutProjects";
 
 import './Main.css';
 
-function Main() {
+function Main({ loggedIn }) {
 
 	return (
 			<div className="main">
-				<Header />
+				<Header loggedIn={loggedIn}/>
 				<main>
 					<Promo />
 					<AboutProjects />

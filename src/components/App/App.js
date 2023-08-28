@@ -1,4 +1,9 @@
-import React from 'react';
+import React,
+{
+	useState,
+	// useEffect
+} from 'react';
+
 import { Route, Routes } from 'react-router-dom';
 
 // import ProtectedRoute from '../ProtectedRoute';
@@ -15,12 +20,15 @@ import './App.css';
 
 function App() {
 
+	const [loggedIn, setLoggedIn] = useState(true);
+	// const [loggedIn, setLoggedIn] = useState(false);
+
 	return (
 		<div className="app">
 			<Routes>
 				<Route
 					path='/'
-					element={<Main />}
+					element={<Main loggedIn={loggedIn} />}
 				/>
 				<Route
 					path='/sign-in'

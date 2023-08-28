@@ -4,7 +4,7 @@
 }
 
 .card__image-container {
-	/* position: relative; */
+	position: relative;
 	cursor: pointer;
 }
 
@@ -14,11 +14,28 @@
 
 .card__image {
 	height: 201px;
+	background-repeat: no-repeat;
+	background-size: cover;
 }
 
 .card__like {
+	width: 72px;
+	height: 21px;
+	border-radius: 10.5px;
 	display: none;
-	/* position: absolute; */
+	position: absolute;
+	top: 14px;
+	right: 14px;
+	background-image: url(../../images/movies/save__card.svg);
+	padding: 0;
+	border: none;
+	cursor: pointer;
+	/* font-weight: 400;
+	font-size: 12px;
+	line-height: normal;
+	color: #fff;
+	 */
+	background-color: transparent;
 }
 
 .card__title-container {
@@ -46,4 +63,9 @@
 	line-height: 11px;
 	color: #8B8B8B;
 	background-color: #2F2F2F;
+}
+
+@media screen and (max-width: 1260px) {
+	.card {}
+
 }

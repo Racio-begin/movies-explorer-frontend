@@ -1,7 +1,12 @@
-import { Link, Route, Routes, useNavigate } from 'react-router-dom';
+import {
+	Link,
+	// Route,
+	// Routes,
+	useNavigate
+} from 'react-router-dom';
 import './Navigation.css';
 
-function Navigation() {
+function Navigation({ loggedIn }) {
 
 	const navigate = useNavigate();
 
@@ -13,45 +18,82 @@ function Navigation() {
 		navigate('/profile');
 	};
 
-	return (
-		<div className="navigation">
-			<Routes>
+	function handleNavigation() {
+		if (loggedIn) {
+			return (
+				<div className="header__landing">
 
-				<Route path="/" element={
-					<div className="header__landing">
+					<Link className="header__link" to="/sign-up">Регистрация</Link>
 
-						<Link className="header__link" to="/sign-up">Регистрация</Link>
+					<button
+						className="header__login-button"
+						type="button"
+						onClick={handleLogin}>
+						Войти
+					</button>
 
-						<button
-							className="header__login-button"
-							type="button"
-							onClick={handleLogin}>
-							Войти
-						</button>
+				</div>
+			)
+		} else {
+			return (
+				<div className="header__movies">
 
+					<div className="header__navbar">
+						<Link className="header__link" to="/movies">Фильмы</Link>
+						<Link className="header__link" to="/saved-movies">Сохранённые фильмы</Link>
 					</div>
-				} />
 
-				<Route path="/movies" element={
-					<div className="header__movies">
+					<button
+						className="header__profile"
+						type="button"
+						onClick={handleProfile}>
+					</button>
 
-						<div className="header__navbar">
-							<Link className="header__link" to="/movies">Фильмы</Link>
-							<Link className="header__link" to="/saved-movies">Сохранённые фильмы</Link>
-						</div>
+				</div>
+			);
+		}
+	};
 
-						<button
-							className="header__profile"
-							type="button"
-							onClick={handleProfile}>
-						</button>
-
-					</div>
-				} />
-
-			</Routes>
-		</div>
-	);
+	return handleNavigation();
 };
 
 export default Navigation;
+	// return (
+	// 	<div className="navigation">
+	// 		<Routes>
+
+	// 			<Route path="/" element={
+	// 				<div className="header__landing">
+
+	// 					<Link className="header__link" to="/sign-up">Регистрация</Link>
+
+	// 					<button
+	// 						className="header__login-button"
+	// 						type="button"
+	// 						onClick={handleLogin}>
+	// 						Войти
+	// 					</button>
+
+	// 				</div>
+	// 			} />
+
+	// 			<Route path="movies" element={
+	// 				<div className="header__movies">
+
+	// 					<div className="header__navbar">
+	// 						<Link className="header__link" to="/movies">Фильмы</Link>
+	// 						<Link className="header__link" to="/saved-movies">Сохранённые фильмы</Link>
+	// 					</div>
+
+	// 					<button
+	// 						className="header__profile"
+	// 						type="button"
+	// 						onClick={handleProfile}>
+	// 					</button>
+
+	// 				</div>
+	// 			} />
+
+	// 		</Routes>
+	// 	</div>
+	// );

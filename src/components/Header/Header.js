@@ -1,12 +1,13 @@
+import { Link, Route, Routes, useNavigate } from 'react-router-dom';
 import './Header.css';
 import Logo from '../Logo/Logo';
 import Navigation from '../Navigation/Navigation';
 
-function Header() {
+function Header({ loggedIn }) {
 	return (
 		<div className="header">
 			<Logo />
-			<Navigation />
+			<Navigation loggedIn={loggedIn}/>
 		</div>
 	);
 };

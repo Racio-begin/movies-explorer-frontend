@@ -23,19 +23,19 @@ function Movies() {
 					title="Босиком по галактике"
 					link={image}
 					alt="Карточка"
-					time="1ч 50м"
+					time="1ч 51м"
 				/>
 				<Card
 					title="Босиком по галактике"
 					link={image}
 					alt="Карточка"
-					time="1ч 50м"
+					time="1ч 52м"
 				/>
 				<Card
 					title="Босиком по галактике"
 					link={image}
 					alt="Карточка"
-					time="1ч 50м"
+					time="1ч 53м"
 				/>
 			</ul>
 
