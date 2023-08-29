@@ -1,0 +1,21 @@
+.profile-button {
+	width: 100px;
+	height: 32px;
+	border: none;
+	background-image: url(../../images/profile.svg);
+	background-size: cover;
+	background-color: transparent;
+	cursor: pointer;
+}
+
+/* @media screen and (max-width: 1070px) {
+	.profile-button {
+		display: none;
+	}
+} */
+
+@media screen and (max-width: 1070px) {
+  .header .profile-button {
+    display: none;
+  }
+}

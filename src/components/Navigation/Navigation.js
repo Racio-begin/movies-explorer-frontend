@@ -5,6 +5,7 @@ import {
 	useNavigate
 } from 'react-router-dom';
 
+import ProfileButton from '../ProfileButton/ProfileButton';
 import './Navigation.css';
 
 function Navigation({ loggedIn }) {
@@ -13,10 +14,6 @@ function Navigation({ loggedIn }) {
 
 	function handleLogin() {
 		navigate('/sign-in');
-	};
-
-	function handleProfile() {
-		navigate('/profile');
 	};
 
 	function handleNavigation() {
@@ -44,11 +41,7 @@ function Navigation({ loggedIn }) {
 						<Link className="navigation__link" to="/saved-movies">Сохранённые фильмы</Link>
 					</div>
 
-					<button
-						className="navigation__profile-button"
-						type="button"
-						onClick={handleProfile}>
-					</button>
+					<ProfileButton />
 				</>
 				// {/* </div> */ }
 			);

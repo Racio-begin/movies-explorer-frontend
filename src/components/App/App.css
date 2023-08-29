@@ -8,6 +8,10 @@
   min-height: 100vh;
 	margin: 0 auto;
 	text-rendering: optimizeLegibility;
+  /* Стили для сокрытия бургер-меню */
+  overflow: hidden;
+  width: 100%;
+  position: relative;
 }
 
 /* Поправить адаптивность! */

@@ -31,19 +31,15 @@
 	cursor: pointer;
 }
 
-.navigation__profile-button {
-	width: 100px;
-	height: 32px;
-	border: none;
-	background-image: url(../../images/profile.svg);
-	background-size: cover;
-	background-color: transparent;
-	cursor: pointer;
-}
-
 .navigation__navbar {
 	width: 212px;
 	height: 18px;
 	display: flex;
 	gap: 16px;
+}
+
+@media screen and (max-width: 1070px) {
+	.navigation__navbar {
+		display: none;
+	}
 }
