@@ -4,6 +4,7 @@ import SearchForm from '../SearchForm/SearchForm';
 import Footer from '../Footer/Footer';
 import Card from '../Card/Card';
 import image from '../../images/movies/img1.jpg';
+// import Preloader from '../Preloader/Preloader';
 
 function Movies() {
 
@@ -11,6 +12,7 @@ function Movies() {
 		<div className="movies">
 			<Header />
 			<SearchForm />
+			{/* <Preloader/> */}
 
 			<ul className="movies__container">
 				<Card
