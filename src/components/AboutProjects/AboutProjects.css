@@ -118,6 +118,7 @@
 @media screen and (max-width: 568px) {
 	.about-projects {
 		height: 641px;
+		margin: 0 4px 0;
 	}
 
 	.about-projects__title {

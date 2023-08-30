@@ -111,6 +111,10 @@
 		padding-top: 70px;
 	}
 
+	.profile__title {
+		margin-bottom: 70px;
+	}
+
 	.profile__form_input {
 		max-width: 260px;
 	}
@@ -120,6 +124,14 @@
 	}
 
 	.profile__form {
-		margin-bottom: 379px;
+		margin-bottom: 370px;
+	}
+
+	.profile__edit {
+		font-size: 12px;
+	}
+
+	.profile__logout {
+		font-size: 12px;
 	}
 }

@@ -26,6 +26,13 @@
 	}
 
 	.portfolio__title {
-		margin: 0 0 40px;
+		margin: 0 0 32px;
+		font-size: 14px;
+	}
+
+	.portfolio__projects {
+		display: flex;
+		flex-direction: column;
+		gap: 11px;
 	}
 }

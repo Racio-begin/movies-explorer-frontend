@@ -45,6 +45,11 @@
 }
 
 @media screen and (max-width: 568px) {
+
+	.project-link {
+		padding: 0 0 6px;
+	}
+
 	.project-link__link-name {
 		font-size: 18px;
 		line-height: 28px;

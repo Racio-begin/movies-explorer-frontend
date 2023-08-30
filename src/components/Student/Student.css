@@ -87,6 +87,7 @@
 		height: auto;
 		flex-direction: column-reverse;
 		align-items: center;
+		gap: 0;
 	}
 
 	.student__avatar {

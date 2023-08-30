@@ -45,14 +45,14 @@
 }
 
 @media screen and (max-width: 1070px) {
-	.footer {
-		/* margin: 0 -20px 0; */
-	}
+	/* .footer {
+		margin: 0 -20px 0;
+	} */
 }
 
 @media screen and (max-width: 568px) {
 	.footer {
-		height: 253px;
+		height: 215px;
 	}
 
 	.footer__title {
@@ -75,5 +75,9 @@
 		padding-top: 30px;
 		flex-direction: column;
 		gap: 12px;
+	}
+
+	.footer__text-style {
+		font-size: 12px;
 	}
 }

@@ -69,7 +69,7 @@
 
 @media screen and (max-width: 568px) {
 	.promo {
-		height: 600px;
+		min-height: 600px;
 	}
 
 	.promo__content {

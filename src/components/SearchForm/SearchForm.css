@@ -122,4 +122,19 @@
 		justify-content: space-between;
 		gap: 10px;
 	}
+
+	.search__input {
+		width: 79%;
+		padding-top: 13px;
+		padding-bottom: 13px;
+		padding-left: 13px;
+	}
+
+	.search__find-button {
+		margin-right: 5px;
+	}
+
+	.search__filter {
+		margin-top: 50px;
+	}
 }

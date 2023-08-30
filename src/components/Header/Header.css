@@ -73,3 +73,16 @@
 	}
 
 }
+
+@media screen and (max-width: 568px) {
+	.header__burger-button {
+		width: 46px; 
+		/* а оно нужно?? */
+		/* height: 43px; */
+	}
+
+	.header__burger-button span {
+		width: 25px;
+		height: 1.5px;
+	}
+}

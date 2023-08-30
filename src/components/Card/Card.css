@@ -14,7 +14,7 @@
 .card__image {
 	width: 360px;
 	height: 201px;
-  object-fit: cover;
+	object-fit: cover;
 	cursor: pointer;
 }
 
@@ -109,17 +109,20 @@
 		white-space: nowrap;
 		overflow: hidden;
 	}
+}
 
-	@media screen and (max-width: 568px) {
-		.card {
-			width: 300px;
-			height: 202px;
-		}
-
-		.card__image {
-			width: 300px;
-			height: 168px;
-		}
+@media screen and (max-width: 568px) {
+	.card {
+		width: 300px;
+		height: 202px;
 	}
 
+	.card__image {
+		width: 300px;
+		height: 168px;
+	}
+
+	.card__title-container {
+		padding: 10px 0 0;
+	}
 }
