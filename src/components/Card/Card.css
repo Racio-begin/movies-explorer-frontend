@@ -29,18 +29,12 @@
 	background-image: url(../../images/movies/save__card.svg);
 	padding: 0;
 	border: none;
-	/* font-weight: 400;
-	font-size: 12px;
-	line-height: normal;
-	color: #fff;
-	 */
 	background-color: transparent;
 }
 
 .card__like_active {
 	width: 21px;
 	height: 21px;
-	/* display: none; */
 	position: absolute;
 	top: 14px;
 	right: 14px;
