@@ -14,7 +14,7 @@ function Header({ loggedIn }) {
 		// <div className="header open">
 		<div className={menuActive ? 'header open' : 'header'}>
 			<Logo />
-			<Navigation loggedIn={loggedIn} />
+			<Navigation loggedIn={loggedIn} menuActive={menuActive} setMenuActive={setMenuActive} />
 		</div>
 	);
 };
