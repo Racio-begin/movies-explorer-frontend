@@ -11,7 +11,7 @@ function ProfileButton() {
 
 	return (
 		<button
-			className="profile-button"
+			className="profile-button button"
 			type="button"
 			onClick={handleProfile}>
 		</button>

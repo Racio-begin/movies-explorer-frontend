@@ -2,6 +2,9 @@
 	margin: 0 auto;
 	box-sizing: border-box;
 	padding: 0 70px 0;
+	min-height: 100vh;
+	display: flex;
+	flex-direction: column;
 }
 
 .movies__container {
@@ -17,6 +20,7 @@
 	margin-top: 50px;
 	display: flex;
 	justify-content: center;
+	flex: 1;
 }
 
 .movies__more-button {
@@ -30,7 +34,6 @@
 	line-height: normal;
 	color: #fff;
 	background-color: transparent;
-	cursor: pointer;
 }
 
 @media screen and (max-width: 1250px) {

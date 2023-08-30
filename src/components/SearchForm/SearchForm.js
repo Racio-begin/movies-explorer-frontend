@@ -12,7 +12,7 @@ function SearchForm() {
 					placeholder="Фильм"
 				/>
 				<button
-					className="search__find-button"
+					className="search__find-button button"
 					type="submit"
 				/>
 			</div>

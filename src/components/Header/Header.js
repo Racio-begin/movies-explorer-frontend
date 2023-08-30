@@ -15,10 +15,12 @@ function Header({ loggedIn }) {
 		<div className={menuActive ? 'header open' : 'header'}>
 			<Logo />
 			<Navigation loggedIn={loggedIn} />
-			<BurgerMenu />
+			<BurgerMenu
+				setMenuActive={setMenuActive}
+			/>
 
 			<button
-				className="header__burger-button"
+				className="header__burger-button button"
 				onClick={() => setMenuActive(!menuActive)}
 			>
 

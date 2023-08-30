@@ -3,6 +3,12 @@
 /*  Fonts  */
 @import url(./vendor/fonts/fonts.css);
 
+/*  Buttons  */
+@import url(./components/common/button.css);
+
+/*  Links  */
+@import url(./components/common/link.css);
+
 /*  Body (фон всего документа)  */
 @import url(./components/common/body.css);
 

@@ -21,10 +21,10 @@ function Navigation({ loggedIn }) {
 			return (
 				<div className="navigation__landing">
 
-					<Link className="navigation__link" to="/sign-up">Регистрация</Link>
+					<Link className="navigation__link link" to="/sign-up">Регистрация</Link>
 
 					<button
-						className="navigation__login-button"
+						className="navigation__login-button button"
 						type="button"
 						onClick={handleLogin}>
 						Войти
@@ -37,8 +37,8 @@ function Navigation({ loggedIn }) {
 				// <div className="header__movies">
 				<>
 					<div className="navigation__navbar">
-						<Link className="navigation__link" to="/movies">Фильмы</Link>
-						<Link className="navigation__link" to="/saved-movies">Сохранённые фильмы</Link>
+						<Link className="navigation__link navigation__link_active link" to="/movies">Фильмы</Link>
+						<Link className="navigation__link link" to="/saved-movies">Сохранённые фильмы</Link>
 					</div>
 
 					<ProfileButton />

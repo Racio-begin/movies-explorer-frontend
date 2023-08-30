@@ -22,13 +22,13 @@ function Footer({ }) {
 				<div className="footer__links">
 
 					<a
-						className="footer__link footer__text-style"
+						className="footer__link footer__text-style link"
 						href="https://practicum.yandex.ru"
 						lang="ru"
 					>Яндекс.Практикум
 					</a>
 					<a
-						className="footer__link footer__text-style"
+						className="footer__link footer__text-style link"
 						href="https://github.com/Racio-begin"
 						lang="en"
 					>Github

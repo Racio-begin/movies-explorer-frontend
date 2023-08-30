@@ -9,17 +9,17 @@ function NavTab() {
 		<div className="navtab">
 			<a
 				href="#about-projects"
-				className="navtab__link animation-transition"
+				className="navtab__link animation-transition link"
 			>О проекте
 			</a>
 			<a
 				href="#techs"
-				className="navtab__link animation-transition"
+				className="navtab__link animation-transition link"
 			>Технологии
 			</a>
 			<a
 				href="#about-me"
-				className="navtab__link animation-transition"
+				className="navtab__link animation-transition link"
 			>Студент
 			</a>
 		</div>

@@ -5,7 +5,6 @@
 
 .card__image-container {
 	position: relative;
-	cursor: pointer;
 }
 
 .card__image-container:hover .card__like {
@@ -16,6 +15,7 @@
 	width: 360px;
 	height: 201px;
   object-fit: cover;
+	cursor: pointer;
 }
 
 .card__like {
@@ -29,12 +29,36 @@
 	background-image: url(../../images/movies/save__card.svg);
 	padding: 0;
 	border: none;
-	cursor: pointer;
 	/* font-weight: 400;
 	font-size: 12px;
 	line-height: normal;
 	color: #fff;
 	 */
+	background-color: transparent;
+}
+
+.card__like_active {
+	width: 21px;
+	height: 21px;
+	/* display: none; */
+	position: absolute;
+	top: 14px;
+	right: 14px;
+	background-image: url(../../images/movies/saved__card.svg);
+	padding: 0;
+	border: none;
+	background-color: transparent;
+}
+
+.card__delete {
+	width: 21px;
+	height: 21px;
+	position: absolute;
+	top: 14px;
+	right: 14px;
+	background-image: url(../../images/movies/delete__card.svg);
+	padding: 0;
+	border: none;
 	background-color: transparent;
 }
 

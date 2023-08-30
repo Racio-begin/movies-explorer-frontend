@@ -34,7 +34,6 @@
 	height: 44px;
 	border: none;
 	padding: 0;
-	cursor: pointer;
 }
 
 .search__filter {
@@ -54,7 +53,7 @@
 	background: #C4C4C4;
   position: relative;
   appearance: none;
-  cursor: pointer;
+	cursor: pointer;
 }
 
 .search__check-box::after {

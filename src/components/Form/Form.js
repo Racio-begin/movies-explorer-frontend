@@ -26,7 +26,7 @@ function Form({ title, buttonText, questionText, link, linkText, ...props }) {
 			<p className="form__redirect">
 				{questionText}
 				<Link
-					className="form__redirect_link"
+					className="form__redirect_link link"
 					to={link}>
 					{linkText}
 				</Link>

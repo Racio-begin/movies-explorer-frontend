@@ -4,7 +4,7 @@ import './Logo.css'
 
 function Logo() {
 	return (
-		<Link to="/" className="logo">
+		<Link to="/" className="logo button">
 			<img
 				src={logo}
 				alt="Логотип сайта Giga-movies"

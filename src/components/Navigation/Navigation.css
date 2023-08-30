@@ -5,11 +5,14 @@
 
 /* Усредненный линк, так как в макете три(!) "разных" (а на самом деле нет) линка с разницей в один пиксель... :/ */
 .navigation__link {
-	font-weight: 500;
+	font-weight: 400;
 	font-size: 12px;
 	line-height: 16px;
 	color: #fff;
-	text-decoration: none;
+}
+
+.navigation__link_active {
+	font-weight: 500;
 }
 
 .navigation__link_movies {
@@ -28,11 +31,9 @@
 	font-weight: 500;
 	font-size: 12px;
 	line-height: 16px;
-	cursor: pointer;
 }
 
 .navigation__navbar {
-	width: 212px;
 	height: 18px;
 	display: flex;
 	gap: 16px;

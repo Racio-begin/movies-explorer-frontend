@@ -1,6 +1,10 @@
+import { useState } from 'react';
 import './Card.css';
 
 function Card({ link, alt, title, time }) {
+
+	const [ilLiked, setIsLiked] = useState(false);
+
 	return (
 		<li className="card">
 			<div className="card__image-container">
@@ -10,7 +14,9 @@ function Card({ link, alt, title, time }) {
 					alt={alt}
 				/>
 				<button
-					className="card__like"
+					// className="card__like"
+					className={ilLiked ? "card__like_active" : "card__like button"}
+					onClick={() => setIsLiked(!ilLiked)}
 				/>
 			</div>
 			<div className="card__title-container">

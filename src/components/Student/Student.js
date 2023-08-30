@@ -13,7 +13,7 @@ function Student() {
 						Умею жать на&nbsp;клавиши так, чтобы ваши задумки, даже не&nbsp;самые приятные, мог увидеть весь мир. Даже против его воли.</p>
 				</div>
 				<a
-					className="student__github-link"
+					className="student__github-link link"
 					href="https://github.com/Racio-begin"
 					target="_blank" rel="noreferrer"
 				>Github</a>

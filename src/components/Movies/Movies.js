@@ -40,7 +40,7 @@ function Movies() {
 			</ul>
 
 			<div className="movies__more">
-				<button className="movies__more-button">
+				<button className="movies__more-button button">
 					Ещё
 				</button>
 			</div>
