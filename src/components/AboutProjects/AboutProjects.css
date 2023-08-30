@@ -106,6 +106,10 @@
 		letter-spacing: normal;
 	}
 
+	.about-projects__study-time {
+		grid-template-columns: 21% 79%;
+	}
+
 	.about-projects__study-time-title {
 		margin: 0 0 14px;
 	}

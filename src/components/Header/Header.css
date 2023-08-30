@@ -59,6 +59,10 @@
 }
 
 @media screen and (max-width: 1070px) {
+	.header {
+		margin: 0 -20px 0;
+	}
+
 	.header__burger-button {
 		display: block;
 	}

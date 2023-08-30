@@ -54,9 +54,13 @@
 }
 
 @media screen and (max-width: 1070px) {
+	.student {
+		height: 306px;
+		gap: 49px;
+	}
 
 	.student__container {
-		padding-right: 48px;
+		/* padding-right: 48px; */
 	}
 
 	.student__avatar {
@@ -75,10 +79,6 @@
 		margin: 0 0 20px;
 		font-size: 12px;
 		line-height: 18px;
-	}
-
-	.student__about {
-
 	}
 }
 

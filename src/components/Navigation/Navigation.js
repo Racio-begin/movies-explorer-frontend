@@ -5,10 +5,11 @@ import {
 	useNavigate
 } from 'react-router-dom';
 
+import BurgerMenu from '../BurgerMenu/BurgerMenu';
 import ProfileButton from '../ProfileButton/ProfileButton';
 import './Navigation.css';
 
-function Navigation({ loggedIn }) {
+function Navigation({ loggedIn, menuActive, setMenuActive }) {
 
 	const navigate = useNavigate();
 
@@ -42,7 +43,21 @@ function Navigation({ loggedIn }) {
 					</div>
 
 					<ProfileButton />
-					
+
+					<BurgerMenu
+						setMenuActive={setMenuActive}
+					/>
+
+					<button
+						className="header__burger-button button"
+						onClick={() => setMenuActive(!menuActive)}
+					>
+
+						<span></span>
+						<span></span>
+						<span></span>
+
+					</button>
 				</>
 				// {/* </div> */ }
 			);
