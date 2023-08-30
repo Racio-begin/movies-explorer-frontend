@@ -6,8 +6,8 @@
 /* Усредненный линк, так как в макете три(!) "разных" (а на самом деле нет) линка с разницей в один пиксель... :/ */
 .navigation__link {
 	font-weight: 400;
-	font-size: 12px;
-	line-height: 16px;
+	font-size: 13px;
+	line-height: 18px;
 	color: #fff;
 }
 
@@ -37,6 +37,7 @@
 	height: 18px;
 	display: flex;
 	gap: 16px;
+	margin-left: 60px;
 }
 
 @media screen and (max-width: 1070px) {

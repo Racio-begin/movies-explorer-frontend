@@ -42,6 +42,7 @@ function Navigation({ loggedIn }) {
 					</div>
 
 					<ProfileButton />
+					
 				</>
 				// {/* </div> */ }
 			);
