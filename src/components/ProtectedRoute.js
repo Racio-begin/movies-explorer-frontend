@@ -12,7 +12,7 @@ const ProtectedRoute = ({ element: Component, isLoading = true, ...props }) => {
 		? <Component
 			{...props}
 		/>
-		: <Navigate to="/sign-in"
+		: <Navigate to="/signin"
 			replace
 		/>
 };

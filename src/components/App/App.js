@@ -33,11 +33,11 @@ function App() {
 					element={<Main loggedIn={loggedIn} />}
 				/>
 				<Route
-					path='/sign-in'
+					path='/signin'
 					element={<Login />}
 				/>
 				<Route
-					path='sign-up'
+					path='signup'
 					element={<Register />}
 				/>
 				<Route

@@ -25,12 +25,16 @@ function Footer({ }) {
 						className="footer__link footer__text-style link"
 						href="https://practicum.yandex.ru"
 						lang="ru"
+						target="_blank"
+						rel="noreferrer"
 					>Яндекс.Практикум
 					</a>
 					<a
 						className="footer__link footer__text-style link"
 						href="https://github.com/Racio-begin"
 						lang="en"
+						target="_blank"
+						rel="noreferrer"
 					>Github
 					</a>
 

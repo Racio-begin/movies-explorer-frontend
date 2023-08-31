@@ -14,7 +14,7 @@ function Navigation({ loggedIn, menuActive, setMenuActive }) {
 	const navigate = useNavigate();
 
 	function handleLogin() {
-		navigate('/sign-in');
+		navigate('/signin');
 	};
 
 	function handleNavigation() {
@@ -22,7 +22,7 @@ function Navigation({ loggedIn, menuActive, setMenuActive }) {
 			return (
 				<div className="navigation__landing">
 
-					<Link className="navigation__link link" to="/sign-up">Регистрация</Link>
+					<Link className="navigation__link link" to="/signup">Регистрация</Link>
 
 					<button
 						className="navigation__login-button button"
@@ -75,7 +75,7 @@ export default Navigation;
 	// 			<Route path="/" element={
 	// 				<div className="header__landing">
 
-	// 					<Link className="header__link" to="/sign-up">Регистрация</Link>
+	// 					<Link className="header__link" to="/signup">Регистрация</Link>
 
 	// 					<button
 	// 						className="header__login-button"

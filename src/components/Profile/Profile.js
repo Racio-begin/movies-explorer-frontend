@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import Header from '../Header/Header';
 import './Profile.css'
 
@@ -22,7 +23,7 @@ function Profile() {
 							placeholder="Имя">
 						</input>
 					</div>
-					
+
 					<span></span>
 
 					<div className="profile__form_input">
@@ -38,11 +39,17 @@ function Profile() {
 
 				</div>
 
-
-
 				<div className="profile__footer">
-					<button className="profile__edit button">Редактировать</button>
-					<button className="profile__logout button">Выйти из аккаунта</button>
+
+					<button
+						className="profile__edit button">
+						Редактировать
+					</button>
+
+					<Link to="/" className="profile__logout link">
+						Выйти из аккаунта
+					</Link>
+					
 				</div>
 
 			</div>

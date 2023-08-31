@@ -9,7 +9,7 @@ function Register() {
 			title="Добро пожаловать!"
 			buttonText="Зарегистрироваться"
 			questionText="Уже зарегистрированы?"
-			link="/sign-in"
+			link="/signin"
 			linkText=" Войти"
 		>
 

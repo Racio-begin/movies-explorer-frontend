@@ -7,7 +7,9 @@ function ProjectLink({ linkProject, linkName }) {
 	return (
 		<Link
 			to={linkProject}
-			className="project-link link">
+			className="project-link link"
+			target="_blank"
+			>
 			<h4 className="project-link__link-name">{linkName}</h4>
 			<img
 				className="project-link__link-img"
