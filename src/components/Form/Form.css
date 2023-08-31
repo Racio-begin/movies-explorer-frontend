@@ -45,7 +45,7 @@
 	color: #8B8B8B;
 }
 
-.form__redirect_link {
+.form__redirect-link {
 	margin-left: 6px;
 	color: #4285F4;
 }
@@ -85,7 +85,7 @@
 		font-size: 12px;
 	}
 
-	.form__redirect_link {
+	.form__redirect-link {
 		margin-left: 7px;
 	}
 }
