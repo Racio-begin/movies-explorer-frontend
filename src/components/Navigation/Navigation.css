@@ -4,14 +4,14 @@
 }
 
 /* Усредненный линк, так как в макете три(!) "разных" (а на самом деле нет) линка с разницей в один пиксель... :/ */
-.navigation__link {
+.navigation-link {
 	font-weight: 400;
 	font-size: 13px;
 	line-height: 18px;
 	color: #fff;
 }
 
-.navigation__link_active {
+.navigation-link_active {
 	font-weight: 500;
 }
 
@@ -45,7 +45,7 @@
 		display: none;
 	}
 
-	.navigation__link {
+	.navigation-link {
 		font-weight: 500;
 		font-size: 12px;
 		line-height: 16px;
@@ -53,7 +53,7 @@
 }
 
 @media screen and (max-width: 568px) {
-	.navigation__link {
+	.navigation-link {
 		font-weight: 500;
 		font-size: 10px;
 		line-height: 16px;

@@ -23,7 +23,7 @@ function Navigation({ loggedIn, menuActive, setMenuActive }) {
 				<nav className="navigation">
 					<div className="navigation__landing">
 
-						<Link className="navigation__link link" to="/signup">Регистрация</Link>
+						<Link className="navigation-link link" to="/signup">Регистрация</Link>
 
 						<button
 							className="navigation__login-button button"
@@ -39,8 +39,8 @@ function Navigation({ loggedIn, menuActive, setMenuActive }) {
 			return (
 				<>
 						<nav className="navigation-navbar">
-							<Link className="navigation__link navigation__link_active link" to="/movies">Фильмы</Link>
-							<Link className="navigation__link link" to="/saved-movies">Сохранённые фильмы</Link>
+							<Link className="navigation-link navigation-link_active link" to="/movies">Фильмы</Link>
+							<Link className="navigation-link link" to="/saved-movies">Сохранённые фильмы</Link>
 						</nav>
 
 						<ProfileButton />
