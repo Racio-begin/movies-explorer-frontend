@@ -13,7 +13,7 @@
 	grid-gap: 43px 30px;
 	margin: 70px 0 0;
 	padding: 0;
-	list-style: none;
+	/* list-style: none; */
 }
 
 .movies__more {

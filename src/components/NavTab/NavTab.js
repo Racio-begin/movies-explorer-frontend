@@ -5,7 +5,7 @@ function NavTab() {
 
 	return (
 		<nav className="navtab">
-			<ul className="navtab__links">
+			<ul className="navtab__links ul">
 
 				<li>
 					<a

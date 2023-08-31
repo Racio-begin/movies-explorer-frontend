@@ -2,7 +2,6 @@
 	height: 425px;
 	margin: 100px 0 0;
 	padding: 0;
-	list-style: none;
 }
 
 .portfolio__title {
@@ -13,6 +12,10 @@
 	font-feature-settings: 'clig' off, 'liga' off;
 	color: #8B8B8B;
 }
+
+/* .portfolio__projects {
+	list-style: none;
+} */
 
 @media screen and (max-width: 1070px) {
 	.portfolio {

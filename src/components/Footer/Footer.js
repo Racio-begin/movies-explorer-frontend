@@ -19,7 +19,7 @@ function Footer() {
 					© {setCurrentYear()}
 				</p>
 
-				<ul className="footer__links">
+				<ul className="footer__links ul">
 
 					<li>
 						<a

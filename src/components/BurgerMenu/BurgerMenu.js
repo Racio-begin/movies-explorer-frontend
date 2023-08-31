@@ -12,7 +12,7 @@ function BurgerMenu({ setMenuActive }) {
 			/>
 
 			<div className="burger__container" onClick={e => e.stopPropagation()}>
-				<ul className="burger__links">
+				<ul className="burger__links ul">
 
 					<li>
 						<Link className="burger__link link" to="/">Главная</Link>

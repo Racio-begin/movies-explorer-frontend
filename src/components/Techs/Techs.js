@@ -16,7 +16,7 @@ function Techs() {
 					На&nbsp;курсе веб-разработки мы&nbsp;освоили технологии, которые применили в&nbsp;дипломном проекте.
 				</p>
 
-				<ul className="techs__decription-list">
+				<ul className="techs__decription-list ul">
 					<li className="techs__decription-item">HTML</li>
 					<li className="techs__decription-item">CSS</li>
 					<li className="techs__decription-item">JS</li>

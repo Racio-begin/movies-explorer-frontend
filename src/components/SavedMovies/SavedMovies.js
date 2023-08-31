@@ -16,7 +16,7 @@ function SavedMovies() {
 
 				<SearchForm />
 
-				<ul className="movies__container">
+				<ul className="movies__container ul">
 					<li className="card">
 						<div className="card__image-container">
 							<img

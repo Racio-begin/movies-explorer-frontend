@@ -20,7 +20,7 @@ function Movies() {
 				<section>
 					{/* <Preloader/> */}
 
-					<ul className="movies__container">
+					<ul className="movies__container ul">
 						<Card
 							title="Босиком по галактике"
 							link={image}

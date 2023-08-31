@@ -47,7 +47,7 @@
 	display: grid;
 	grid-template-columns: repeat(7, 1fr);
 	gap: 10px;
-	list-style: none;
+	/* list-style: none; */
 }
 
 .techs__decription-item {

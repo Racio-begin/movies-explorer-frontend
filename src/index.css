@@ -9,11 +9,11 @@
 /*  Links  */
 @import url(./components/common/link.css);
 
+/* Ul (списки) */
+@import url(./components/common/ul.css);
+
 /*  Body (фон всего документа)  */
 @import url(./components/common/body.css);
-
-/*  Animations (анимации всего документа)  */
-/* @import url(./components/common/animation-transition.css); */
 
 /* Testing */
 * {
