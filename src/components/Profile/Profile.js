@@ -5,7 +5,7 @@ import './Profile.css'
 function Profile() {
 
 	return (
-		<div className="profile">
+		<section className="profile">
 
 			<Header />
 
@@ -57,7 +57,7 @@ function Profile() {
 
 			</main>
 
-		</div>
+		</section>
 	);
 };
 

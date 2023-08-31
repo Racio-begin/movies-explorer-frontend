@@ -7,10 +7,10 @@ function PageNotFound() {
 
 	return (
 		<main className="page-404">
-			<div className="page-404__container">
+			<section className="page-404__container">
 				<h2 className="page-404__title">404</h2>
 				<p className="page-404__subtitle">Страница не найдена</p>
-			</div>
+			</section>
 			<button
 				className="page-404__back-button button"
 				onClick={() => navigate(-1)}

@@ -19,26 +19,31 @@ function Footer({ }) {
 					© {setCurrentYear()}
 				</p>
 
-				<div className="footer__links">
+				<ul className="footer__links">
 
-					<a
-						className="footer__link footer__text-style link"
-						href="https://practicum.yandex.ru"
-						lang="ru"
-						target="_blank"
-						rel="noreferrer"
-					>Яндекс.Практикум
-					</a>
-					<a
-						className="footer__link footer__text-style link"
-						href="https://github.com/Racio-begin"
-						lang="en"
-						target="_blank"
-						rel="noreferrer"
-					>Github
-					</a>
+					<li>
+						<a
+							className="footer__link footer__text-style link"
+							href="https://practicum.yandex.ru"
+							lang="ru"
+							target="_blank"
+							rel="noreferrer"
+						>Яндекс.Практикум
+						</a>
+					</li>
 
-				</div>
+					<li>
+						<a
+							className="footer__link footer__text-style link"
+							href="https://github.com/Racio-begin"
+							lang="en"
+							target="_blank"
+							rel="noreferrer"
+						>Github
+						</a>
+					</li>
+
+				</ul>
 
 			</div>
 

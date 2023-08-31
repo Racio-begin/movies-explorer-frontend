@@ -43,9 +43,11 @@
 }
 
 .techs__decription-web-techs {
+	padding: 0;
 	display: grid;
-  grid-template-columns: repeat(7, 1fr);
-  gap: 10px;
+	grid-template-columns: repeat(7, 1fr);
+	gap: 10px;
+	list-style: none;
 }
 
 .techs__decription-web-techs_item {

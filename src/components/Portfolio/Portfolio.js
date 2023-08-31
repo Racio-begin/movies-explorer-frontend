@@ -4,7 +4,7 @@ import ProjectLink from '../ProjectLink/ProjectLink';
 function Portfolio() {
 
 	return (
-		<div className="portfolio">
+		<ul className="portfolio">
 			<h3 className="portfolio__title">Портфолио</h3>
 			<div className="portfolio__projects">
 				<ProjectLink
@@ -20,7 +20,7 @@ function Portfolio() {
 					linkProject="https://github.com/Racio-begin/russian-travel"
 				/>
 			</div>
-		</div>
+		</ul>
 	);
 };
 

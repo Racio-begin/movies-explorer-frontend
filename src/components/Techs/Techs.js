@@ -16,15 +16,15 @@ function Techs() {
 					На&nbsp;курсе веб-разработки мы&nbsp;освоили технологии, которые применили в&nbsp;дипломном проекте.
 				</div>
 
-				<div className="techs__decription-web-techs">
-					<div className="techs__decription-web-techs_item">HTML</div>
-					<div className="techs__decription-web-techs_item">CSS</div>
-					<div className="techs__decription-web-techs_item">JS</div>
-					<div className="techs__decription-web-techs_item">React</div>
-					<div className="techs__decription-web-techs_item">Git</div>
-					<div className="techs__decription-web-techs_item">Express.js</div>
-					<div className="techs__decription-web-techs_item">mongoDB</div>
-				</div>
+				<ul className="techs__decription-web-techs">
+					<li className="techs__decription-web-techs_item">HTML</li>
+					<li className="techs__decription-web-techs_item">CSS</li>
+					<li className="techs__decription-web-techs_item">JS</li>
+					<li className="techs__decription-web-techs_item">React</li>
+					<li className="techs__decription-web-techs_item">Git</li>
+					<li className="techs__decription-web-techs_item">Express.js</li>
+					<li className="techs__decription-web-techs_item">mongoDB</li>
+				</ul>
 
 			</div>
 

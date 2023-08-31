@@ -3,7 +3,7 @@ import './SearchForm.css';
 function SearchForm() {
 
 	return (
-		<div className="search">
+		<section className="search">
 
 			<div className="search__container">
 				<input
@@ -26,7 +26,7 @@ function SearchForm() {
 				<p className="search__span">Короткометражки</p>
 			</div>
 
-		</div>
+		</section>
 	);
 };
 

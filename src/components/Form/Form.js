@@ -4,7 +4,7 @@ import Logo from '../Logo/Logo';
 
 function Form({ title, buttonText, questionText, link, linkText, ...props }) {
 	return (
-		<div className="form">
+		<section className="form">
 			<div className="form__header">
 				<Logo />
 
@@ -32,7 +32,7 @@ function Form({ title, buttonText, questionText, link, linkText, ...props }) {
 				</Link>
 			</p>
 
-		</div>
+		</section>
 	)
 };
 

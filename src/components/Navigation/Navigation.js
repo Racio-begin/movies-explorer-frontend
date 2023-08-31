@@ -20,7 +20,7 @@ function Navigation({ loggedIn, menuActive, setMenuActive }) {
 	function handleNavigation() {
 		if (loggedIn) {
 			return (
-				<div className="navigation__landing">
+				<nav className="navigation__landing">
 
 					<Link className="navigation__link link" to="/signup">Регистрация</Link>
 
@@ -31,16 +31,16 @@ function Navigation({ loggedIn, menuActive, setMenuActive }) {
 						Войти
 					</button>
 
-				</div>
+				</nav>
 			)
 		} else {
 			return (
 				// <div className="header__movies">
 				<>
-					<div className="navigation__navbar">
+					<nav className="navigation__navbar">
 						<Link className="navigation__link navigation__link_active link" to="/movies">Фильмы</Link>
 						<Link className="navigation__link link" to="/saved-movies">Сохранённые фильмы</Link>
-					</div>
+					</nav>
 
 					<ProfileButton />
 
