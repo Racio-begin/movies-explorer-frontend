@@ -19,6 +19,12 @@
 	line-height: normal;
 	color: #fff;
 	background-color: #2F2F2F;
+	box-sizing: border-box;
+	outline: none;
+}
+
+.form-label__input:hover {
+	border: 1px solid #4e8a56;
 }
 
 .form-label__input-error {

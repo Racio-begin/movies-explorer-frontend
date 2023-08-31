@@ -25,6 +25,7 @@
 	line-height: 18px;
 	color: #fff;
 	background-color: #2F2F2F;
+	outline: none;
 }
 
 .search__find-button {

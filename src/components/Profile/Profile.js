@@ -20,7 +20,9 @@ function Profile() {
 						</div>
 						<input
 							className="profile__input"
-							placeholder="Имя">
+							placeholder="Имя"
+							minLength={2}
+							maxLength={20}>
 						</input>
 					</div>
 
@@ -49,7 +51,6 @@ function Profile() {
 					<Link to="/" className="profile__logout link">
 						Выйти из аккаунта
 					</Link>
-					
 				</div>
 
 			</div>

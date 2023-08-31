@@ -37,6 +37,7 @@
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
+	box-sizing: border-box;
 	/* border-bottom: 1px solid #424242; */
 }
 
@@ -51,6 +52,11 @@
 	text-align: right;
 	color: #fff;
 	background-color: transparent;
+	outline: none;
+}
+
+.profile__input:hover {
+	border-bottom: 1px solid #4e8a56;
 }
 
 .profile__span {
