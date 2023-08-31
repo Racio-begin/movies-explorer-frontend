@@ -7,14 +7,13 @@ import AboutProjects from "../AboutProjects/AboutProjects";
 
 import './Main.css';
 
-function Main({ loggedIn, menuActive, setMenuActive }) {
+function Main({ loggedIn, setLoggedIn }) {
 
 	return (
 		<div className="main">
 			<Header
 				loggedIn={loggedIn}
-				menuActive={menuActive}
-				setMenuActive={setMenuActive}
+				setLoggedIn={setLoggedIn}
 			/>
 			<main>
 				<Promo />
