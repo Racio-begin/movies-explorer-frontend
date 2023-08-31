@@ -5,11 +5,11 @@ import './AboutMe.css';
 function AboutMe() {
 
 	return (
-		<div className="about-me" id="about-me">
+		<section className="about-me" id="about-me">
 			<h2 className="about-me__title">Студент</h2>
 			<Student />
 			<Portfolio />
-		</div>
+		</section>
 	);
 };
 

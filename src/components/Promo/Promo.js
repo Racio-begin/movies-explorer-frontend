@@ -5,7 +5,7 @@ import './Promo.css';
 function Promo() {
 
 	return (
-		<div className="promo">
+		<section className="promo">
 			<div className="promo__content">
 
 				<h1
@@ -17,7 +17,7 @@ function Promo() {
 				<NavTab />
 
 			</div>
-		</div>
+		</section>
 	);
 };
 

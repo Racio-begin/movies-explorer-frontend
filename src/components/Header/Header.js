@@ -12,10 +12,10 @@ function Header({ loggedIn }) {
 
 	return (
 		// <div className="header open">
-		<div className={menuActive ? 'header open' : 'header'}>
+		<header className={menuActive ? "header open" : "header"}>
 			<Logo />
 			<Navigation loggedIn={loggedIn} menuActive={menuActive} setMenuActive={setMenuActive} />
-		</div>
+		</header>
 	);
 };
 

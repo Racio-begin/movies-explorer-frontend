@@ -7,7 +7,7 @@ function Footer({ }) {
 	};
 
 	return (
-		<div className="footer">
+		<footer className="footer">
 
 			<div className="footer__title">
 				Учебный проект Яндекс.Практикум х&nbsp;BeatFilm.
@@ -42,7 +42,7 @@ function Footer({ }) {
 
 			</div>
 
-		</div>
+		</footer>
 	);
 };
 
