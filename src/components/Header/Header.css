@@ -21,7 +21,6 @@
 	border: none;
 	display: none;
 	background-color: transparent;
-	/* background-color: aquamarine; */
 	position: relative;
 	z-index: 20;
 }
@@ -33,7 +32,6 @@
 	display: block;
 	position: absolute;
 	background-color: #fff;
-	/* background-color: black; */
 	transition: background-color .25s, opacity .25s, transform .25s;
 	will-change: transform;
 }

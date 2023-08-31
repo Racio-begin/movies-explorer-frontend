@@ -13,7 +13,8 @@
 	}
 } */
 
-@media screen and (max-width: 1070px) {
+/* @media screen and (max-width: 1070px) { */
+	@media screen and (max-width: 768px) {
   .header .profile-button {
     display: none;
   }

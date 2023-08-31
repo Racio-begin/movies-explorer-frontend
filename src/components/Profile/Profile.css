@@ -29,12 +29,6 @@
 	/* gap: 9px; */
 }
 
-
-
-/* .profile__form span {
-	border-bottom: 1px solid #424242;
-} */
-
 .profile__form-container {
 	width: 410px;
 	height: 50px;
@@ -95,7 +89,6 @@
 	font-size: 13px;
 	line-height: normal;
 	color: #EE3465;
-	/* background-color: transparent; */
 }
 
 @media screen and (max-width: 1070px) {
