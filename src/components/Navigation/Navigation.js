@@ -37,28 +37,28 @@ function Navigation({ loggedIn, menuActive, setMenuActive }) {
 			)
 		} else {
 			return (
-				<nav className="navigation">
-					<div className="navigation__navbar">
-						<Link className="navigation__link navigation__link_active link" to="/movies">Фильмы</Link>
-						<Link className="navigation__link link" to="/saved-movies">Сохранённые фильмы</Link>
-					</div>
+				<>
+						<nav className="navigation-navbar">
+							<Link className="navigation__link navigation__link_active link" to="/movies">Фильмы</Link>
+							<Link className="navigation__link link" to="/saved-movies">Сохранённые фильмы</Link>
+						</nav>
 
-					<ProfileButton />
+						<ProfileButton />
 
-					<BurgerMenu
-						setMenuActive={setMenuActive}
-					/>
+						<BurgerMenu
+							setMenuActive={setMenuActive}
+						/>
 
-					<button
-						className="header__burger-button button"
-						onClick={() => setMenuActive(!menuActive)}
-						type="menu"
-					>
-						<span></span>
-						<span></span>
-						<span></span>
-					</button>
-				</nav>
+						<button
+							className="header__burger-button button"
+							onClick={() => setMenuActive(!menuActive)}
+							type="menu"
+						>
+							<span></span>
+							<span></span>
+							<span></span>
+						</button>
+				</>
 			);
 		}
 	};

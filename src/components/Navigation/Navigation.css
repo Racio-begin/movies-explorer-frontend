@@ -33,7 +33,7 @@
 	line-height: 16px;
 }
 
-.navigation__navbar {
+.navigation-navbar {
 	height: 18px;
 	display: flex;
 	gap: 16px;
@@ -41,7 +41,7 @@
 }
 
 @media screen and (max-width: 1070px) {
-	.navigation__navbar {
+	.navigation-navbar {
 		display: none;
 	}
 
