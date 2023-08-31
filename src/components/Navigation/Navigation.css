@@ -40,7 +40,7 @@
 	margin-left: 60px;
 }
 
-@media screen and (max-width: 1070px) {
+@media screen and (max-width: 768px) {
 	.navigation-navbar {
 		display: none;
 	}

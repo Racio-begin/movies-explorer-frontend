@@ -64,7 +64,8 @@
 	right: 10px;
 }
 
-@media screen and (max-width: 1070px) {
+/* @media screen and (max-width: 1070px) { */
+@media screen and (max-width: 768px) {
 	.header {
 		margin: 0 -20px 0;
 	}
