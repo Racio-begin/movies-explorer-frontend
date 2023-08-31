@@ -17,7 +17,7 @@ function Profile() {
 					<div className="profile__form-container profile__form-container_active-border">
 
 						<div
-							className="profile__span"
+							className="profile__label"
 						>Имя
 						</div>
 
@@ -33,7 +33,7 @@ function Profile() {
 					<div className="profile__form-container">
 
 						<div
-							className="profile__span"
+							className="profile__label"
 						>E-mail
 						</div>
 
