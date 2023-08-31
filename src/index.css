@@ -14,3 +14,8 @@
 
 /*  Animations (анимации всего документа)  */
 @import url(./components/common/animation-transition.css);
+
+/* Testing */
+* {
+	outline: 1px solid red;
+}
