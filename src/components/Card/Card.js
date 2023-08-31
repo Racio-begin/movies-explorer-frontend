@@ -17,6 +17,7 @@ function Card({ link, alt, title, time }) {
 					// className="card__like"
 					className={ilLiked ? "card__like_active" : "card__like button"}
 					onClick={() => setIsLiked(!ilLiked)}
+					type="button"
 				/>
 			</div>
 			

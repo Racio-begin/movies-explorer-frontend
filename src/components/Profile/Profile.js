@@ -13,7 +13,7 @@ function Profile() {
 
 				<h1 className="profile__title">Привет, сосед!</h1>
 
-				<div className="profile__form">
+				<form className="profile__form">
 					<div className="profile__form_input">
 
 						<div
@@ -41,12 +41,13 @@ function Profile() {
 						</input>
 					</div>
 
-				</div>
+				</form>
 
 				<div className="profile__footer">
 
 					<button
-						className="profile__edit button">
+						className="profile__edit button"
+						type="button">
 						Редактировать
 					</button>
 

@@ -14,7 +14,8 @@ function PageNotFound() {
 			<button
 				className="page-404__back-button button"
 				onClick={() => navigate(-1)}
-			>Назад
+				type="button">
+				Назад
 			</button>
 		</main>
 	);

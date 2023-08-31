@@ -26,6 +26,7 @@ function SavedMovies() {
 							/>
 							<button
 								className="card__delete button"
+								type="submit"
 							/>
 						</div>
 						<div className="card__title-container">
@@ -40,7 +41,9 @@ function SavedMovies() {
 				</ul>
 
 				<div className="movies__more">
-					<button className="movies__more-button button">
+					<button
+						className="movies__more-button button"
+						type="button">
 						Ещё
 					</button>
 				</div>

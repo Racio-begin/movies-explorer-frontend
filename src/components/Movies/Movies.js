@@ -48,7 +48,8 @@ function Movies() {
 					</ul>
 
 					<div className="movies__more">
-						<button className="movies__more-button button">
+						<button className="movies__more-button button"
+							type="button">
 							Ещё
 						</button>
 					</div>
