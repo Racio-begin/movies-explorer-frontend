@@ -35,7 +35,7 @@
 	border-bottom: 1px solid #424242;
 } */
 
-.profile__form_input {
+.profile__form-container {
 	width: 410px;
 	height: 50px;
 	display: flex;
@@ -45,7 +45,7 @@
 	/* border-bottom: 1px solid #424242; */
 }
 
-.profile__form__input_active-border {
+.profile__form-container_active-border {
 	/* margin-bottom: 5px; */
 	border-bottom: 1px solid #424242;
 }

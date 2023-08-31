@@ -14,7 +14,7 @@ function Profile() {
 				<h1 className="profile__title">Привет, сосед!</h1>
 
 				<form className="profile__form">
-					<div className="profile__form_input profile__form__input_active-border">
+					<div className="profile__form-container profile__form-container_active-border">
 
 						<div
 							className="profile__span"
@@ -30,7 +30,7 @@ function Profile() {
 
 					</div>
 
-					<div className="profile__form_input">
+					<div className="profile__form-container">
 
 						<div
 							className="profile__span"
