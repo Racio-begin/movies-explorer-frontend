@@ -18,7 +18,7 @@ function Form({ title, buttonText, questionText, link, linkText, ...props }) {
 			</form>
 
 			<button
-				className="form__button-submit"
+				className="form__button-submit button"
 				type="submit">
 				{buttonText}
 			</button>

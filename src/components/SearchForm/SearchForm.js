@@ -19,7 +19,7 @@ function SearchForm() {
 
 			<div className="search__filter">
 				<input
-					className="search__check-box"
+					className="search__check-box button"
 					type="checkbox"
 				/>
 				<p className="search__span">Короткометражки</p>

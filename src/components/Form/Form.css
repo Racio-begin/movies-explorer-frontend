@@ -37,11 +37,6 @@
 	background-color: #4285F4;
 }
 
-.form__button-submit:hover {
-	opacity: .8;
-	transition: all .35s;
-}
-
 .form__redirect {
 	display: flex;
 	justify-content: center;
