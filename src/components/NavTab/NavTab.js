@@ -1,6 +1,5 @@
 import React from "react";
 import './NavTab.css';
-import '../common/animation-transition.css';
 
 function NavTab() {
 
@@ -11,7 +10,7 @@ function NavTab() {
 				<li>
 					<a
 						href="#about-projects"
-						className="navtab__link animation-transition link"
+						className="navtab__link link"
 					>О проекте
 					</a>
 				</li>
@@ -19,7 +18,7 @@ function NavTab() {
 				<li>
 					<a
 						href="#techs"
-						className="navtab__link animation-transition link"
+						className="navtab__link link"
 					>Технологии
 					</a>
 				</li>
@@ -27,7 +26,7 @@ function NavTab() {
 				<li>
 					<a
 						href="#about-me"
-						className="navtab__link animation-transition link"
+						className="navtab__link link"
 					>Студент
 					</a>
 				</li>

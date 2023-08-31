@@ -8,6 +8,7 @@
 
 .footer__title {
 	height: 36px;
+	margin: 0;
 	display: flex;
 	justify-content: center;
 	font-weight: 400;

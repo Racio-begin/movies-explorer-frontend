@@ -13,7 +13,7 @@
 @import url(./components/common/body.css);
 
 /*  Animations (анимации всего документа)  */
-@import url(./components/common/animation-transition.css);
+/* @import url(./components/common/animation-transition.css); */
 
 /* Testing */
 * {
