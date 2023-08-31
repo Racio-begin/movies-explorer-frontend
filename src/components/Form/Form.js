@@ -8,9 +8,9 @@ function Form({ title, buttonText, questionText, link, linkText, ...props }) {
 			<div className="form__header">
 				<Logo />
 
-				<h3 className="form__title">
+				<h1 className="form__title">
 					{title}
-				</h3>
+				</h1>
 			</div>
 
 			<form className="form__container">

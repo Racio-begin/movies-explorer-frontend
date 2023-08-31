@@ -11,7 +11,7 @@ function Profile() {
 
 			<main className="profile__container">
 
-				<h2 className="profile__title">Привет, сосед!</h2>
+				<h1 className="profile__title">Привет, сосед!</h1>
 
 				<div className="profile__form">
 					<div className="profile__form_input">

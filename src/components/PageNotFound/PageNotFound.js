@@ -8,7 +8,7 @@ function PageNotFound() {
 	return (
 		<main className="page-404">
 			<section className="page-404__container">
-				<h2 className="page-404__title">404</h2>
+				<h1 className="page-404__title">404</h1>
 				<p className="page-404__subtitle">Страница не найдена</p>
 			</section>
 			<button

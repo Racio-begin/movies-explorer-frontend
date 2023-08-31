@@ -8,13 +8,13 @@ function Techs() {
 
 			<div className="techs__description">
 
-				<div className="techs__description-title">
+				<h3 className="techs__description-title">
 					7 технологий
-				</div>
+				</h3>
 
-				<div className="techs__description-subtitle">
+				<p className="techs__description-subtitle">
 					На&nbsp;курсе веб-разработки мы&nbsp;освоили технологии, которые применили в&nbsp;дипломном проекте.
-				</div>
+				</p>
 
 				<ul className="techs__decription-web-techs">
 					<li className="techs__decription-web-techs_item">HTML</li>

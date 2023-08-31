@@ -20,9 +20,9 @@ function Card({ link, alt, title, time }) {
 				/>
 			</div>
 			<div className="card__title-container">
-				<h3 className="card__title" >
+				<h2 className="card__title" >
 					{title}
-				</h3>
+				</h2>
 				<div className="card__time">
 					{time}
 				</div>
