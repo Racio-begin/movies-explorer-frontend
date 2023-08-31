@@ -14,33 +14,35 @@ function Profile() {
 				<h1 className="profile__title">Привет, сосед!</h1>
 
 				<form className="profile__form">
-					<div className="profile__form_input">
+					<div className="profile__form_input profile__form__input_active-border">
 
 						<div
 							className="profile__span"
 						>Имя
 						</div>
+
 						<input
 							className="profile__input"
 							placeholder="Имя"
 							minLength={2}
 							maxLength={20}>
 						</input>
+
 					</div>
 
-					<span></span>
-
 					<div className="profile__form_input">
+
 						<div
 							className="profile__span"
 						>E-mail
 						</div>
+
 						<input
 							className="profile__input"
 							placeholder="E-mail">
 						</input>
-					</div>
 
+					</div>
 				</form>
 
 				<div className="profile__footer">

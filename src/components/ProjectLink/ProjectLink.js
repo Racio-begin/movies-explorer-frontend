@@ -2,13 +2,14 @@ import { Link } from 'react-router-dom';
 import './ProjectLink.css';
 import linkImg from '../../images/link_ing.svg'
 
-function ProjectLink({ linkProject, linkName }) {
+function ProjectLink({ className, linkProject, linkName }) {
 
 	return (
 		<li>
 			<Link
 				to={linkProject}
-				className="project-link link"
+				// className="project-link link"
+				className={className}
 				target="_blank"
 			>
 				<h4 className="project-link__link-name">{linkName}</h4>

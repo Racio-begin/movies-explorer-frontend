@@ -9,11 +9,15 @@
 	justify-content: space-between;
 	align-items: center;
 	color: #fff;
-	border-bottom: 1px solid #424242;
+	/* border-bottom: 1px solid #424242; */
 }
 
-.project-link:last-child {
+/* .project-link:last-child {
 	border-bottom: none;
+} */
+
+.project-link_active-border {
+	border-bottom: 1px solid #424242;
 }
 
 .project-link__link-name {

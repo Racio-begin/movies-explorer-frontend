@@ -8,14 +8,17 @@ function Portfolio() {
 			<h3 className="portfolio__title">Портфолио</h3>
 			<div className="portfolio__projects">
 				<ProjectLink
+					className="project-link link project-link_active-border"
 					linkName="Статичный сайт"
 					linkProject="https://github.com/Racio-begin/how-to-learn"
 				/>
 				<ProjectLink
+					className="project-link link project-link_active-border"
 					linkName="Адаптивный сайт"
 					linkProject="https://giga-mesto.nomoredomains.xyz"
 				/>
 				<ProjectLink
+					className="project-link link"
 					linkName="Одностраничное приложение"
 					linkProject="https://github.com/Racio-begin/russian-travel"
 				/>
