@@ -21,14 +21,14 @@
 	gap: 0 40px;
 }
 
-.about-projects__description_container {
+.about-projects__description-container {
 	max-width: 550px;
 	display: flex;
 	flex-direction: column;
 	gap: 26px;
 }
 
-.about-projects__description_title {
+.about-projects__description-title {
 	margin: 0;
 	min-height: 24px;
 	font-weight: 400;
@@ -37,7 +37,7 @@
 	letter-spacing: -0.8px;
 }
 
-.about-projects__description_content {
+.about-projects__description-content {
 	margin: 0;
 	font-weight: 400;
 	font-size: 14px;
@@ -63,12 +63,12 @@
 	line-height: normal;
 }
 
-.about-projects__study-time_title_green {
+.about-projects__study-time-title_green {
 	background-color: #3DDC84;
 	color: #000;
 }
 
-.about-projects__study-time_title_gray {
+.about-projects__study-time-title_gray {
 	background-color: #303030;
 }
 
@@ -96,11 +96,11 @@
 		gap: 0 30px;
 	}
 
-	.about-projects__description_container {
+	.about-projects__description-container {
 		gap: 22px;
 	}
 
-	.about-projects__description_content {
+	.about-projects__description-content {
 		font-size: 12px;
 		line-height: 18px;
 		letter-spacing: normal;
@@ -133,16 +133,16 @@
 		gap: 56px;
 	}
 
-	.about-projects__description_container {
+	.about-projects__description-container {
 		gap: 16px;
 	}
 
-	.about-projects__description_title {
+	.about-projects__description-title {
 		font-size: 18px;
 		letter-spacing: -0.72px;
 	}
 
-	.about-projects__description_content {
+	.about-projects__description-content {
 		font-size: 11px;
 		line-height: 16px;
 	}

@@ -20,27 +20,28 @@ function Navigation({ loggedIn, menuActive, setMenuActive }) {
 	function handleNavigation() {
 		if (loggedIn) {
 			return (
-				<nav className="navigation__landing">
+				<nav className="navigation">
+					<div className="navigation__landing">
 
-					<Link className="navigation__link link" to="/signup">Регистрация</Link>
+						<Link className="navigation__link link" to="/signup">Регистрация</Link>
 
-					<button
-						className="navigation__login-button button"
-						type="button"
-						onClick={handleLogin}>
-						Войти
-					</button>
+						<button
+							className="navigation__login-button button"
+							type="button"
+							onClick={handleLogin}>
+							Войти
+						</button>
 
+					</div>
 				</nav>
 			)
 		} else {
 			return (
-				// <div className="header__movies">
-				<>
-					<nav className="navigation__navbar">
+				<nav className="navigation">
+					<div className="navigation__navbar">
 						<Link className="navigation__link navigation__link_active link" to="/movies">Фильмы</Link>
 						<Link className="navigation__link link" to="/saved-movies">Сохранённые фильмы</Link>
-					</nav>
+					</div>
 
 					<ProfileButton />
 
@@ -53,14 +54,11 @@ function Navigation({ loggedIn, menuActive, setMenuActive }) {
 						onClick={() => setMenuActive(!menuActive)}
 						type="menu"
 					>
-
 						<span></span>
 						<span></span>
 						<span></span>
-
 					</button>
-				</>
-				// {/* </div> */ }
+				</nav>
 			);
 		}
 	};
