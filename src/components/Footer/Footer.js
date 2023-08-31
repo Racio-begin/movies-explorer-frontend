@@ -9,9 +9,9 @@ function Footer({ }) {
 	return (
 		<footer className="footer">
 
-			<div className="footer__title">
+			<p className="footer__title">
 				Учебный проект Яндекс.Практикум х&nbsp;BeatFilm.
-			</div>
+			</p>
 
 			<div className="footer__container">
 

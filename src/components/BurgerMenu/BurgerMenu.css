@@ -15,6 +15,7 @@
 	flex-direction: column;
 	align-items: center;
 	gap: 22px;
+	list-style: none;
 }
 
 .burger__link {

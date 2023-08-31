@@ -12,14 +12,22 @@ function BurgerMenu({ setMenuActive }) {
 			/>
 
 			<div className="burger__container" onClick={e => e.stopPropagation()}>
+				<ul className="burger__links">
 
-				<div className="burger__links">
-					<Link className="burger__link link" to="/">Главная</Link>
-					<Link className="burger__link link" to="/movies">Фильмы</Link>
-					<Link className="burger__link link" to="/saved-movies">Сохранённые фильмы</Link>
-				</div>
+					<li>
+						<Link className="burger__link link" to="/">Главная</Link>
+					</li>
+
+					<li>
+						<Link className="burger__link link" to="/movies">Фильмы</Link>
+					</li>
+
+					<li>
+						<Link className="burger__link link" to="/saved-movies">Сохранённые фильмы</Link>
+					</li>
+
+				</ul>
 				<ProfileButton />
-
 			</div>
 
 		</div>

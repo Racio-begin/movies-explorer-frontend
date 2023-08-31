@@ -19,6 +19,7 @@ function Card({ link, alt, title, time }) {
 					onClick={() => setIsLiked(!ilLiked)}
 				/>
 			</div>
+			
 			<div className="card__title-container">
 				<h2 className="card__title" >
 					{title}
