@@ -43,6 +43,7 @@
 }
 
 .techs__decription-list {
+	margin: 0;
 	padding: 0;
 	display: grid;
 	grid-template-columns: repeat(7, 1fr);
@@ -111,19 +112,19 @@
 	}
 
 	.techs__title {
-		margin: 70px 18px 60px;
+		margin: 70px 18px 20px;
 		font-size: 18px;
 		letter-spacing: -0.72px;
 	}
 
 	.techs__description-title {
-		margin-bottom: 24px;
+		margin-bottom: 0;
 		font-size: 30px;
 		letter-spacing: -1.2px;
 	}
 
 	.techs__description-subtitle {
-		margin-bottom: 30px;
+		margin-bottom: 55px;
 		font-size: 11px;
 		line-height: 16px;
 		letter-spacing: -0.44px;

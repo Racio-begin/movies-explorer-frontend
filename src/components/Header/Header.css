@@ -58,6 +58,11 @@
 	transform: translateY(0) rotate(-45deg);
 }
 
+.header.open .burger {
+	/* overflow: hidden; */
+	
+}
+
 @media screen and (max-width: 1070px) {
 	.header {
 		margin: 0 -20px 0;

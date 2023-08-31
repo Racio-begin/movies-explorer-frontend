@@ -69,7 +69,11 @@
 	}
 
 	.movies__more {
-		margin-top: 50px;
-		margin-bottom: 79px;
+		margin-top: 60px;
+		margin-bottom: 120px;
+	}
+
+	.movies__more-button {
+		width: 240px;
 	}
 }

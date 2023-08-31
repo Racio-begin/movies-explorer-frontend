@@ -38,6 +38,7 @@
 }
 
 .form__redirect {
+	/* margin: 0; */
 	display: flex;
 	justify-content: center;
 	font-size: 14px;
@@ -78,6 +79,7 @@
 	}
 
 	.form__button-submit {
+		margin-top: 152px;
 		font-size: 12px;
 	}
 

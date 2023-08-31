@@ -31,3 +31,9 @@
 	min-height: 22px;
 	color: #EE3465;
 }
+
+@media screen and (max-width: 568px) {
+	.form-label__input {
+		margin: 0;
+	}
+}
