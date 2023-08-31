@@ -23,14 +23,19 @@ function App() {
 	const [loggedIn, setLoggedIn] = useState(true);
 	// const [loggedIn, setLoggedIn] = useState(false);
 
-	
+	const [menuActive, setMenuActive] = useState(false);
 
 	return (
 		<div className="app">
 			<Routes>
 				<Route
 					path='/'
-					element={<Main loggedIn={loggedIn} />}
+					element={<Main
+						className={menuActive ? "app menu-open" : "app"}
+						loggedIn={loggedIn}
+						menuActive={menuActive}
+						setMenuActive={setMenuActive}
+					/>}
 				/>
 				<Route
 					path='/signin'
@@ -41,12 +46,18 @@ function App() {
 					element={<Register />}
 				/>
 				<Route
-					path='/movies' element={<Movies />}
+					path='/movies' element={<Movies
+						menuActive={menuActive}
+						setMenuActive={setMenuActive}
+					/>}
 				// 		<ProtectedRoute element={Movies}
 				// 		/>}
 				/>
 				<Route
-					path='/saved-movies' element={<SavedMovies />}
+					path='/saved-movies' element={<SavedMovies
+						menuActive={menuActive}
+						setMenuActive={setMenuActive}
+					/>}
 				// <ProtectedRoute element={SavedMovies}
 				// />}
 				/>

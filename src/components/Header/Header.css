@@ -58,9 +58,10 @@
 	transform: translateY(0) rotate(-45deg);
 }
 
-.header.open .burger {
-	/* overflow: hidden; */
-	
+.header.open .header__burger-button {
+	position: fixed;
+	top: 15px;
+	right: 10px;
 }
 
 @media screen and (max-width: 1070px) {

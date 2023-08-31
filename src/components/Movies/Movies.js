@@ -6,12 +6,15 @@ import Card from '../Card/Card';
 import image from '../../images/movies/img1.jpg';
 // import Preloader from '../Preloader/Preloader';
 
-function Movies() {
+function Movies({ menuActive, setMenuActive }) {
 
 	return (
 		<div className="movies">
 
-			<Header />
+			<Header
+				menuActive={menuActive}
+				setMenuActive={setMenuActive}
+			/>
 
 			<main>
 

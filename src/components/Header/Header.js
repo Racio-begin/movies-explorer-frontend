@@ -6,15 +6,17 @@ import Navigation from '../Navigation/Navigation';
 
 import './Header.css';
 
-function Header({ loggedIn }) {
-
-	const [menuActive, setMenuActive] = useState(false);
+function Header({ loggedIn, menuActive, setMenuActive }) {
 
 	return (
 		// <div className="header open">
-		<header className={menuActive ? "header open" : "header"}>
+		<header className={menuActive ? "header open menu-opened" : "header"}>
 			<Logo />
-			<Navigation loggedIn={loggedIn} menuActive={menuActive} setMenuActive={setMenuActive} />
+			<Navigation
+				loggedIn={loggedIn}
+				menuActive={menuActive}
+				setMenuActive={setMenuActive}
+			/>
 		</header>
 	);
 };

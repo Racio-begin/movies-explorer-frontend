@@ -7,19 +7,23 @@ import AboutProjects from "../AboutProjects/AboutProjects";
 
 import './Main.css';
 
-function Main({ loggedIn }) {
+function Main({ loggedIn, menuActive, setMenuActive }) {
 
 	return (
-			<div className="main">
-				<Header loggedIn={loggedIn}/>
-				<main>
-					<Promo />
-					<AboutProjects />
-					<Techs />
-					<AboutMe />
-				</main >
-				<Footer />
-			</div >
+		<div className="main">
+			<Header
+				loggedIn={loggedIn}
+				menuActive={menuActive}
+				setMenuActive={setMenuActive}
+			/>
+			<main>
+				<Promo />
+				<AboutProjects />
+				<Techs />
+				<AboutMe />
+			</main >
+			<Footer />
+		</div >
 	);
 };
 
