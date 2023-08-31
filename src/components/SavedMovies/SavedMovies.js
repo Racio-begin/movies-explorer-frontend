@@ -18,7 +18,7 @@ function SavedMovies() {
 						<img
 							className="card__image"
 							src={image}
-							alt="картинка"
+							alt="Превью соохраненной карточки"
 						/>
 						<button
 							className="card__delete button"
