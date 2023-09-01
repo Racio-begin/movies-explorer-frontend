@@ -7,10 +7,10 @@
 	box-sizing: border-box;
 }
 
-.header__register {
+/* .header__register {
 	width: 77px;
 	height: 16px;
-}
+} */
 
 .header__movies {
 	display: flex;

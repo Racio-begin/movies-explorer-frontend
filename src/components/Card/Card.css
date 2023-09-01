@@ -75,7 +75,7 @@
 
 .card__time {
 	width: 52px;
-	height: 18px;
+	/* height: 18px; */
 	display: flex;
 	align-items: center;
 	justify-content: center;

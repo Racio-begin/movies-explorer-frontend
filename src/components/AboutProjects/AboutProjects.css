@@ -16,7 +16,7 @@
 }
 
 .about-projects__description {
-	min-height: 90px;
+	/* min-height: 90px; */
 	margin: 70px 0 110px;
 	display: flex;
 	gap: 0 40px;
@@ -31,7 +31,7 @@
 
 .about-projects__description-title {
 	margin: 0;
-	min-height: 24px;
+	/* min-height: 24px; */
 	font-weight: 400;
 	font-size: 20px;
 	line-height: normal;

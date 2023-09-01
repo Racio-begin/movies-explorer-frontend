@@ -27,7 +27,7 @@
 
 .movies__more-button {
 	width: 320px;
-	height: 36px;
+	/* height: 36px; */
 	border: 1px solid #424242;
 	border-radius: 6px;
 	padding: 11px 60px 9px;
