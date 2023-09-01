@@ -14,8 +14,3 @@
 
 /*  Body (фон всего документа)  */
 @import url(./components/common/body.css);
-
-/* Testing */
-* {
-	outline: 1px solid red;
-}

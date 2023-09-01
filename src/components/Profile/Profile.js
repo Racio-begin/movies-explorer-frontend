@@ -5,11 +5,11 @@ import './Profile.css'
 function Profile() {
 
 	return (
-		<section className="profile">
+		<div className="profile">
 
 			<Header />
 
-			<main className="profile__container">
+			<section className="profile__container">
 
 				<h1 className="profile__title">Привет, сосед!</h1>
 
@@ -58,9 +58,9 @@ function Profile() {
 					</Link>
 				</div>
 
-			</main>
+			</section>
 
-		</section>
+		</div>
 	);
 };
 
