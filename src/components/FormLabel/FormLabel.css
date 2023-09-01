@@ -12,7 +12,7 @@
 	/* height: 46px; */
 	border-radius: 8px;
 	border: none;
-	margin: 10px 0 5px;
+	margin: 14px 0 5px;
 	padding: 15px;
 	font-weight: 500;
 	font-size: 13px;
@@ -28,12 +28,13 @@
 }
 
 .form-label__input-error {
-	min-height: 22px;
+	/* min-height: 22px; */
+	min-height: 15px;
 	color: #EE3465;
 }
 
 @media screen and (max-width: 568px) {
 	.form-label__input {
-		margin: 0;
+		margin: 9px 0 2px;
 	}
 }

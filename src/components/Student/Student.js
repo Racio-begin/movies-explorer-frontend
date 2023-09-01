@@ -1,5 +1,6 @@
 import './Student.css';
-import avatar from '../../images/user/my-avatar_wev-developer_2.jpg'
+// import avatar from '../../images/user/my-avatar_wev-developer_2.jpg'
+import avatar from '../../images/user/pic__COLOR_pic.svg'
 
 function Student() {
 

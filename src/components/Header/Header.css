@@ -88,13 +88,15 @@
 	}
 
 	.header__burger-button {
-		width: 46px; 
+		width: 46px;
+		padding: 0;
 		/* а оно нужно?? */
 		/* height: 43px; */
 	}
 
 	.header__burger-button span {
-		width: 25px;
+		width: 23px;
 		height: 1.5px;
+		left: 14px;
 	}
 }

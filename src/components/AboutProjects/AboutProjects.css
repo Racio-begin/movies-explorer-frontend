@@ -43,7 +43,7 @@
 	font-weight: 400;
 	font-size: 14px;
 	line-height: 20px;
-	letter-spacing: -0.8px;
+	/* letter-spacing: -0.8px; */
 }
 
 .about-projects__study-time {
@@ -86,7 +86,7 @@
 @media screen and (max-width: 1070px) {
 	.about-projects {
 		height: 585px;
-		padding: 0 30px 0;
+		padding: 0 50px 0;
 	}
 
 	.about-projects__title {
@@ -133,7 +133,7 @@
 	.about-projects__description {
 		flex-direction: column;
 		margin: 60px 0 60px;
-		gap: 56px;
+		gap: 60px;
 	}
 
 	.about-projects__description-container {

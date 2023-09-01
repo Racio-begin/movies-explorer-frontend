@@ -16,37 +16,41 @@ function SavedMovies() {
 
 				<SearchForm />
 
-				<ul className="movies__container ul">
-					<li className="card">
-						<div className="card__image-container">
-							<img
-								className="card__image"
-								src={image}
-								alt="Превью соохраненной карточки"
-							/>
-							<button
-								className="card__delete button"
-								type="submit"
-							/>
-						</div>
-						<div className="card__title-container">
-							<h3 className="card__title" >
-								Почему душнить плохо
-							</h3>
-							<div className="card__time">
-								45м
-							</div>
-						</div>
-					</li>
-				</ul>
+				<section className="movies__list">
 
-				<div className="movies__more">
-					<button
-						className="movies__more-button button"
-						type="button">
-						Ещё
-					</button>
-				</div>
+
+					<ul className="movies__container ul">
+						<li className="card">
+							<div className="card__image-container">
+								<img
+									className="card__image"
+									src={image}
+									alt="Превью соохраненной карточки"
+								/>
+								<button
+									className="card__delete button"
+									type="submit"
+								/>
+							</div>
+							<div className="card__title-container">
+								<h3 className="card__title" >
+									33 слова про дизайнеров
+								</h3>
+								<div className="card__time">
+									33м
+								</div>
+							</div>
+						</li>
+					</ul>
+
+					<div className="movies__more">
+						<button
+							className="movies__more-button button"
+							type="button">
+							Ещё
+						</button>
+					</div>
+				</section>
 			</main>
 
 			<Footer />

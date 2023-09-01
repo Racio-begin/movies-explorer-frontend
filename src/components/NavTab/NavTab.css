@@ -1,9 +1,10 @@
 .navtab {
-	height: 36px;
+	/* height: 36px; */
 	margin-bottom: 30px;
 }
 
 .navtab__links {
+	margin: 0;
 	padding: 0;
 	display: flex;
 	justify-content: space-between;
@@ -29,6 +30,10 @@
 		gap: 6px;
 		margin-bottom: 17px;
   }
+
+	.navtab__links {
+		gap: 6px;
+	}
 
 	.navtab__link {
 		width: 82px;
