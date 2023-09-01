@@ -134,6 +134,10 @@
 		margin-bottom: 370px;
 	}
 
+	.profile__form-container {
+		width: 260px;
+	}
+
 	.profile__edit {
 		font-size: 12px;
 	}
