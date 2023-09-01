@@ -52,7 +52,7 @@ function Navigation({ loggedIn, menuActive, setMenuActive }) {
 						<button
 							className="header__burger-button button"
 							onClick={() => setMenuActive(!menuActive)}
-							type="menu"
+							type="button"
 						>
 							<span></span>
 							<span></span>
