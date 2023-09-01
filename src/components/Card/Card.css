@@ -1,5 +1,6 @@
 .card {
-	width: 360px;
+	/* width: 360px; */
+	width: 350px;
 	height: 231px;
 }
 
@@ -12,7 +13,8 @@
 }
 
 .card__image {
-	width: 360px;
+	/* width: 360px; */
+	width: 350px;
 	height: 201px;
 	object-fit: cover;
 	cursor: pointer;

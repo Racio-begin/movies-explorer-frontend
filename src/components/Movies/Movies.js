@@ -20,7 +20,7 @@ function Movies({ menuActive, setMenuActive }) {
 
 				<SearchForm />
 
-				<section>
+				<section className="movies__list">
 					{/* <Preloader/> */}
 
 					<ul className="movies__container ul">

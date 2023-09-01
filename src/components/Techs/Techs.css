@@ -1,6 +1,6 @@
 .techs {
 	height: 625px;
-	margin: 0 -70px 0;
+	/* margin: 0 -70px 0; */
 	display: flex;
 	flex-direction: column;
 	background-color: #272727;
@@ -68,11 +68,11 @@
 @media screen and (max-width: 1070px) {
 	.techs {
 		height: 567px;
-		margin: 0 -50px 0;
+		/* margin: 0 -50px 0; */
 	}
 
 	.techs__title {
-		margin: 80px 50px 80px;
+		margin: 80px 30px 80px;
 	}
 
 	.techs__description {
@@ -107,7 +107,8 @@
 @media screen and (max-width: 568px) {
 	.techs {
 		height: 651px;
-		margin: 0 -14px 0;
+		/* padding: 0 30px 0; */
+		/* margin: 0 -14px 0; */
 	}
 
 	.techs__title {

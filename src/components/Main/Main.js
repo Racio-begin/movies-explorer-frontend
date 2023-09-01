@@ -15,7 +15,7 @@ function Main({ loggedIn, setLoggedIn }) {
 				loggedIn={loggedIn}
 				setLoggedIn={setLoggedIn}
 			/>
-			<main>
+			<main className="main__container">
 				<Promo />
 				<AboutProjects />
 				<Techs />

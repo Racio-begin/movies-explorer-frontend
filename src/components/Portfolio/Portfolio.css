@@ -13,6 +13,11 @@
 	color: #8B8B8B;
 }
 
+.portfolio__projects {
+	margin: 0;
+	padding: 0;
+}
+
 @media screen and (max-width: 1070px) {
 	.portfolio {
 		height: 300px;

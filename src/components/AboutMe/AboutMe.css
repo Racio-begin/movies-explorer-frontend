@@ -1,5 +1,6 @@
 .about-me {
 	height: 1079px;
+	padding: 0 70px 0;
 }
 
 .about-me__title {
@@ -16,6 +17,7 @@
 @media screen and (max-width: 1070px) {
 	.about-me {
 		height: 994px;
+		padding: 0 30px 0;
 	}
 
 	.about-me__title {
@@ -26,6 +28,7 @@
 @media screen and (max-width: 568px) {
 	.about-me {
 		height: 1198px;
+		padding: 0 14px 0;
 	}
 
 	.about-me__title {
