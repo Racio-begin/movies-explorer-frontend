@@ -1,0 +1,58 @@
+import './Register.css';
+import Form from '../Form/Form';
+import FormLabel from '../FormLabel/FormLabel';
+
+function Register() {
+
+	return (
+		<main>
+			<Form
+				title="Добро пожаловать!"
+				buttonText="Зарегистрироваться"
+				questionText="Уже зарегистрированы?"
+				link="/signin"
+				linkText=" Войти"
+			>
+
+				<FormLabel
+					labelName="Имя"
+					type="text"
+					inputName="username"
+					id="username"
+					placeholder="Введите имя"
+					minLength={2}
+					maxLength={40}
+					required={true}
+					spanMessage='Заполните поле "Имя"'
+				/>
+
+				<FormLabel
+					labelName="E-mail"
+					type="email"
+					inputName="email"
+					id="user-email"
+					placeholder="Введите e-mail"
+					minLength={5}
+					maxLength={40}
+					required={true}
+					spanMessage='Адрес электронной почты должен содержать символ "@".'
+				/>
+
+				<FormLabel
+					labelName="Пароль"
+					type="password"
+					inputName="password"
+					id="user-password"
+					placeholder="Введите пароль"
+					minLength={5}
+					maxLength={40}
+					required={true}
+					spanMessage='Заполните поле "Пароль"'
+				/>
+
+			</Form>
+		</main>
+	);
+};
+
+export default Register;

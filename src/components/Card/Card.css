@@ -1,0 +1,124 @@
+.card {
+	/* width: 360px; */
+	width: 350px;
+	height: 231px;
+}
+
+.card__image-container {
+	position: relative;
+}
+
+.card__image-container:hover .card__like {
+	display: block;
+}
+
+.card__image {
+	/* width: 360px; */
+	width: 350px;
+	height: 201px;
+	object-fit: cover;
+	cursor: pointer;
+}
+
+.card__like {
+	width: 72px;
+	height: 21px;
+	border-radius: 10.5px;
+	display: none;
+	position: absolute;
+	top: 14px;
+	right: 14px;
+	background-image: url(../../images/movies/save__card.svg);
+	padding: 0;
+	border: none;
+	background-color: transparent;
+}
+
+.card__like_active {
+	width: 21px;
+	height: 21px;
+	position: absolute;
+	top: 14px;
+	right: 14px;
+	background-image: url(../../images/movies/saved__card.svg);
+	padding: 0;
+	border: none;
+	background-color: transparent;
+}
+
+.card__delete {
+	width: 21px;
+	height: 21px;
+	position: absolute;
+	top: 14px;
+	right: 14px;
+	background-image: url(../../images/movies/delete__card.svg);
+	padding: 0;
+	border: none;
+	background-color: transparent;
+}
+
+.card__title-container {
+	display: flex;
+	justify-content: space-between;
+	padding: 12px 14px 0;
+}
+
+.card__title {
+	max-width: 250px;
+	/* min-height: 18px; */
+	margin: 0;
+	font-weight: 500;
+	font-size: 13px;
+	line-height: normal;
+}
+
+.card__time {
+	width: 52px;
+	/* height: 18px; */
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-size: 11px;
+	line-height: 11px;
+	color: #8B8B8B;
+	background-color: #2F2F2F;
+}
+
+@media screen and (max-width: 1070px) {
+	.card {
+		width: 339px;
+		height: 228px;
+	}
+
+	.card__title-container {
+		padding: 24px 0 0;
+	}
+
+	.card__image {
+		width: 339px;
+		height: 190px;
+	}
+
+	.card__title {
+		text-overflow: ellipsis;
+		white-space: nowrap;
+		overflow: hidden;
+	}
+}
+
+@media screen and (max-width: 568px) {
+	.card {
+		width: 300px;
+		height: 202px;
+	}
+
+	.card__image {
+		width: 300px;
+		height: 168px;
+	}
+
+	.card__title-container {
+		padding: 10px 0 0;
+	}
+}

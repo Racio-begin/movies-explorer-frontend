@@ -1,0 +1,150 @@
+.search {
+	height: 217px;
+	padding: 0 70px 0;
+	margin-bottom: 10px;
+	border-bottom: 1px solid #424242;
+}
+
+.search__container {
+	width: 100%;
+	height: 50px;
+	padding-top: 80px;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 10px;
+}
+
+.search__input {
+	width: 93%;
+	border-radius: 8px;
+	border: none;
+	padding-top: 16px;
+	padding-bottom: 16px;
+	padding-left: 20px;
+	padding-right: 20px;
+	font-weight: 400;
+	font-size: 14px;
+	line-height: 18px;
+	color: #fff;
+	background-color: #2F2F2F;
+	outline: none;
+}
+
+.search__input:hover {
+	box-sizing: border-box;
+	border: 1px solid #4285F4;
+}
+
+.search__find-button {
+	background-image: url(../../images/movies/find-button.svg);
+	background-color: transparent;
+	width: 44px;
+	height: 44px;
+	border: none;
+	padding: 0;
+}
+
+.search__filter {
+	margin-top: 28px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 12px;
+}
+
+.search__check-box {
+	width: 34px;
+  height: 14px;
+  border: none;
+  border-radius: 14px;
+  outline: none;
+	background: #C4C4C4;
+  position: relative;
+  appearance: none;
+	cursor: pointer;
+}
+
+.search__check-box::after {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.08);
+  content: "";
+  transition: 0.3s ease;
+  background: #fff;
+}
+
+.search__check-box:checked {
+  background: #3DDC84;
+}
+
+.search__check-box:checked::after {
+  width: 10px;
+  height: 10px;
+  top: 2px;
+  right: 2px;
+  position: absolute;
+  box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.08);
+  content: "";
+  border-radius: 50%;
+  transition: 0.3s ease;
+  transform: translate(20px);
+  background: #fff;
+}
+
+.search__span {
+	margin: 0;
+	font-weight: 400;
+	font-size: 12px;
+	line-height: 18px;
+}
+
+@media screen and (max-width: 1070px) {
+	.search {
+		height: 230px;
+		padding: 0 30px 0;
+	}
+
+	.search__input {
+		/* width: 89%; */
+	}
+
+	.search__filter {
+		margin-top: 42px;
+	}
+}
+
+@media screen and (max-width: 568px) {
+	.search {
+		padding: 0 14px 0;
+	}
+
+	.search__container {
+		height: 40px;
+		padding-top: 80px;
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: 10px;
+	}
+
+	.search__input {
+		/* width: 79%; */
+		padding-top: 13px;
+		padding-bottom: 13px;
+		padding-left: 13px;
+	}
+
+	.search__find-button {
+		width: 49px;
+		/* margin-right: 5px; */
+	}
+
+	.search__filter {
+		margin-top: 50px;
+	}
+}

@@ -1,0 +1,94 @@
+.burger {
+	display: none;
+}
+
+.burger__overlay {
+	width: 100vw;
+	height: 100vh;
+	position: absolute;
+	background-color: rgba(0,0,0,.3);
+	opacity: 0.2;
+}
+
+.burger__links {
+	padding: 0;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 22px;
+}
+
+.burger__link {
+	width: max-content;
+	padding-bottom: 4px;
+	font-weight: 500;
+	font-size: 18px;
+	line-height: normal;
+	display: block;
+	color: #fff;
+	border-bottom: 2px solid transparent;
+}
+
+.burger__link:hover {
+	border-bottom: 2px solid #fff;
+}
+
+.burger__container {
+	width: 520px;
+	padding: 159px 90px 90px 90px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: space-between;
+	background-color: #202020;
+	z-index: 15;
+	box-sizing: border-box;
+}
+
+.burger__close-button {
+	width: 22px;
+	height: 22px;
+	border: none;
+	padding: 0;
+	position: absolute;
+	top: 22px;
+	right: 22px;
+	object-fit: cover;
+	background-image: url(../../images/burger__close-button.svg);
+	background-color: transparent;
+	background-position: center;
+	background-repeat: no-repeat;
+}
+
+@media screen and (max-width: 1070px) {
+	.burger {
+		width: 100vw;
+		height: 100vh;
+		position: fixed;
+		top: 0;
+		right: -100vw;
+		display: flex;
+		justify-content: flex-end;
+		visibility: hidden;
+		transition: transform .2s, visibility .2s;
+		z-index: 10;
+	}
+
+	.burger .profile-button {
+		display: flex;
+	}
+}
+
+@media screen and (max-width: 568px) {
+	.burger__container {
+		padding: 144px 10px 46px 10px;
+	}
+
+	.burger__links {
+		gap: 15px;
+	}
+
+	.burger__overlay {
+		display: none;
+	}
+}
