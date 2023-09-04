@@ -5,19 +5,20 @@ import SearchForm from '../SearchForm/SearchForm';
 import Footer from '../Footer/Footer';
 import image from '../../images/movies/img1.jpg';
 
-function SavedMovies() {
+function SavedMovies({ loggedIn }) {
 
 	return (
 		<div className="movies">
 
-			<Header />
+			<Header
+				loggedIn={loggedIn}
+			/>
 
 			<main>
 
 				<SearchForm />
 
 				<section className="movies__list">
-
 
 					<ul className="movies__container ul">
 						<li className="card">
@@ -57,6 +58,7 @@ function SavedMovies() {
 
 		</div>
 	);
+
 };
 
 export default SavedMovies;

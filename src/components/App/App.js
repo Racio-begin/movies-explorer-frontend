@@ -22,7 +22,9 @@ function App() {
 
 	// Стейты
 	const [userData, setUserData] = useState({ name: "", email: "", password: "" });
+	// Состояние залогирования пользователя
 	const [loggedIn, setLoggedIn] = useState(false);
+
 	const [currentUser, setCurrentUser] = useState({});
 
 	const navigate = useNavigate();
@@ -80,8 +82,8 @@ function App() {
 
 					setLoggedIn(true);
 					api.setToken(token);
-					setUserData({ email: res.email });
-					navigate("/movies", { replace: true });
+					setUserData({ name: res.name, email: res.email });
+					// navigate("/movies", { replace: true });
 				})
 				.catch(() => {
 					setLoggedIn(false)
@@ -90,11 +92,11 @@ function App() {
 		};
 	};
 
-	// function handleSignOut() {
-	// 	localStorage.removeItem('jwt');
-	// 	setLoggedIn(false);
-	// 	navigate('/sign-in');
-	// };
+	function handleSignOut() {
+		localStorage.removeItem('jwt');
+		setLoggedIn(false);
+		navigate('/');
+	};
 
 	return (
 		<CurrentUserContext.Provider value={currentUser}>
@@ -124,21 +126,29 @@ function App() {
 					/>
 
 					<Route
-						path='/movies' element={<Movies
+						path='/movies'
+						element={<Movies
+							loggedIn={loggedIn}
 						/>}
 					// 		<ProtectedRoute element={Movies}
 					// 		/>}
 					/>
 
 					<Route
-						path='/saved-movies' element={<SavedMovies
+						path='/saved-movies'
+						element={<SavedMovies
+							loggedIn={loggedIn}
 						/>}
 					// <ProtectedRoute element={SavedMovies}
 					// />}
 					/>
 
 					<Route
-						path='/profile' element={<Profile />}
+						path='/profile'
+						element={<Profile
+							loggedIn={loggedIn}
+							onSignOut={handleSignOut}
+						/>}
 					// <ProtectedRoute element={Profile}
 					// />}
 					/>

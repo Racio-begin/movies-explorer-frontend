@@ -6,7 +6,7 @@ import Card from '../Card/Card';
 import image from '../../images/movies/img1.jpg';
 // import Preloader from '../Preloader/Preloader';
 
-function Movies({ menuActive, setMenuActive }) {
+function Movies({ menuActive, setMenuActive, loggedIn }) {
 
 	return (
 		<div className="movies">
@@ -14,6 +14,7 @@ function Movies({ menuActive, setMenuActive }) {
 			<Header
 				menuActive={menuActive}
 				setMenuActive={setMenuActive}
+				loggedIn={loggedIn}
 			/>
 
 			<main>
