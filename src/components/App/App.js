@@ -1,10 +1,5 @@
-import React,
-{
-	useState,
-	// useEffect
-} from 'react';
-
-import { Route, Routes } from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { Route, Routes, useNavigate, Navigate } from 'react-router-dom';
 
 // import ProtectedRoute from '../ProtectedRoute';
 
@@ -16,52 +11,144 @@ import Register from '../Register/Register';
 import Login from '../Login/Login';
 import PageNotFound from '../PageNotFound/PageNotFound';
 
+import CurrentUserContext from '../../contexts/CurrentUserContext';
+
+import api from '../../utils/Api';
+import * as Auth from '../../utils/Auth';
+
 import './App.css';
 
 function App() {
 
-	const [loggedIn, setLoggedIn] = useState(true);
-	// const [loggedIn, setLoggedIn] = useState(false);
+	// Стейты
+	const [userData, setUserData] = useState({ name: "", email: "", password: "" });
+	const [loggedIn, setLoggedIn] = useState(false);
+	const [currentUser, setCurrentUser] = useState({});
 
+	const navigate = useNavigate();
+
+	const token = localStorage.getItem("jwt");
+
+	useEffect(() => {
+		handleCheckToken();
+		// eslint-disable-next-line react-hooks/exhaustive-deps
+	}, [token]);
+
+	useEffect(() => {
+		loggedIn &&
+			api.getUserData()
+				.then((userData) => {
+					setCurrentUser(userData);
+				})
+				.catch(() => console.error(`Получение информации профиля, App`))
+	}, [loggedIn]);
+
+	const handleRegister = (name, email, password) => {
+		// const { name, email, password } = userData;
+		Auth.register({ name, email, password })
+			.then(res => {
+				// handleLogin(userData)
+				navigate('/movies');
+			})
+			.catch(() => {
+				console.error(`Зарегистрировать аккаунт, App`);
+			})
+	};
+
+	const handleLogin = (userData) => {
+		const { email, password } = userData;
+		Auth.login({ email, password })
+			.then((data) => {
+				localStorage.setItem('jwt', data.token);
+				api.setToken(data.token);
+				setLoggedIn(true);
+				// setUserData({ email, password });
+				// setCurrentUser(data.user);
+				navigate('/movies');
+			})
+			.catch(() => {
+				console.error(`Войти в аккаунт, App`);
+			})
+	};
+
+	const handleCheckToken = () => {
+		if (token) {
+			Auth.checkToken(token)
+				.then((res) => {
+					if (!res) {
+						return
+					};
+
+					setLoggedIn(true);
+					api.setToken(token);
+					setUserData({ email: res.email });
+					navigate("/movies", { replace: true });
+				})
+				.catch(() => {
+					setLoggedIn(false)
+					console.error(`Проверить jwt-токен на валидность, App`);
+				})
+		};
+	};
+
+	// function handleSignOut() {
+	// 	localStorage.removeItem('jwt');
+	// 	setLoggedIn(false);
+	// 	navigate('/sign-in');
+	// };
 
 	return (
-		<div className="app">
-			<Routes>
-				<Route
-					path='/'
-					element={<Main
-						loggedIn={loggedIn}
-						setMenuActive={setLoggedIn}
-					/>}
-				/>
-				<Route
-					path='/signin'
-					element={<Login />}
-				/>
-				<Route
-					path='signup'
-					element={<Register />}
-				/>
-				<Route
-					path='/movies' element={<Movies
-					/>}
-				// 		<ProtectedRoute element={Movies}
-				// 		/>}
-				/>
-				<Route
-					path='/saved-movies' element={<SavedMovies
-					/>}
-				// <ProtectedRoute element={SavedMovies}
-				// />}
-				/>
-				<Route
-					path='/profile' element={<Profile />}
-				// <ProtectedRoute element={Profile}
-				// />}
-				/>
-				<Route path="*" element={<PageNotFound />} />
-			</Routes>
-		</div>
+		<CurrentUserContext.Provider value={currentUser}>
+			<div className="app">
+				<Routes>
+
+					<Route
+						path='/'
+						element={<Main
+							loggedIn={loggedIn}
+							setMenuActive={setLoggedIn}
+						/>}
+					/>
+
+					<Route
+						path='/signin'
+						element={<Login
+							onLogin={handleLogin}
+						/>}
+					/>
+
+					<Route
+						path='signup'
+						element={<Register
+							onRegister={handleRegister}
+						/>}
+					/>
+
+					<Route
+						path='/movies' element={<Movies
+						/>}
+					// 		<ProtectedRoute element={Movies}
+					// 		/>}
+					/>
+
+					<Route
+						path='/saved-movies' element={<SavedMovies
+						/>}
+					// <ProtectedRoute element={SavedMovies}
+					// />}
+					/>
+
+					<Route
+						path='/profile' element={<Profile />}
+					// <ProtectedRoute element={Profile}
+					// />}
+					/>
+
+					<Route path="*" element={<PageNotFound />} />
+
+				</Routes>
+			</div>
+		</CurrentUserContext.Provider>
 	);
 }
 

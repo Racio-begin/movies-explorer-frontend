@@ -10,7 +10,8 @@ function FormLabel({
 	minLength,
 	maxLength,
 	required,
-	spanMessage
+	spanMessage,
+	onChange
 }) {
 	return (
 		<label className="form-label">
@@ -22,12 +23,12 @@ function FormLabel({
 				name={inputName}
 				id={id}
 				// value={formValue.email || ''}
-				// onChange={handleChange}
 				placeholder={placeholder}
 				minLength={minLength}
 				maxLength={maxLength}
 				required={required}
-			>
+				onChange={onChange}
+				>
 			</input>
 
 			<span className="form-label__input-error">

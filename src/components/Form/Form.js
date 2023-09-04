@@ -2,9 +2,21 @@ import { Link } from 'react-router-dom';
 import './Form.css';
 import Logo from '../Logo/Logo';
 
-function Form({ title, buttonText, questionText, link, linkText, ...props }) {
+function Form({
+	title,
+	buttonText,
+	questionText,
+	link,
+	linkText,
+	onSubmit,
+	// onRegister,
+	...props
+}) {
 	return (
-		<section className="form">
+		<section
+			className="form"
+			onSubmit={onSubmit}
+		>
 			<div className="form__header">
 				<Logo />
 
@@ -13,15 +25,19 @@ function Form({ title, buttonText, questionText, link, linkText, ...props }) {
 				</h1>
 			</div>
 
-			<form className="form__container">
-				{props.children}
-			</form>
+			<form className="form__container"
+				// onSubmit={onSubmit}
+				>
 
-			<button
-				className="form__button-submit button"
-				type="submit">
-				{buttonText}
-			</button>
+				{props.children}
+
+				<button
+					className="form__button-submit button"
+					type="submit"
+				>
+					{buttonText}
+				</button>
+			</form>
 
 			<p className="form__redirect">
 				{questionText}

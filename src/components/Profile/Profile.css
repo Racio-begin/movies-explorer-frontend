@@ -59,6 +59,7 @@
 
 .profile__input:hover {
 	border-bottom: 1px solid #4e8a56;
+	transition: all .25s;
 }
 
 .profile__label {
