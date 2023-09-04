@@ -47,16 +47,15 @@ function App() {
 		// const { name, email, password } = userData;
 		Auth.register({ name, email, password })
 			.then(res => {
-				// handleLogin(userData)
-				navigate('/movies');
+				handleLogin(email, password)
+				// navigate('/movies');
 			})
 			.catch(() => {
 				console.error(`Зарегистрировать аккаунт, App`);
 			})
 	};
 
-	const handleLogin = (userData) => {
-		const { email, password } = userData;
+	const handleLogin = (email, password) => {
 		Auth.login({ email, password })
 			.then((data) => {
 				localStorage.setItem('jwt', data.token);

@@ -25,10 +25,7 @@ function Form({
 				</h1>
 			</div>
 
-			<form className="form__container"
-				// onSubmit={onSubmit}
-				>
-
+			<form className="form__container">
 				{props.children}
 
 				<button
@@ -37,8 +34,8 @@ function Form({
 				>
 					{buttonText}
 				</button>
-			</form>
 
+			</form>
 			<p className="form__redirect">
 				{questionText}
 				<Link

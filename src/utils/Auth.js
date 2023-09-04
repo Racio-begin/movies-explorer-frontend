@@ -23,7 +23,6 @@ function getResponseData(res) {
 export function register({ name, email, password }) {
 	return fetch(`${BASE_URL}/signup`, {
 		method: 'POST',
-
 		headers: {
 			'Content-Type': 'application/json'
 		},

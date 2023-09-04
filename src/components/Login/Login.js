@@ -21,7 +21,7 @@ function Login({ onLogin }) {
 	const handleSubmit = (e) => {
 		e.preventDefault();
 
-		onLogin(formValue);
+		onLogin(formValue.email, formValue.password);
 	};
 
 	return (
