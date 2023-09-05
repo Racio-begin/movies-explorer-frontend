@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Route, Routes, useNavigate, Navigate } from 'react-router-dom';
 
-// import ProtectedRoute from '../ProtectedRoute';
+import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 
 import Main from "../Main/Main";
 import Movies from '../Movies/Movies';
@@ -44,6 +44,15 @@ function App() {
 				})
 				.catch(() => console.error(`Получение информации профиля, App`))
 	}, [loggedIn]);
+
+	function handleUpdateUser(userData) {
+		// setIsLoading(true)
+		api.updateUserData(userData)
+			.then(setCurrentUser)
+			// .then(closeAllPopups)
+			.catch(() => console.error(`Обновление данных профиля, App`))
+		// .finally(() => setIsLoading(false))
+	};
 
 	const handleRegister = (name, email, password) => {
 		// const { name, email, password } = userData;
@@ -103,6 +112,7 @@ function App() {
 			<div className="app">
 				<Routes>
 
+					{/* Доступные роуты */}
 					<Route
 						path='/'
 						element={<Main
@@ -125,35 +135,36 @@ function App() {
 						/>}
 					/>
 
-					<Route
-						path='/movies'
-						element={<Movies
-							loggedIn={loggedIn}
-						/>}
-					// 		<ProtectedRoute element={Movies}
-					// 		/>}
-					/>
-
-					<Route
-						path='/saved-movies'
-						element={<SavedMovies
-							loggedIn={loggedIn}
-						/>}
-					// <ProtectedRoute element={SavedMovies}
-					// />}
-					/>
-
-					<Route
-						path='/profile'
-						element={<Profile
-							loggedIn={loggedIn}
-							onSignOut={handleSignOut}
-						/>}
-					// <ProtectedRoute element={Profile}
-					// />}
-					/>
-
 					<Route path="*" element={<PageNotFound />} />
+
+					{/* Защищенные роуты */}
+					<Route element={<ProtectedRoute loggedIn={loggedIn} />}>
+
+						<Route
+							path='/movies'
+							element={<Movies
+								loggedIn={loggedIn}
+							/>}
+						/>
+
+						<Route
+							path='/saved-movies'
+							element={<SavedMovies
+								loggedIn={loggedIn}
+							/>}
+						/>
+
+						<Route
+							path='/profile'
+							element={<Profile
+								loggedIn={loggedIn}
+								userData={userData}
+								onUpdateUser={handleUpdateUser}
+								onSignOut={handleSignOut}
+							/>}
+						/>
+
+					</Route>
 
 				</Routes>
 			</div>
