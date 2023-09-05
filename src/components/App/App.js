@@ -138,33 +138,32 @@ function App() {
 					<Route path="*" element={<PageNotFound />} />
 
 					{/* Защищенные роуты */}
-					<Route element={<ProtectedRoute loggedIn={loggedIn} />}>
+					<Route
+						path='/movies'
+						element={<ProtectedRoute
+							element={Movies}
+							loggedIn={loggedIn}
+						/>}
 
-						<Route
-							path='/movies'
-							element={<Movies
-								loggedIn={loggedIn}
-							/>}
-						/>
+/>
+					<Route
+						path='/saved-movies'
+						element={<ProtectedRoute
+							element={SavedMovies}
+							loggedIn={loggedIn}
+						/>}
+					/>
 
-						<Route
-							path='/saved-movies'
-							element={<SavedMovies
-								loggedIn={loggedIn}
-							/>}
-						/>
-
-						<Route
-							path='/profile'
-							element={<Profile
-								loggedIn={loggedIn}
-								userData={userData}
-								onUpdateUser={handleUpdateUser}
-								onSignOut={handleSignOut}
-							/>}
-						/>
-
-					</Route>
+					<Route
+						path='/profile'
+						element={<ProtectedRoute
+							element={Profile}
+							loggedIn={loggedIn}
+							userData={userData}
+							onUpdateUser={handleUpdateUser}
+							onSignOut={handleSignOut}
+						/>}
+					/>
 
 				</Routes>
 			</div>

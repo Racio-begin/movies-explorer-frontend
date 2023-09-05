@@ -1,6 +1,9 @@
 import { Navigate } from "react-router-dom";
 
-const ProtectedRoute = ({ element: Component, isLoading = true, ...props }) => {
+const ProtectedRoute = ({
+	element: Component,
+	isLoading = true,
+	...props }) => {
 
 	// if (isLoading) {
 	// 	return (
@@ -12,9 +15,10 @@ const ProtectedRoute = ({ element: Component, isLoading = true, ...props }) => {
 		? <Component
 			{...props}
 		/>
-		: <Navigate to="/signin"
+		// : <Navigate to="/signin"
+		: <Navigate to="/"
 			replace
 		/>
 };
 
-export default ProtectedRoute
+export default ProtectedRoute;
