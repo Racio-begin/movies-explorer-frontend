@@ -5,20 +5,26 @@ const ProtectedRoute = ({
 	isLoading = true,
 	...props }) => {
 
-	// if (isLoading) {
-	// 	return (
-	// 		<h1 className="loading">Loading...</h1>
-	// 	);
-	// };
-
 	return props.loggedIn
 		? <Component
 			{...props}
 		/>
-		// : <Navigate to="/signin"
 		: <Navigate to="/"
 			replace
 		/>
 };
 
 export default ProtectedRoute;
+
+// import React from 'react';
+// import { Navigate } from "react-router-dom";
+
+// function ProtectedRoute({ Component, ...props  }) {
+//   if (props.loggedIn) {
+//     return Component;
+//   } else {
+//     return (<Navigate to="/" replace/>);
+//   } 
+// }
+
+// export default ProtectedRoute;

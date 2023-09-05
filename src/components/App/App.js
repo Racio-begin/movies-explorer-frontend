@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Route, Routes, useNavigate, Navigate } from 'react-router-dom';
+import { Route, Routes, useNavigate, Navigate, useLocation } from 'react-router-dom';
 
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 
@@ -23,7 +23,7 @@ function App() {
 	// Стейты
 	const [userData, setUserData] = useState({ name: "", email: "", password: "" });
 	// Состояние залогирования пользователя
-	const [loggedIn, setLoggedIn] = useState(false);
+	const [loggedIn, setLoggedIn] = useState(true);
 
 	const [currentUser, setCurrentUser] = useState({});
 
@@ -32,18 +32,23 @@ function App() {
 	const token = localStorage.getItem("jwt");
 
 	useEffect(() => {
-		handleCheckToken();
-		// eslint-disable-next-line react-hooks/exhaustive-deps
-	}, [token]);
+		if (token) {
+			Auth.checkToken(token)
+				.then((res) => {
+					if (!res) {
+						return
+					};
 
-	useEffect(() => {
-		loggedIn &&
-			api.getUserData()
-				.then((userData) => {
-					setCurrentUser(userData);
+					setLoggedIn(true);
+					api.setToken(token);
+					setUserData({ name: res.name, email: res.email });
 				})
-				.catch(() => console.error(`Получение информации профиля, App`))
-	}, [loggedIn]);
+				.catch(() => {
+					setLoggedIn(false)
+					console.error(`Получение информации профиля, App`);
+				})
+		};
+	}, [token]);
 
 	function handleUpdateUser(userData) {
 		// setIsLoading(true)
@@ -62,7 +67,7 @@ function App() {
 				// navigate('/movies');
 			})
 			.catch(() => {
-				console.error(`Зарегистрировать аккаунт, App`);
+				console.error(`Обновление данных профиля, App`);
 			})
 	};
 
@@ -81,25 +86,25 @@ function App() {
 			})
 	};
 
-	const handleCheckToken = () => {
-		if (token) {
-			Auth.checkToken(token)
-				.then((res) => {
-					if (!res) {
-						return
-					};
+	// const handleCheckToken = () => {
+	// 	if (token) {
+	// 		Auth.checkToken(token)
+	// 			.then((res) => {
+	// 				if (!res) {
+	// 					return
+	// 				};
 
-					setLoggedIn(true);
-					api.setToken(token);
-					setUserData({ name: res.name, email: res.email });
-					// navigate("/movies", { replace: true });
-				})
-				.catch(() => {
-					setLoggedIn(false)
-					console.error(`Проверить jwt-токен на валидность, App`);
-				})
-		};
-	};
+	// 				setLoggedIn(true);
+	// 				api.setToken(token);
+	// 				setUserData({ name: res.name, email: res.email });
+	// 				// navigate("/movies", { replace: true });
+	// 			})
+	// 			.catch(() => {
+	// 				setLoggedIn(false)
+	// 				console.error(`Проверить jwt-токен на валидность, App`);
+	// 			})
+	// 	};
+	// };
 
 	function handleSignOut() {
 		localStorage.removeItem('jwt');
@@ -145,7 +150,7 @@ function App() {
 							loggedIn={loggedIn}
 						/>}
 
-/>
+					/>
 					<Route
 						path='/saved-movies'
 						element={<ProtectedRoute
