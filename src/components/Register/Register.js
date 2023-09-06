@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import './Register.css';
 import Form from '../Form/Form';
 import FormLabel from '../FormLabel/FormLabel';
@@ -13,6 +14,10 @@ function Register({
 	serverResponseError,
 	setServerResponseError,
 }) {
+
+	useEffect(() => {
+		setServerResponseError('');
+	}, []);
 
 	const { values, handleChange, errors, isValid } =
 		useFormWithValidation();
