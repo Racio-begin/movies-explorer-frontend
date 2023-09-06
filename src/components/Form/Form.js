@@ -9,7 +9,9 @@ function Form({
 	link,
 	linkText,
 	onSubmit,
-	// onRegister,
+	isValid,
+	isLocked,
+	serverResponseError,
 	...props
 }) {
 	return (
@@ -28,22 +30,26 @@ function Form({
 			<form className="form__container">
 				{props.children}
 
+				<p className='form__submit-error'>{serverResponseError}</p>
+
 				<button
-					className="form__button-submit button"
+					className="form__button-submit button "
 					type="submit"
+					disabled={!isValid || isLocked}
 				>
 					{buttonText}
 				</button>
 
+				<p className="form__redirect">
+					{questionText}
+					<Link
+						className="form__redirect-link link"
+						to={link}>
+						{linkText}
+					</Link>
+				</p>
+
 			</form>
-			<p className="form__redirect">
-				{questionText}
-				<Link
-					className="form__redirect-link link"
-					to={link}>
-					{linkText}
-				</Link>
-			</p>
 
 		</section>
 	)

@@ -16,7 +16,7 @@ function Profile({ loggedIn, onUpdateUser, onSignOut, isLocked }) {
 
 	const currentUser = useContext(CurrentUserContext);
 
-	const [isReadyToSave, setIsReadyToSave] = useState(false);
+	const [readyToSave, setReadyToSave] = useState(false);
 	const [successMessage, setSuccessMessage] = useState('');
 	const [errorMessage, setErrorMessage] = useState('');
 
@@ -49,13 +49,17 @@ function Profile({ loggedIn, onUpdateUser, onSignOut, isLocked }) {
 		setErrorMessage('');
 	}, [values]);
 
-	const handleEdit = () => {
-		setIsReadyToSave(true);
+	const handleEditProfile = () => {
+		setReadyToSave(true);
 	};
 
 	useEffect(() => {
 		setValues((prevState) => {
-			return { ...prevState, name: currentUser.name, email: currentUser.email };
+			return {
+				...prevState,
+				name: currentUser.name,
+				email: currentUser.email
+			};
 		});
 	}, [currentUser]);
 
@@ -82,7 +86,7 @@ function Profile({ loggedIn, onUpdateUser, onSignOut, isLocked }) {
 
 						<div
 							className="profile__label"
-							// htmlFor="name"
+						// htmlFor="name"
 						>
 							Имя
 						</div>
@@ -107,8 +111,8 @@ function Profile({ loggedIn, onUpdateUser, onSignOut, isLocked }) {
 
 						<div
 							className="profile__label"
-							// htmlFor="email"
-							>
+						// htmlFor="email"
+						>
 							E-mail
 						</div>
 
@@ -118,8 +122,8 @@ function Profile({ loggedIn, onUpdateUser, onSignOut, isLocked }) {
 							name="email"
 							required={true}
 							value={values.email || ''}
-							pattern={REGEX_EMAIL}
-							title={EMAIL_TITLE_TEXT}
+							regex={REGEX_EMAIL}
+							titleText={EMAIL_TITLE_TEXT}
 							onChange={handleChange}
 							onFocus={handleFocus}
 						/>
@@ -129,7 +133,7 @@ function Profile({ loggedIn, onUpdateUser, onSignOut, isLocked }) {
 					<span className='profile__input-error'>{errors.email}</span>
 
 					<div className="profile__footer">
-						{isReadyToSave ? (
+						{readyToSave ? (
 							<>
 								<p
 									className={`profile__submit-message ${successMessage && 'profile__submit-message_type-succsess'
@@ -151,7 +155,7 @@ function Profile({ loggedIn, onUpdateUser, onSignOut, isLocked }) {
 								<button
 									className="profile__edit-button button"
 									type="button"
-									onClick={handleEdit}
+									onClick={handleEditProfile}
 								>
 									Редактировать
 								</button>

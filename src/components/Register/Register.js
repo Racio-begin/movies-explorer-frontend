@@ -1,28 +1,35 @@
-import { useState } from "react";
 import './Register.css';
 import Form from '../Form/Form';
 import FormLabel from '../FormLabel/FormLabel';
 
-function Register({ onRegister }) {
+import { REGEX_EMAIL } from '../../utils/regex';
+import { EMAIL_TITLE_TEXT } from '../../utils/constants';
 
-	const [formValue, setFormValue] = useState({
-		name: '',
-		email: '',
-		password: ''
-	});
+import useFormWithValidation from '../../hooks/useFormWithValidation';
 
-	const handleChange = (e) => {
-		const { name, value } = e.target;
-		setFormValue({
-			...formValue,
-			[name]: value
-		});
-	};
+function Register({
+	onRegister,
+	isLocked,
+	serverResponseError,
+	setServerResponseError,
+}) {
 
-	const handleSubmit = (e) => {
+	const { values, handleChange, errors, isValid } =
+		useFormWithValidation();
+
+	const handleRegisterSubmit = (e) => {
 		e.preventDefault();
 
-		onRegister(formValue.name, formValue.email, formValue.password);
+		onRegister(
+			values.name,
+			values.email,
+			values.password
+		)
+	};
+
+	const handleChangeInput = (e) => {
+		setServerResponseError('');
+		handleChange(e);
 	};
 
 	return (
@@ -33,7 +40,10 @@ function Register({ onRegister }) {
 				questionText="Уже зарегистрированы?"
 				link="/signin"
 				linkText=" Войти"
-				onSubmit={handleSubmit}
+				onSubmit={handleRegisterSubmit}
+				isValid={isValid}
+				isLocked={isLocked}
+				serverResponseError={serverResponseError}
 			>
 
 				<FormLabel
@@ -41,13 +51,13 @@ function Register({ onRegister }) {
 					type="text"
 					inputName="name"
 					id="name"
-					value={formValue.name}
-					onChange={handleChange}
+					value={values.name}
 					placeholder="Введите имя"
 					minLength={2}
 					maxLength={40}
 					required={true}
-					spanMessage='Заполните поле "Имя"'
+					spanError={errors.name}
+					onChange={handleChangeInput}
 				/>
 
 				<FormLabel
@@ -55,13 +65,15 @@ function Register({ onRegister }) {
 					type="email"
 					inputName="email"
 					id="email"
-					value={formValue.email}
-					onChange={handleChange}
+					value={values.email}
 					placeholder="Введите e-mail"
 					minLength={5}
 					maxLength={40}
 					required={true}
-					spanMessage='Адрес электронной почты должен содержать символ "@".'
+					spanError={errors.email}
+					regex={REGEX_EMAIL}
+					titleText={EMAIL_TITLE_TEXT}
+					onChange={handleChangeInput}
 				/>
 
 				<FormLabel
@@ -69,13 +81,13 @@ function Register({ onRegister }) {
 					type="password"
 					inputName="password"
 					id="password"
-					value={formValue.password}
-					onChange={handleChange}
+					value={values.password}
 					placeholder="Введите пароль"
 					minLength={5}
 					maxLength={40}
 					required={true}
-					spanMessage='Заполните поле "Пароль"'
+					spanError={errors.password}
+					onChange={handleChangeInput}
 				/>
 
 			</Form>

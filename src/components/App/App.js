@@ -33,6 +33,8 @@ function App() {
 
 	const [isLocked, setIsLocked] = useState(false);
 
+	const [serverResponseError, setServerResponseError] = useState('');
+
 	const navigate = useNavigate();
 
 	useEffect(() => {
@@ -53,15 +55,6 @@ function App() {
 		};
 	}, []);
 
-	// function handleUpdateUser(userData) {
-	// 	// setIsLoading(true)
-	// 	api.updateUserData(userData)
-	// 		.then(setCurrentUser)
-	// 		// .then(closeAllPopups)
-	// 		.catch(() => console.error(`Обновление данных профиля, App`))
-	// 	// .finally(() => setIsLoading(false))
-	// };
-
 	const handleUpdateUser = (name, email) => {
     setIsLocked(true);
     return (
@@ -69,20 +62,19 @@ function App() {
         .then((currentUser) => {
           setCurrentUser(currentUser);
         })
-        // .catch((err) => console.log(err))
+        .catch((err) => console.log(err))
         .finally(() => setIsLocked(false))
     );
   };
 
 	const handleRegister = (name, email, password) => {
-		// const { name, email, password } = userData;
 		Auth.register({ name, email, password })
 			.then(res => {
 				handleLogin(email, password)
-				// navigate('/movies');
 			})
-			.catch(() => {
-				console.error(`Обновление данных профиля, App`);
+			.catch((err) => {
+				setServerResponseError(err);
+				console.error(`Регистрация нового пользователя, App`);
 			})
 	};
 
@@ -145,6 +137,8 @@ function App() {
 						path='/signin'
 						element={<Login
 							onLogin={handleLogin}
+							serverResponseError={serverResponseError}
+							setServerResponseError={setServerResponseError}
 						/>}
 					/>
 
@@ -152,6 +146,8 @@ function App() {
 						path='signup'
 						element={<Register
 							onRegister={handleRegister}
+							serverResponseError={serverResponseError}
+							setServerResponseError={setServerResponseError}
 						/>}
 					/>
 

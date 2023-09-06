@@ -1,4 +1,3 @@
-// import { Link } from 'react-router-dom';
 import './FormLabel.css';
 
 function FormLabel({
@@ -10,7 +9,7 @@ function FormLabel({
 	minLength,
 	maxLength,
 	required,
-	spanMessage,
+	spanError,
 	onChange
 }) {
 	return (
@@ -22,17 +21,16 @@ function FormLabel({
 				type={type}
 				name={inputName}
 				id={id}
-				// value={formValue.email || ''}
 				placeholder={placeholder}
 				minLength={minLength}
 				maxLength={maxLength}
 				required={required}
 				onChange={onChange}
-				>
+			>
 			</input>
 
 			<span className="form-label__input-error">
-				{spanMessage}
+				{spanError}
 			</span>
 
 		</label>
