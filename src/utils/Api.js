@@ -33,11 +33,14 @@ class Api {
 		});
 	};
 
-	updateUserData(userData) {
+	updateUserData(name, email) {
 		return this._request('/users/me', {
 			method: "PATCH",
 			headers: this._headers,
-			body: JSON.stringify(userData)
+			body: JSON.stringify({
+				name,
+				email,
+			})
 		});
 	};
 

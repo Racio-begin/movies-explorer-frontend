@@ -1,39 +1,66 @@
 import { useState, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
 
-import CurrentUserContext from "../../contexts/CurrentUserContext";
-import Header from '../Header/Header';
-import './Profile.css'
+import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 
-function Profile({ loggedIn, userData, onUpdateUser, onSignOut }) {
+import Header from '../Header/Header';
+
+import { REGEX_EMAIL } from '../../utils/regex';
+import { EMAIL_TITLE_TEXT } from '../../utils/constants';
+
+import useFormWithValidation from '../../hooks/useFormWithValidation';
+
+import './Profile.css';
+
+function Profile({ loggedIn, onUpdateUser, onSignOut, isLocked }) {
 
 	const currentUser = useContext(CurrentUserContext);
 
-	const [userName, setUserName] = useState('');
-	const [userEmail, setUserEmail] = useState('');
+	const [isReadyToSave, setIsReadyToSave] = useState(false);
+	const [successMessage, setSuccessMessage] = useState('');
+	const [errorMessage, setErrorMessage] = useState('');
+
+	const { values, setValues, isValid, setIsValid, handleChange, errors } =
+		useFormWithValidation();
+
+	const handleSubmit = (e) => {
+		e.preventDefault();
+		const name = values.name;
+		const email = values.email;
+		onUpdateUser(name, email)
+			.then(() => {
+				setSuccessMessage('Профиль успешно обновлен!');
+			})
+			.catch((err) => {
+				setErrorMessage('Неверно введены данные. Попробуйте ещё раз');
+			})
+	};
 
 	useEffect(() => {
-		setUserName(currentUser.userName);
-		setUserEmail(currentUser.userEmail);
+		if (
+			values.name === currentUser.name &&
+			values.email === currentUser.email
+		) {
+			return setIsValid(false);
+		}
+	}, [values, currentUser]);
+
+	useEffect(() => {
+		setErrorMessage('');
+	}, [values]);
+
+	const handleEdit = () => {
+		setIsReadyToSave(true);
+	};
+
+	useEffect(() => {
+		setValues((prevState) => {
+			return { ...prevState, name: currentUser.name, email: currentUser.email };
+		});
 	}, [currentUser]);
 
-	function handleChangeUserName(e) {
-		setUserName(e.target.value)
-	};
-
-	function handleChangeEmail(e) {
-		setUserEmail(e.target.value)
-	};
-
-	function handleSubmit(e) {
-		// Запрещаем браузеру переходить по адресу формы
-		e.preventDefault();
-
-		// Передаём значения управляемых компонентов во внешний обработчик
-		onUpdateUser({
-			name: userName,
-			email: userEmail,
-		});
+	const handleFocus = () => {
+		setSuccessMessage('');
 	};
 
 	return (
@@ -48,60 +75,98 @@ function Profile({ loggedIn, userData, onUpdateUser, onSignOut }) {
 				onSubmit={handleSubmit}
 			>
 
-				<h1 className="profile__title">Привет, {userData.name}!</h1>
+				<h1 className="profile__title">Привет, {currentUser.name}!</h1>
 
 				<form className="profile__form">
 					<div className="profile__form-container profile__form-container_active-border">
 
-						<div className="profile__label">
+						<div
+							className="profile__label"
+							// htmlFor="name"
+						>
 							Имя
 						</div>
 
 						<input
 							className="profile__input"
 							placeholder="Имя"
-							value={userName || ''}
+							name="name"
 							minLength={2}
 							maxLength={20}
-							onChange={handleChangeUserName}
-						>
-						</input>
+							required={true}
+							value={values.name || ''}
+							onChange={handleChange}
+							onFocus={handleFocus}
+						/>
+
 
 					</div>
+					<span className='profile__input-error'>{errors.name}</span>
 
 					<div className="profile__form-container">
 
-						<div className="profile__label">
+						<div
+							className="profile__label"
+							// htmlFor="email"
+							>
 							E-mail
 						</div>
 
 						<input
 							className="profile__input"
 							placeholder="E-mail"
-							value={userEmail || ''}
-							onChange={handleChangeEmail}
-						>
-						</input>
+							name="email"
+							required={true}
+							value={values.email || ''}
+							pattern={REGEX_EMAIL}
+							title={EMAIL_TITLE_TEXT}
+							onChange={handleChange}
+							onFocus={handleFocus}
+						/>
+
 
 					</div>
+					<span className='profile__input-error'>{errors.email}</span>
+
+					<div className="profile__footer">
+						{isReadyToSave ? (
+							<>
+								<p
+									className={`profile__submit-message ${successMessage && 'profile__submit-message_type-succsess'
+										} ${errorMessage && 'profile__submit-message_type-error'}`}
+								>
+									{errorMessage || successMessage}
+								</p>
+								<button
+									className='profile__submit-button button'
+									type='submit'
+									onClick={() => { }}
+									disabled={!isValid || errorMessage || isLocked}
+								>
+									Сохранить
+								</button>
+							</>
+						) : (
+							<>
+								<button
+									className="profile__edit-button button"
+									type="button"
+									onClick={handleEdit}
+								>
+									Редактировать
+								</button>
+
+								<Link
+									to="/"
+									className="profile__logout link"
+									onClick={onSignOut}
+								>
+									Выйти из аккаунта
+								</Link>
+							</>
+						)}
+					</div>
 				</form>
-
-				<div className="profile__footer">
-
-					<button
-						className="profile__edit button"
-						type="button">
-						Редактировать
-					</button>
-
-					<Link
-						to="/"
-						className="profile__logout link"
-						onClick={onSignOut}
-					>
-						Выйти из аккаунта
-					</Link>
-				</div>
 
 			</section>
 

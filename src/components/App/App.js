@@ -11,7 +11,7 @@ import Register from '../Register/Register';
 import Login from '../Login/Login';
 import PageNotFound from '../PageNotFound/PageNotFound';
 
-import CurrentUserContext from '../../contexts/CurrentUserContext';
+import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 
 import api from '../../utils/Api';
 import * as Auth from '../../utils/Auth';
@@ -20,16 +20,20 @@ import './App.css';
 
 function App() {
 
-	// Стейты
-	const [userData, setUserData] = useState({ name: "", email: "", password: "" });
+	const token = localStorage.getItem("jwt");
+
+	//* Стейты *//
+	// const [userData, setUserData] = useState({ name: "", email: "", password: "" });
+
 	// Состояние залогирования пользователя
-	const [loggedIn, setLoggedIn] = useState(true);
+	// const [loggedIn, setLoggedIn] = useState(true);
+	const [loggedIn, setLoggedIn] = useState(!!token);
 
 	const [currentUser, setCurrentUser] = useState({});
 
-	const navigate = useNavigate();
+	const [isLocked, setIsLocked] = useState(false);
 
-	const token = localStorage.getItem("jwt");
+	const navigate = useNavigate();
 
 	useEffect(() => {
 		if (token) {
@@ -38,26 +42,37 @@ function App() {
 					if (!res) {
 						return
 					};
-
 					setLoggedIn(true);
 					api.setToken(token);
-					setUserData({ name: res.name, email: res.email });
+					setCurrentUser(res);
 				})
 				.catch(() => {
 					setLoggedIn(false)
 					console.error(`Получение информации профиля, App`);
 				})
 		};
-	}, [token]);
+	}, []);
 
-	function handleUpdateUser(userData) {
-		// setIsLoading(true)
-		api.updateUserData(userData)
-			.then(setCurrentUser)
-			// .then(closeAllPopups)
-			.catch(() => console.error(`Обновление данных профиля, App`))
-		// .finally(() => setIsLoading(false))
-	};
+	// function handleUpdateUser(userData) {
+	// 	// setIsLoading(true)
+	// 	api.updateUserData(userData)
+	// 		.then(setCurrentUser)
+	// 		// .then(closeAllPopups)
+	// 		.catch(() => console.error(`Обновление данных профиля, App`))
+	// 	// .finally(() => setIsLoading(false))
+	// };
+
+	const handleUpdateUser = (name, email) => {
+    setIsLocked(true);
+    return (
+      api.updateUserData(name, email)
+        .then((currentUser) => {
+          setCurrentUser(currentUser);
+        })
+        // .catch((err) => console.log(err))
+        .finally(() => setIsLocked(false))
+    );
+  };
 
 	const handleRegister = (name, email, password) => {
 		// const { name, email, password } = userData;
@@ -164,9 +179,10 @@ function App() {
 						element={<ProtectedRoute
 							element={Profile}
 							loggedIn={loggedIn}
-							userData={userData}
+							// userData={userData}
 							onUpdateUser={handleUpdateUser}
 							onSignOut={handleSignOut}
+							isLocked={isLocked}
 						/>}
 					/>
 
