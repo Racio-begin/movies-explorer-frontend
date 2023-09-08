@@ -6,3 +6,7 @@
 
 ## Верстка сайта производилась по подготовленному макету
 Для реализации данной части диплом был использован макет dark-2.
+
+## Ссылка на pull request: https://github.com/Racio-begin/movies-explorer-frontend/pull/8
+
+## Ссылка на сайт с проектом: giga-movies.nomoreparties.co
