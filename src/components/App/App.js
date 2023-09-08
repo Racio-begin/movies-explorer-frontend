@@ -1,5 +1,11 @@
 import React, { useState, useEffect } from 'react';
-import { Route, Routes, useNavigate, Navigate, useLocation } from 'react-router-dom';
+import {
+	Route,
+	Routes,
+	useNavigate,
+	// Navigate,
+	// useLocation,
+} from 'react-router-dom';
 
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 
@@ -13,17 +19,25 @@ import PageNotFound from '../PageNotFound/PageNotFound';
 
 import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 
-import api from '../../utils/Api';
+
+import mainApi from '../../utils/MainApi';
+import MoviesApi from '../../utils/MoviesApi';
 import * as Auth from '../../utils/Auth';
+
+import {
+	BASE_MOVIES_URL,
+	MOVIES_URL,
+} from '../../utils/Url';
 
 import './App.css';
 
 function App() {
 
+	const moviesApi = new MoviesApi(MOVIES_URL);
+
 	const token = localStorage.getItem("jwt");
 
 	//* Стейты *//
-	// const [userData, setUserData] = useState({ name: "", email: "", password: "" });
 
 	// Состояние залогирования пользователя
 	// const [loggedIn, setLoggedIn] = useState(true);
@@ -35,6 +49,8 @@ function App() {
 
 	const [serverResponseError, setServerResponseError] = useState('');
 
+	const [combinedMoviesArray, setCombinedMoviesArray] = useState([]);
+
 	const navigate = useNavigate();
 
 	useEffect(() => {
@@ -45,7 +61,7 @@ function App() {
 						return
 					};
 					setLoggedIn(true);
-					api.setToken(token);
+					mainApi.setToken(token);
 					setCurrentUser(res);
 				})
 				.catch(() => {
@@ -56,16 +72,16 @@ function App() {
 	}, []);
 
 	const handleUpdateUser = (name, email) => {
-    setIsLocked(true);
-    return (
-      api.updateUserData(name, email)
-        .then((currentUser) => {
-          setCurrentUser(currentUser);
-        })
-        .catch((err) => console.log(err))
-        .finally(() => setIsLocked(false))
-    );
-  };
+		setIsLocked(true);
+		return (
+			mainApi.updateUserData(name, email)
+				.then((currentUser) => {
+					setCurrentUser(currentUser);
+				})
+				.catch((err) => console.log(err))
+				.finally(() => setIsLocked(false))
+		);
+	};
 
 	const handleRegister = (name, email, password) => {
 		Auth.register({ name, email, password })
@@ -82,10 +98,8 @@ function App() {
 		Auth.login({ email, password })
 			.then((data) => {
 				localStorage.setItem('jwt', data.token);
-				api.setToken(data.token);
+				mainApi.setToken(data.token);
 				setLoggedIn(true);
-				// setUserData({ email, password });
-				// setCurrentUser(data.user);
 				navigate('/movies');
 			})
 			.catch(() => {
@@ -102,7 +116,7 @@ function App() {
 	// 				};
 
 	// 				setLoggedIn(true);
-	// 				api.setToken(token);
+	// 				mainApi.setToken(token);
 	// 				setUserData({ name: res.name, email: res.email });
 	// 				// navigate("/movies", { replace: true });
 	// 			})
@@ -115,8 +129,103 @@ function App() {
 
 	function handleSignOut() {
 		localStorage.removeItem('jwt');
+		localStorage.removeItem('combinedMoviesArray');
+    localStorage.removeItem('isShortMovies');
+    localStorage.removeItem('lastSearchString');
 		setLoggedIn(false);
 		navigate('/');
+	};
+
+	const handleSubmitSearch = () => {
+		if (
+			localStorage.getItem('combinedMoviesArray') &&
+			JSON.parse(localStorage.getItem('combinedMoviesArray'))?.length !== 0
+		) {
+			return Promise.resolve(
+				JSON.parse(localStorage.getItem('combinedMoviesArray'))
+			);
+		}
+		return Promise.all([
+			moviesApi.getInitialMovies(),
+			mainApi.getMovies()
+		])
+			.then(([initialMovies, savedMovies]) => {
+				const combinedMoviesArray = initialMovies.map((initialMovie) => {
+					// const savedMovie = savedMovies.data.find((savedMovieItem) => {
+						const savedMovie = savedMovies.find((savedMovieItem) => {
+						return savedMovieItem.movieId === initialMovie.id;
+					});
+
+					initialMovie.thumbnail =
+						BASE_MOVIES_URL + initialMovie.image.formats.thumbnail.url;
+					initialMovie.image = BASE_MOVIES_URL + initialMovie.image.url;
+
+					if (savedMovie !== undefined) {
+						initialMovie._id = savedMovie._id;
+					} else {
+						initialMovie._id = '';
+					}
+
+					return initialMovie;
+				});
+				localStorage.setItem(
+					'combinedMoviesArray',
+					JSON.stringify(combinedMoviesArray)
+				);
+				setServerResponseError('');
+				setCombinedMoviesArray(combinedMoviesArray);
+				return combinedMoviesArray;
+			})
+			.catch((err) => {
+				setServerResponseError(err.message);
+				console.log(`Ошибка Promise.all: ${err.message}`);
+			});
+	};
+
+	const handleSaveMovie = (movie) => {
+		return mainApi
+			.saveMovie(movie)
+			.then((savedMovie) => {
+				const updatedMoviesArray = combinedMoviesArray.map((serverMovie) => {
+					// if (serverMovie.id === savedMovie.data.movieId) {
+					// 	serverMovie._id = savedMovie.data._id;
+					// 	serverMovie.thumbnail = savedMovie.data.thumbnail;
+					// 	serverMovie.image = savedMovie.data.image;
+					if (serverMovie.id === savedMovie.movieId) {
+						serverMovie._id = savedMovie._id;
+						serverMovie.thumbnail = savedMovie.thumbnail;
+						serverMovie.image = savedMovie.image;
+					}
+					return serverMovie;
+				});
+				setCombinedMoviesArray(updatedMoviesArray);
+				localStorage.setItem(
+					'combinedMoviesArray',
+					JSON.stringify(updatedMoviesArray)
+				);
+			})
+			.catch((err) => console.log(err));
+	};
+
+	const handleDeleteMovie = (id) => {
+		return mainApi
+			.deleteMovie(id)
+			.then((deletedMovie) => {
+				const updatedMoviesArray = combinedMoviesArray.map((serverMovie) => {
+					// if (serverMovie._id === deletedMovie.data._id) {
+					// 	serverMovie._id = '';
+					if (serverMovie._id === deletedMovie._id) {
+						serverMovie._id = '';
+					}
+					return serverMovie;
+				});
+				setCombinedMoviesArray(updatedMoviesArray);
+				localStorage.setItem(
+					'combinedMoviesArray',
+					JSON.stringify(updatedMoviesArray)
+				);
+			})
+			.catch((err) => console.log(err));
 	};
 
 	return (
@@ -159,6 +268,11 @@ function App() {
 						element={<ProtectedRoute
 							element={Movies}
 							loggedIn={loggedIn}
+							onSearch={handleSubmitSearch}
+							onSaveMovie={handleSaveMovie}
+							onDeleteMovie={handleDeleteMovie}
+							setCombinedMoviesArray={setCombinedMoviesArray}
+							serverResponseError={serverResponseError}
 						/>}
 
 					/>
@@ -167,6 +281,10 @@ function App() {
 						element={<ProtectedRoute
 							element={SavedMovies}
 							loggedIn={loggedIn}
+							onSearch={handleSubmitSearch}
+							onDeleteMovie={handleDeleteMovie}
+							combinedMoviesArray={combinedMoviesArray}
+							setCombinedMoviesArray={setCombinedMoviesArray}
 						/>}
 					/>
 
@@ -175,7 +293,6 @@ function App() {
 						element={<ProtectedRoute
 							element={Profile}
 							loggedIn={loggedIn}
-							// userData={userData}
 							onUpdateUser={handleUpdateUser}
 							onSignOut={handleSignOut}
 							isLocked={isLocked}

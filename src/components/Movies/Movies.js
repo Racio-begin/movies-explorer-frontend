@@ -1,12 +1,112 @@
+import { useState, useEffect } from 'react';
 import './Movies.css';
 import Header from '../Header/Header';
 import SearchForm from '../SearchForm/SearchForm';
+import MoviesCardList from '../MoviesCardList/MoviesCardList';
 import Footer from '../Footer/Footer';
-import Card from '../Card/Card';
-import image from '../../images/movies/img1.jpg';
-// import Preloader from '../Preloader/Preloader';
+import { filter } from '../../utils/constants';
 
-function Movies({ menuActive, setMenuActive, loggedIn }) {
+function Movies({
+	menuActive,
+	setMenuActive,
+	loggedIn,
+	onSearch,
+	onSaveMovie,
+	onDeleteMovie,
+	setCombinedMoviesArray,
+	serverResponceError,
+}) {
+
+	const [isShortMovies, setIsShortMovies] = useState(false);
+	const [filteredMoviesArray, setFilteredMoviesArray] = useState([]);
+	const [searchString, setSearchString] = useState('');
+	const [numberToRender, setNumberToRender] = useState(1);
+	const [isHideButton, setIsHideButton] = useState(false);
+
+	useEffect(() => {
+		if (searchString !== '') {
+			handleSubmitSearch(searchString, isShortMovies);
+		}
+	}, [isShortMovies]);
+
+	useEffect(() => {
+		onSearch()
+			.then((combinedMoviesArray) => {
+				setCombinedMoviesArray(combinedMoviesArray);
+				const search = JSON.parse(localStorage.getItem('lastSearchString'));
+				const isShort = JSON.parse(localStorage.getItem('isShortMovies'));
+				const lastSearchResultArray = filter(
+					combinedMoviesArray,
+					search,
+					isShort
+				);
+				setFilteredMoviesArray(lastSearchResultArray);
+				setSearchString(search);
+				setIsShortMovies(isShort);
+			})
+			.catch((err) => console.log(err));
+	}, []);
+
+	const handleSubmitSearch = (searchString, isShortMovies) => {
+		setSearchString(searchString);
+		localStorage.setItem('lastSearchString', JSON.stringify(searchString));
+		onSearch()
+			.then((combinedMoviesArray) => {
+				setCombinedMoviesArray(combinedMoviesArray);
+				const filteredMoviesArray = filter(
+					combinedMoviesArray,
+					searchString,
+					isShortMovies
+				);
+				setFilteredMoviesArray(filteredMoviesArray);
+
+				return filteredMoviesArray;
+			})
+			.catch((err) => console.log(err));
+
+		return filteredMoviesArray;
+	};
+
+	const handleCheckBox = (e) => {
+		setIsShortMovies(e.target.checked);
+		localStorage.setItem('isShortMovies', e.target.checked);
+	};
+
+	useEffect(() => {
+		setNumberToRender(() => getMoviesConfig().numberOnStart);
+	}, []);
+
+	const getMoviesConfig = () => {
+		if (window.innerWidth < 768) {
+			return {
+				numberOnStart: 5,
+				numberToAdd: 2,
+			};
+		}
+		if (window.innerWidth < 1280) {
+			return {
+				numberOnStart: 8,
+				numberToAdd: 2,
+			};
+		}
+		if (window.innerWidth >= 1280) {
+			return {
+				numberOnStart: 12,
+				numberToAdd: 3,
+			};
+		}
+	};
+
+	useEffect(() => {
+		if (filteredMoviesArray.length <= numberToRender) {
+			return setIsHideButton(true);
+		}
+		setIsHideButton(false);
+	}, [numberToRender, filteredMoviesArray, isShortMovies]);
+
+	const handleMoreButton = () => {
+		setNumberToRender((prevState) => prevState + getMoviesConfig().numberToAdd);
+	};
 
 	return (
 		<div className="movies">
@@ -19,46 +119,20 @@ function Movies({ menuActive, setMenuActive, loggedIn }) {
 
 			<main>
 
-				<SearchForm />
-
-				<section className="movies__list">
-					{/* <Preloader/> */}
-
-					<ul className="movies__container ul">
-						<Card
-							title="Босиком по галактике"
-							link={image}
-							alt="Превью первой карточки"
-							time="1ч 50м"
-						/>
-						<Card
-							title="Босиком по галактике. Часть вторая"
-							link={image}
-							alt="Превью второй карточки"
-							time="1ч 51м"
-						/>
-						<Card
-							title="Босиком по галактике. Часть последняя"
-							link={image}
-							alt="Превью третьей карточки"
-							time="1ч 52м"
-						/>
-						<Card
-							title="Босиком по галактике. Пролог"
-							link={image}
-							alt="Превью четвертой карточки"
-							time="1ч 53м"
-						/>
-					</ul>
-
-					<div className="movies__more">
-						<button className="movies__more-button button"
-							type="button">
-							Ещё
-						</button>
-					</div>
-
-				</section>
+				<SearchForm
+					onSearch={handleSubmitSearch}
+					isShortMovies={isShortMovies}
+					onCheck={handleCheckBox}
+					searchString={searchString}
+				/>
+				<MoviesCardList
+					serverResponceError={serverResponceError}
+					onSaveMovie={onSaveMovie}
+					onDeleteMovie={onDeleteMovie}
+					filteredMoviesArray={filteredMoviesArray.slice(0, numberToRender)}
+					onClick={handleMoreButton}
+					isHideButton={isHideButton}
+				/>
 
 			</main >
 

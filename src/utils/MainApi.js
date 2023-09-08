@@ -1,6 +1,6 @@
-import { BASE_URL } from "../utils/BaseUrl";
+import { BASE_URL } from "./Url";
 
-class Api {
+class MainApi {
 	constructor(config) {
 		this._url = config.url;
 		this._headers = config.headers;
@@ -44,51 +44,48 @@ class Api {
 		});
 	};
 
-	// sendingCard(userData) {
-	// 	return fetch(`${this._url}/cards`, {
-	// 		method: 'POST',
-	// 		headers: this._headers,
-	// 		body: JSON.stringify(userData),
-	// 	})
-	// 		.then((res) =>
-	// 			this._getResponseData(res)
-	// 		);
-	// };
-
-	_likeCard(cardId) {
-		return this._request(`/cards/${cardId}/likes`, {
-			method: "PUT",
-			headers: this._headers
+	getMovies() {
+		return this._request('/movies/', {
+			method: 'GET',
+			headers: {
+        Authorization: `Bearer ${token}`,
+        'Content-Type': 'application/json',
+      },
 		});
 	};
 
-	_unlikeCard(cardId) {
-		return this._request(`/cards/${cardId}/likes`, {
-			method: "DELETE",
-			headers: this._headers
+	saveMovie(movie) {
+		return this._request('/movies/', {
+			method: 'POST',
+      headers: {
+        Authorization: `Bearer ${token}`,
+        'Content-Type': 'application/json',
+      },
+			body: JSON.stringify({
+				country: movie.country,
+				director: movie.director,
+				duration: movie.duration,
+				year: movie.year,
+				description: movie.description,
+				image: movie.image,
+				trailerLink: movie.trailerLink,
+				thumbnail: movie.thumbnail,
+				movieId: movie.id,
+				nameRU: movie.nameRU,
+				nameEN: movie.nameEN,
+			}),
 		});
 	};
 
-	changeLikeCardStatus(cardId, isLiked) {
-		return isLiked ? this._likeCard(cardId) : this._unlikeCard(cardId)
+	deleteMovie(id) {
+		return this._request(`/movies/${id}/`, {
+			method: 'DELETE',
+			headers: {
+        Authorization: `Bearer ${token}`,
+        'Content-Type': 'application/json',
+      },
+		});
 	};
-
-	// deleteCard(cardId) {
-	// 	return this._request(`/cards/${cardId}`, {
-	// 		method: "DELETE",
-	// 		headers: this._headers
-	// 	});
-	// };
-
-	// updateUserAvatar(data) {
-	// 	return this._request('/users/me/avatar', {
-	// 		method: "PATCH",
-	// 		headers: this._headers,
-	// 		body: JSON.stringify({
-	// 			avatar: data.avatar
-	// 		})
-	// 	})
-	// };
 
 	setToken(token) {
 		this._headers = {
@@ -101,7 +98,7 @@ class Api {
 
 const token = localStorage.getItem("jwt");
 
-const api = new Api({
+const mainApi = new MainApi({
 	url: BASE_URL,
 	headers: {
 		'Authorization': `Bearer ${token}`,
@@ -109,4 +106,4 @@ const api = new Api({
 	}
 });
 
-export default api;
+export default mainApi;

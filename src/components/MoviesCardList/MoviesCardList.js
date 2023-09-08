@@ -1,14 +1,131 @@
+import { useLocation } from 'react-router-dom';
+
 import MoviesCard from "../MoviesCard/MoviesCard";
 
 import './MoviesCardList.css';
 
-function MoviesCardList({}) {
+function MoviesCardList({
+	serverResponceError,
+	onSaveMovie,
+	onDeleteMovie,
+	filteredMoviesArray,
+	onClick,
+	isHideButton,
+	searchString,
+	isShortMovies,
+}) {
 
-	return(
-		<div className="movies-card-list">
-			MOVIES CARD LIST
-			<MoviesCard />
-		</div>
+	const location = useLocation();
+	const lastSearchString = JSON.parse(localStorage.getItem('lastSearchString'))
+
+	const getSearchErrorText = () => {
+		if (location.pathname === '/movies' && serverResponceError !== '') {
+			return serverResponceError;
+		}
+
+		if (
+			location.pathname === '/movies' &&
+			filteredMoviesArray.length === 0 &&
+			lastSearchString === null
+		) {
+			return 'Нужно ввести ключевое слово';
+		}
+
+		if (location.pathname === '/movies' && lastSearchString !== '') {
+			return 'Ничего не найдено';
+		}
+
+		if (location.pathname === '/saved-movies' && searchString !== '') {
+			return 'Ничего не найдено';
+		}
+
+		if (
+			location.pathname === '/saved-movies' &&
+			filteredMoviesArray.length === 0 &&
+			isShortMovies
+		) {
+			return 'Пока нет сохранённых короткометражных фильмов';
+		}
+
+		if (
+			location.pathname === '/saved-movies' &&
+			filteredMoviesArray.length === 0
+		) {
+			return 'Пока нет сохранённых фильмов';
+		}
+
+		return;
+	};
+
+	return (
+		<>
+			{filteredMoviesArray?.length === 0 ? (
+				<p className='search-error-text'>{getSearchErrorText()}</p>
+			) : null}
+			<ul className='movies__container ul'>
+				{filteredMoviesArray.map((movie, i) => {
+					return (
+						<MoviesCard
+							key={movie.id}
+							movie={movie}
+							onSaveMovie={onSaveMovie}
+							onDeleteMovie={onDeleteMovie}
+						/>
+					);
+				})}
+			</ul>
+
+			{location.pathname === '/movies' && filteredMoviesArray.length !== 0 && !isHideButton ? (
+				<div className='movies__more'>
+					<button
+						className='movies__more-button button'
+						type='button'
+						onClick={onClick}
+					>
+						Ещё
+					</button>
+				</div>
+			) : null}
+		</>
+		// <section className="movies__list">
+		// 	{/* <Preloader/> */}
+
+		// 	<ul className="movies__container ul">
+		// 		<MoviesCard
+		// 			title="Босиком по галактике"
+		// 			link={image}
+		// 			alt="Превью первой карточки"
+		// 			time="1ч 50м"
+		// 		/>
+		// 		<MoviesCard
+		// 			title="Босиком по галактике. Часть вторая"
+		// 			link={image}
+		// 			alt="Превью второй карточки"
+		// 			time="1ч 51м"
+		// 		/>
+		// 		<MoviesCard
+		// 			title="Босиком по галактике. Часть последняя"
+		// 			link={image}
+		// 			alt="Превью третьей карточки"
+		// 			time="1ч 52м"
+		// 		/>
+		// 		<MoviesCard
+		// 			title="Босиком по галактике. Пролог"
+		// 			link={image}
+		// 			alt="Превью четвертой карточки"
+		// 			time="1ч 53м"
+		// 		/>
+		// 	</ul>
+
+		// 	<div className="movies__more">
+		// 		<button className="movies__more-button button"
+		// 			type="button">
+		// 			Ещё
+		// 		</button>
+		// 	</div>
+
+		// </section>
+
 	);
 };
 

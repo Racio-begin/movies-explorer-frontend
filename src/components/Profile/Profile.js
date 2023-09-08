@@ -12,7 +12,12 @@ import useFormWithValidation from '../../hooks/useFormWithValidation';
 
 import './Profile.css';
 
-function Profile({ loggedIn, onUpdateUser, onSignOut, isLocked }) {
+function Profile({
+	loggedIn,
+	onUpdateUser,
+	onSignOut,
+	isLocked,
+}) {
 
 	const currentUser = useContext(CurrentUserContext);
 
@@ -32,7 +37,7 @@ function Profile({ loggedIn, onUpdateUser, onSignOut, isLocked }) {
 				setSuccessMessage('Профиль успешно обновлен!');
 			})
 			.catch((err) => {
-				setErrorMessage('Неверно введены данные. Попробуйте ещё раз');
+				setErrorMessage('При обновлении профиля произошла ошибка.');
 			})
 	};
 

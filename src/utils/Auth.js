@@ -1,4 +1,4 @@
-import { BASE_URL } from "../utils/BaseUrl";
+import { BASE_URL } from "../utils/Url";
 
 function getResponseData(res) {
 	if (res.ok) {
