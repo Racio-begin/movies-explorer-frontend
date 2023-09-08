@@ -60,9 +60,9 @@ function MoviesCardList({
 	return (
 		<>
 			{filteredMoviesArray?.length === 0 ? (
-				<p className="movies__error-text">{getSearchErrorText()}</p>
+				<p className="movies-card-list__error-text">{getSearchErrorText()}</p>
 			) : null}
-			<ul className="movies__container ul">
+			<ul className="movies-card-list__container ul">
 				{filteredMoviesArray.map((movie, i) => {
 					return (
 						<MoviesCard
@@ -76,9 +76,9 @@ function MoviesCardList({
 			</ul>
 
 			{location.pathname === '/movies' && filteredMoviesArray.length !== 0 && !isHideButton ? (
-				<div className="movies__more">
+				<div className="movies-card-list__more">
 					<button
-						className="movies__more-button button"
+						className="movies-card-list__more-button button"
 						type="button"
 						onClick={onClick}
 					>
