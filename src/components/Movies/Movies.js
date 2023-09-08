@@ -6,6 +6,11 @@ import MoviesCardList from '../MoviesCardList/MoviesCardList';
 import Footer from '../Footer/Footer';
 import filter from '../../utils/filter';
 
+import {
+	WINDOW_WIDTH_1280,
+	WINDOW_WIDTH_768,
+} from '../../utils/constants';
+
 function Movies({
 	menuActive,
 	setMenuActive,
@@ -80,19 +85,19 @@ function Movies({
 	}, []);
 
 	const getMoviesConfig = () => {
-		if (window.innerWidth < 768) {
+		if (window.innerWidth < WINDOW_WIDTH_768) {
 			return {
 				numberOnStart: 5,
 				numberToAdd: 2,
 			};
 		}
-		if (window.innerWidth < 1280) {
+		if (window.innerWidth < WINDOW_WIDTH_1280) {
 			return {
 				numberOnStart: 8,
 				numberToAdd: 2,
 			};
 		}
-		if (window.innerWidth >= 1280) {
+		if (window.innerWidth >= WINDOW_WIDTH_1280) {
 			return {
 				numberOnStart: 12,
 				numberToAdd: 3,
