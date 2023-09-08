@@ -120,7 +120,7 @@ function Movies({
 				loggedIn={loggedIn}
 			/>
 
-			<main>
+			<main className="movies__wrapper">
 				<SearchForm
 					onSearch={handleSubmitSearch}
 					isShortMovies={isShortMovies}

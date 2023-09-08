@@ -2,12 +2,17 @@
 	margin: 0 auto;
 	box-sizing: border-box;
 	min-height: 100vh;
+	/* min-height: 100%; */
 	display: flex;
 	flex-direction: column;
 }
 
 .movies__list {
 	padding: 0 70px 0;
+}
+
+.movies__wrapper {
+	flex: 1 1 auto;
 }
 
 @media screen and (max-width: 1070px) {

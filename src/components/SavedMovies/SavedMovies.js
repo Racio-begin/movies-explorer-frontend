@@ -61,7 +61,7 @@ function SavedMovies({
 				loggedIn={loggedIn}
 			/>
 
-			<main>
+			<main className="movies__wrapper">
 				<SearchForm
 					onSearch={handleSubmitSearch}
 					onCheck={handleCheckBox}
