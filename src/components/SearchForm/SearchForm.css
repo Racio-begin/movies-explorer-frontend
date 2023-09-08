@@ -45,6 +45,12 @@
 	padding: 0;
 }
 
+.search__find-button:disabled {
+	cursor: auto;
+	transform: none;
+	opacity: .5;
+}
+
 .search__filter {
 	margin-top: 28px;
 	display: flex;
