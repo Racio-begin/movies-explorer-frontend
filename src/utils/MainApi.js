@@ -16,16 +16,8 @@ class MainApi {
 		if (res.ok) {
 			return res.json();
 		};
-		// return Promise.reject(`Ошибка: ${res.status}`);
 		return Promise.reject(res.status);
 	};
-
-	// getInitialCards() {
-	// 	return this._request('/cards', {
-	// 		method: "GET",
-	// 		headers: this._headers
-	// 	});
-	// };
 
 	getUserData() {
 		return this._request('/users/me', {
