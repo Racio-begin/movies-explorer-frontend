@@ -10,7 +10,7 @@ import useFormWithValidation from '../../hooks/useFormWithValidation';
 
 function Register({
 	onRegister,
-	isLocked,
+	isLockedButton,
 	serverResponseError,
 	setServerResponseError,
 }) {
@@ -47,7 +47,7 @@ function Register({
 				linkText=" Войти"
 				onSubmit={handleRegisterSubmit}
 				isValid={isValid}
-				isLocked={isLocked}
+				isLockedButton={isLockedButton}
 				serverResponseError={serverResponseError}
 			>
 

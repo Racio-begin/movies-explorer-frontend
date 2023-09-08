@@ -10,7 +10,7 @@ function Form({
 	linkText,
 	onSubmit,
 	isValid,
-	isLocked,
+	isLockedButton,
 	serverResponseError,
 	...props
 }) {
@@ -35,7 +35,7 @@ function Form({
 				<button
 					className="form__button-submit button "
 					type="submit"
-					disabled={!isValid || isLocked}
+					disabled={!isValid || isLockedButton}
 				>
 					{buttonText}
 				</button>

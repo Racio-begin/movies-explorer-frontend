@@ -10,7 +10,7 @@ import useFormWithValidation from '../../hooks/useFormWithValidation';
 
 function Login({
 	onLogin,
-	isLocked,
+	isLockedButton,
 	serverResponseError,
 	setServerResponseError,
 }) {
@@ -46,7 +46,7 @@ function Login({
 				linkText=" Регистрация"
 				onSubmit={handleLoginSubmit}
 				isValid={isValid}
-				isLocked={isLocked}
+				isLockedButton={isLockedButton}
 				serverResponseError={serverResponseError}
 			>
 

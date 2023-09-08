@@ -48,7 +48,7 @@ function App() {
 
 	const [currentUser, setCurrentUser] = useState({});
 
-	const [isLocked, setIsLocked] = useState(false);
+	const [isLockedButton, setIsLockedButton] = useState(false);
 
 	const [serverResponseError, setServerResponseError] = useState('');
 
@@ -75,14 +75,14 @@ function App() {
 	}, []);
 
 	const handleUpdateUser = (name, email) => {
-		setIsLocked(true);
+		setIsLockedButton(true);
 		return (
 			mainApi.updateUserData(name, email)
 				.then((currentUser) => {
 					setCurrentUser(currentUser);
 				})
 				.catch((err) => console.log(err))
-				.finally(() => setIsLocked(false))
+				.finally(() => setIsLockedButton(false))
 		);
 	};
 
@@ -285,7 +285,7 @@ function App() {
 							loggedIn={loggedIn}
 							onUpdateUser={handleUpdateUser}
 							onSignOut={handleSignOut}
-							isLocked={isLocked}
+							isLockedButton={isLockedButton}
 						/>}
 					/>
 

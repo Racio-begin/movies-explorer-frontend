@@ -20,7 +20,7 @@ function Profile({
 	loggedIn,
 	onUpdateUser,
 	onSignOut,
-	isLocked,
+	isLockedButton,
 }) {
 
 	const currentUser = useContext(CurrentUserContext);
@@ -156,7 +156,7 @@ function Profile({
 									className='profile__submit-button button'
 									type='submit'
 									onClick={() => { }}
-									disabled={!isValid || errorMessage || isLocked}
+									disabled={!isValid || errorMessage || isLockedButton}
 								>
 									Сохранить
 								</button>
