@@ -16,10 +16,10 @@ function MoviesCardList({
 }) {
 
 	const location = useLocation();
-	const lastSearchString = JSON.parse(localStorage.getItem('lastSearchString'))
+	const lastSearchString = JSON.parse(localStorage.getItem("lastSearchString"))
 
 	const getSearchErrorText = () => {
-		if (location.pathname === '/movies' && serverResponceError !== '') {
+		if (location.pathname === '/movies' && serverResponceError !== "") {
 			return serverResponceError;
 		}
 
@@ -28,15 +28,15 @@ function MoviesCardList({
 			filteredMoviesArray.length === 0 &&
 			lastSearchString === null
 		) {
-			return 'Нужно ввести ключевое слово';
+			return "Нужно ввести ключевое слово";
 		}
 
 		if (location.pathname === '/movies' && lastSearchString !== '') {
-			return 'Ничего не найдено';
+			return "Ничего не найдено";
 		}
 
 		if (location.pathname === '/saved-movies' && searchString !== '') {
-			return 'Ничего не найдено';
+			return "Ничего не найдено";
 		}
 
 		if (
@@ -44,14 +44,14 @@ function MoviesCardList({
 			filteredMoviesArray.length === 0 &&
 			isShortMovies
 		) {
-			return 'Пока нет сохранённых короткометражных фильмов';
+			return "Пока нет сохранённых короткометражных фильмов";
 		}
 
 		if (
 			location.pathname === '/saved-movies' &&
 			filteredMoviesArray.length === 0
 		) {
-			return 'Пока нет сохранённых фильмов';
+			return "Пока нет сохранённых фильмов";
 		}
 
 		return;
@@ -60,9 +60,9 @@ function MoviesCardList({
 	return (
 		<>
 			{filteredMoviesArray?.length === 0 ? (
-				<p className='movies__error-text'>{getSearchErrorText()}</p>
+				<p className="movies__error-text">{getSearchErrorText()}</p>
 			) : null}
-			<ul className='movies__container ul'>
+			<ul className="movies__container ul">
 				{filteredMoviesArray.map((movie, i) => {
 					return (
 						<MoviesCard
@@ -76,10 +76,10 @@ function MoviesCardList({
 			</ul>
 
 			{location.pathname === '/movies' && filteredMoviesArray.length !== 0 && !isHideButton ? (
-				<div className='movies__more'>
+				<div className="movies__more">
 					<button
-						className='movies__more-button button'
-						type='button'
+						className="movies__more-button button"
+						type="button"
 						onClick={onClick}
 					>
 						Ещё
@@ -87,46 +87,8 @@ function MoviesCardList({
 				</div>
 			) : null}
 		</>
-		// <section className="movies__list">
-		// 	{/* <Preloader/> */}
-
-		// 	<ul className="movies__container ul">
-		// 		<MoviesCard
-		// 			title="Босиком по галактике"
-		// 			link={image}
-		// 			alt="Превью первой карточки"
-		// 			time="1ч 50м"
-		// 		/>
-		// 		<MoviesCard
-		// 			title="Босиком по галактике. Часть вторая"
-		// 			link={image}
-		// 			alt="Превью второй карточки"
-		// 			time="1ч 51м"
-		// 		/>
-		// 		<MoviesCard
-		// 			title="Босиком по галактике. Часть последняя"
-		// 			link={image}
-		// 			alt="Превью третьей карточки"
-		// 			time="1ч 52м"
-		// 		/>
-		// 		<MoviesCard
-		// 			title="Босиком по галактике. Пролог"
-		// 			link={image}
-		// 			alt="Превью четвертой карточки"
-		// 			time="1ч 53м"
-		// 		/>
-		// 	</ul>
-
-		// 	<div className="movies__more">
-		// 		<button className="movies__more-button button"
-		// 			type="button">
-		// 			Ещё
-		// 		</button>
-		// 	</div>
-
-		// </section>
-
 	);
+
 };
 
 export default MoviesCardList;
