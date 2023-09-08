@@ -39,7 +39,7 @@ function SearchForm({
 		<section className="search">
 			<form
 				// className='search-form__form'
-				name='searchForm'
+				name="searchForm"
 				noValidate
 				onSubmit={handleSubmit}
 			>
@@ -47,9 +47,8 @@ function SearchForm({
 				<div className="search__container">
 					<input
 						className="search__input"
-						name='searchInput'
+						name="searchInput"
 						type="search"
-						// type="text"
 						placeholder="Фильм"
 						required={true}
 						onChange={handleChange}
@@ -62,27 +61,20 @@ function SearchForm({
 					/>
 				</div>
 
-				{/* <div className="search__filter">
-					<input
-						className="search__check-box button"
-						type="checkbox"
-					/>
-					<p className="search__span">Короткометражки</p>
-				</div> */}
 				<label
-					className='search__filter'
-					htmlFor='checkbox'>
+					className="search__filter"
+					htmlFor="checkbox">
 
 					<input
-						className='search__check-box button'
-						id='checkbox'
-						name='checkbox'
-						type='checkbox'
+						className="search__check-box button"
+						id="checkbox"
+						name="checkbox"
+						type="checkbox"
 						checked={isShortMovies}
 						onChange={handleCheck}
 					/>
 
-					<span className='search__span'>Короткометражки</span>
+					<span className="search__span">Короткометражки</span>
 				</label>
 
 			</form>
