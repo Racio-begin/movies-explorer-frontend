@@ -60,7 +60,7 @@ function MoviesCardList({
 	return (
 		<>
 			{filteredMoviesArray?.length === 0 ? (
-				<p className='search-error-text'>{getSearchErrorText()}</p>
+				<p className='movies__error-text'>{getSearchErrorText()}</p>
 			) : null}
 			<ul className='movies__container ul'>
 				{filteredMoviesArray.map((movie, i) => {

@@ -35,7 +35,7 @@ function MoviesCard({
 	};
 
 	const handleBtnClick = () => {
-		if (location.pathname === '/saved-movies') {
+		if (location.pathname === "/saved-movies") {
 			return onDeleteMovie(movie._id);
 		}
 
@@ -47,14 +47,14 @@ function MoviesCard({
 	};
 
 	const getBtnClassName = () => {
-		if (location.pathname === '/saved-movies') {
-			return 'card__delete';
+		if (location.pathname === "/saved-movies") {
+			return "card__delete";
 		}
 
 		if (checkIsMovieSaved())
-			return 'card__like_active';
+			return "card__like_active";
 
-		return 'card__like';
+		return "card__like";
 	};
 
 	const handleImageLoading = (e) => {
@@ -70,15 +70,15 @@ function MoviesCard({
 					alt={alt}
 				/> */}
 				<Link
-					className='movies-card__link'
+					className="movies-card__link"
 					to={movie.trailerLink}
-					target='_blank'
+					target="_blank"
 				>
 					{isLoading && <Preloader />}
 					<img
 						className={`card__image ${isLoading ? 'card__image_inactive' : ''}`}
 						src={movie.image}
-						alt='Rарточка с постером фильма'
+						alt="Rарточка с постером фильма"
 						onLoad={handleImageLoading}
 					/>
 				</Link>
