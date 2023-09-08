@@ -30,8 +30,10 @@ function Profile({
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
+
 		const name = values.name;
 		const email = values.email;
+		
 		onUpdateUser(name, email)
 			.then(() => {
 				setSuccessMessage('Профиль успешно обновлен!');

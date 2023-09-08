@@ -1,58 +1,80 @@
+import { useState, useEffect } from 'react';
 import './SavedMovies.css';
 import '../Movies/Movies';
 import Header from '../Header/Header';
 import SearchForm from '../SearchForm/SearchForm';
+import MoviesCardList from '../MoviesCardList/MoviesCardList';
 import Footer from '../Footer/Footer';
-import image from '../../images/movies/img1.jpg';
+import { filter } from '../../utils/constants';
 
-function SavedMovies({ loggedIn }) {
+function SavedMovies({
+	menuActive,
+	setMenuActive,
+	loggedIn,
+	onSearch,
+	onDeleteMovie,
+	combinedMoviesArray,
+	setCombinedMoviesArray,
+}) {
+	const [isShortMovies, setIsShortMovies] = useState(false);
+
+	const [filteredMoviesArray, setFilteredMoviesArray] = useState([]);
+
+	const [searchString, setSearchString] = useState('');
+
+	useEffect(() => {
+		onSearch()
+			.then((combinedMoviesArray) => {
+				setCombinedMoviesArray(combinedMoviesArray);
+			})
+			.catch((err) => console.log(err));
+	}, []);
+
+	useEffect(() => {
+		handleSubmitSearch(searchString, isShortMovies);
+	}, [isShortMovies, combinedMoviesArray]);
+
+	const handleSubmitSearch = (searchString, isShortMovies) => {
+		setSearchString(searchString);
+		const onlySavedMoviesArray = combinedMoviesArray.filter(
+			(movie) => movie._id !== ''
+		);
+		const filteredMoviesArray = filter(
+			onlySavedMoviesArray,
+			searchString,
+			isShortMovies
+		);
+		setFilteredMoviesArray(filteredMoviesArray);
+		return filteredMoviesArray;
+	};
+
+	const handleCheckBox = (e) => {
+		setIsShortMovies(e.target.checked);
+	};
 
 	return (
 		<div className="movies">
 
 			<Header
+				menuActive={menuActive}
+				setMenuActive={setMenuActive}
 				loggedIn={loggedIn}
 			/>
 
 			<main>
-
-				<SearchForm />
-
-				<section className="movies__list">
-
-					<ul className="movies__container ul">
-						<li className="card">
-							<div className="card__image-container">
-								<img
-									className="card__image"
-									src={image}
-									alt="Превью соохраненной карточки"
-								/>
-								<button
-									className="card__delete button"
-									type="submit"
-								/>
-							</div>
-							<div className="card__title-container">
-								<h3 className="card__title" >
-									33 слова про дизайнеров
-								</h3>
-								<div className="card__time">
-									33м
-								</div>
-							</div>
-						</li>
-					</ul>
-
-					<div className="movies__more">
-						<button
-							className="movies__more-button button"
-							type="button">
-							Ещё
-						</button>
-					</div>
-				</section>
-			</main>
+				<SearchForm
+					onSearch={handleSubmitSearch}
+					isShortMovies={isShortMovies}
+					onCheck={handleCheckBox}
+					searchString={searchString}
+				/>
+				<MoviesCardList
+					isShortMovies={isShortMovies}
+					onDeleteMovie={onDeleteMovie}
+					filteredMoviesArray={filteredMoviesArray}
+					searchString={searchString}
+				/>
+			</main >
 
 			<Footer />
 

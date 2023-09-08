@@ -34,8 +34,22 @@ function Navigation({ loggedIn, menuActive, setMenuActive }) {
 			return (
 				<>
 					<nav className="navigation-navbar">
-						<Link className="navigation-link navigation-link_active link" to="/movies">Фильмы</Link>
-						<Link className="navigation-link link" to="/saved-movies">Сохранённые фильмы</Link>
+						<Link
+							className="navigation-link link"
+							// className={({ isActive }) =>
+							// 	`navigation-link link ${isActive && 'navigation-link_active'}`
+							// }
+							to="/movies">
+							Фильмы
+						</Link>
+						<Link
+							className="navigation-link link"
+							// className={({ isActive }) =>
+							// 	`navigation-link link ${isActive && 'navigation-link_active'}`
+							// }
+							to="/saved-movies">
+							Сохранённые фильмы
+						</Link>
 					</nav>
 
 					<ProfileButton />

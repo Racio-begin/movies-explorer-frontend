@@ -47,12 +47,13 @@ function SearchForm({
 				<div className="search__container">
 					<input
 						className="search__input"
+						// name='searchInput'
 						// type="search"
 						type="text"
 						placeholder="Фильм"
 						required={true}
 						onChange={handleChange}
-					// value={values.searchInput}
+						value={values.searchInput}
 					/>
 					<button
 						className="search__find-button button"
@@ -80,7 +81,7 @@ function SearchForm({
 						checked={isShortMovies}
 						onChange={handleCheck}
 					/>
-					
+
 					<span className='search__span'>Короткометражки</span>
 				</label>
 

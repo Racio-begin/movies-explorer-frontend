@@ -18,10 +18,10 @@ function Movies({
 }) {
 
 	const [isShortMovies, setIsShortMovies] = useState(false);
-	const [filteredMoviesArray, setFilteredMoviesArray] = useState([]);
-	const [searchString, setSearchString] = useState('');
-	const [numberToRender, setNumberToRender] = useState(1);
 	const [isHideButton, setIsHideButton] = useState(false);
+	const [searchString, setSearchString] = useState('');
+	const [filteredMoviesArray, setFilteredMoviesArray] = useState([]);
+	const [numberToRender, setNumberToRender] = useState(1);
 
 	useEffect(() => {
 		if (searchString !== '') {
@@ -118,7 +118,6 @@ function Movies({
 			/>
 
 			<main>
-
 				<SearchForm
 					onSearch={handleSubmitSearch}
 					isShortMovies={isShortMovies}
@@ -133,7 +132,6 @@ function Movies({
 					onClick={handleMoreButton}
 					isHideButton={isHideButton}
 				/>
-
 			</main >
 
 			<Footer />
