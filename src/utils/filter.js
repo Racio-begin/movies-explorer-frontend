@@ -1,4 +1,4 @@
-export const filter = (movies, search, isShort) => {
+const filter = (movies, search, isShort) => {
   return movies.filter((movie) => {
     const matchedSearch =
       movie.nameRU.trim().toLowerCase().includes(search.trim().toLowerCase()) ||
@@ -7,3 +7,5 @@ export const filter = (movies, search, isShort) => {
     return isShort ? movie.duration <= 40 && matchedSearch : matchedSearch;
   });
 };
+
+export default filter;
