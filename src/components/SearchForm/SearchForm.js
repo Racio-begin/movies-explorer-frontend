@@ -38,7 +38,7 @@ function SearchForm({
 	return (
 		<section className="search">
 			<form
-				// className='search-form__form'
+				className="search__form"
 				name="searchForm"
 				noValidate
 				onSubmit={handleSubmit}

@@ -1,6 +1,9 @@
 .search {
-	height: 217px;
 	padding: 0 70px 0;
+}
+
+.search__form {
+	height: 217px;
 	margin-bottom: 10px;
 	border-bottom: 1px solid #424242;
 }
@@ -61,45 +64,45 @@
 
 .search__check-box {
 	width: 34px;
-  height: 14px;
-  border: none;
-  border-radius: 14px;
-  outline: none;
+	height: 14px;
+	border: none;
+	border-radius: 14px;
+	outline: none;
 	background: #C4C4C4;
-  position: relative;
-  appearance: none;
+	position: relative;
+	appearance: none;
 	cursor: pointer;
 }
 
 .search__check-box::after {
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  position: absolute;
-  top: 2px;
-  left: 2px;
-  box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.08);
-  content: "";
-  transition: 0.3s ease;
-  background: #fff;
+	width: 10px;
+	height: 10px;
+	border-radius: 50%;
+	position: absolute;
+	top: 2px;
+	left: 2px;
+	box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.08);
+	content: "";
+	transition: 0.3s ease;
+	background: #fff;
 }
 
 .search__check-box:checked {
-  background: #3DDC84;
+	background: #3DDC84;
 }
 
 .search__check-box:checked::after {
-  width: 10px;
-  height: 10px;
-  top: 2px;
-  right: 2px;
-  position: absolute;
-  box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.08);
-  content: "";
-  border-radius: 50%;
-  transition: 0.3s ease;
-  transform: translate(20px);
-  background: #fff;
+	width: 10px;
+	height: 10px;
+	top: 2px;
+	right: 2px;
+	position: absolute;
+	box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.08);
+	content: "";
+	border-radius: 50%;
+	transition: 0.3s ease;
+	transform: translate(20px);
+	background: #fff;
 }
 
 .search__span {
