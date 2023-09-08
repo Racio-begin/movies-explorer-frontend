@@ -44,7 +44,6 @@ function App() {
 
 	//* Стейты *//
 
-	// Состояние залогирования пользователя
 	const [loggedIn, setLoggedIn] = useState(!!token);
 
 	const [currentUser, setCurrentUser] = useState({});

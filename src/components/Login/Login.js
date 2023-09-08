@@ -4,7 +4,7 @@ import Form from '../Form/Form';
 import FormLabel from '../FormLabel/FormLabel';
 
 import { REGEX_EMAIL } from '../../utils/regex';
-import { EMAIL_TITLE_TEXT } from '../../utils/constants';
+import { EMAIL_INFO_MESSAGE } from '../../utils/informMessages';
 
 import useFormWithValidation from '../../hooks/useFormWithValidation';
 
@@ -62,7 +62,7 @@ function Login({
 					required={true}
 					spanError={errors.email}
 					regex={REGEX_EMAIL}
-					titleText={EMAIL_TITLE_TEXT}
+					titleText={EMAIL_INFO_MESSAGE}
 					onChange={handleChangeInput}
 				/>
 

@@ -6,7 +6,7 @@ import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 import Header from '../Header/Header';
 
 import { REGEX_EMAIL } from '../../utils/regex';
-import { EMAIL_TITLE_TEXT } from '../../utils/constants';
+import { EMAIL_INFO_MESSAGE } from '../../utils/informMessages';
 import {
 	UPDATE_SUCCESS_MESSAGE,
 	USER_BAD_DATA_ERROR,
@@ -134,7 +134,7 @@ function Profile({
 							required={true}
 							value={values.email || ''}
 							regex={REGEX_EMAIL}
-							titleText={EMAIL_TITLE_TEXT}
+							titleText={EMAIL_INFO_MESSAGE}
 							onChange={handleChange}
 							onFocus={handleFocus}
 						/>
