@@ -3,8 +3,6 @@ import {
 	Route,
 	Routes,
 	useNavigate,
-	// Navigate,
-	// useLocation,
 } from 'react-router-dom';
 
 import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
@@ -40,7 +38,6 @@ function App() {
 	//* Стейты *//
 
 	// Состояние залогирования пользователя
-	// const [loggedIn, setLoggedIn] = useState(true);
 	const [loggedIn, setLoggedIn] = useState(!!token);
 
 	const [currentUser, setCurrentUser] = useState({});
@@ -107,26 +104,6 @@ function App() {
 			})
 	};
 
-	// const handleCheckToken = () => {
-	// 	if (token) {
-	// 		Auth.checkToken(token)
-	// 			.then((res) => {
-	// 				if (!res) {
-	// 					return
-	// 				};
-
-	// 				setLoggedIn(true);
-	// 				mainApi.setToken(token);
-	// 				setUserData({ name: res.name, email: res.email });
-	// 				// navigate("/movies", { replace: true });
-	// 			})
-	// 			.catch(() => {
-	// 				setLoggedIn(false)
-	// 				console.error(`Проверить jwt-токен на валидность, App`);
-	// 			})
-	// 	};
-	// };
-
 	function handleSignOut() {
 		localStorage.removeItem('jwt');
 		localStorage.removeItem('combinedMoviesArray');
@@ -151,7 +128,6 @@ function App() {
 		])
 			.then(([initialMovies, savedMovies]) => {
 				const combinedMoviesArray = initialMovies.map((initialMovie) => {
-					// const savedMovie = savedMovies.data.find((savedMovieItem) => {
 						const savedMovie = savedMovies.find((savedMovieItem) => {
 						return savedMovieItem.movieId === initialMovie.id;
 					});
@@ -187,10 +163,6 @@ function App() {
 			.saveMovie(movie)
 			.then((savedMovie) => {
 				const updatedMoviesArray = combinedMoviesArray.map((serverMovie) => {
-					// if (serverMovie.id === savedMovie.data.movieId) {
-					// 	serverMovie._id = savedMovie.data._id;
-					// 	serverMovie.thumbnail = savedMovie.data.thumbnail;
-					// 	serverMovie.image = savedMovie.data.image;
 					if (serverMovie.id === savedMovie.movieId) {
 						serverMovie._id = savedMovie._id;
 						serverMovie.thumbnail = savedMovie.thumbnail;
@@ -212,8 +184,6 @@ function App() {
 			.deleteMovie(id)
 			.then((deletedMovie) => {
 				const updatedMoviesArray = combinedMoviesArray.map((serverMovie) => {
-					// if (serverMovie._id === deletedMovie.data._id) {
-					// 	serverMovie._id = '';
 					if (serverMovie._id === deletedMovie._id) {
 						serverMovie._id = '';
 					}
