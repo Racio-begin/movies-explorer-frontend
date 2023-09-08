@@ -72,7 +72,7 @@ function App() {
 					console.error(`Получение информации профиля, App`);
 				})
 		};
-	}, []);
+	}, [loggedIn]);
 
 	const handleUpdateUser = (name, email) => {
 		setIsLockedButton(true);

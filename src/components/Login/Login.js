@@ -61,7 +61,7 @@ function Login({
 					maxLength={40}
 					required={true}
 					spanError={errors.email}
-					regex={REGEX_EMAIL}
+					pattern={REGEX_EMAIL}
 					titleText={EMAIL_INFO_MESSAGE}
 					onChange={handleChangeInput}
 				/>

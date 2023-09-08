@@ -133,10 +133,11 @@ function Profile({
 							name="email"
 							required={true}
 							value={values.email || ''}
-							regex={REGEX_EMAIL}
+							pattern={REGEX_EMAIL}
 							titleText={EMAIL_INFO_MESSAGE}
 							onChange={handleChange}
 							onFocus={handleFocus}
+							// titletext={EMAIL_INFO_MESSAGE}
 						/>
 
 
