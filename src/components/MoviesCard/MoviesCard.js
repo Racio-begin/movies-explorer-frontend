@@ -3,7 +3,10 @@ import {
 	Link,
 	useLocation,
 } from 'react-router-dom';
+
 import Preloader from '../Preloader/Preloader';
+
+import { SHORT_MOVIE_DURATION } from '../../utils/constants';
 
 import './MoviesCard.css';
 
@@ -25,7 +28,7 @@ function MoviesCard({
 	const [isLoading, setIsLoading] = useState(true);
 
 	const getMovieDuration = () => {
-		if (movie?.duration <= 40)
+		if (movie?.duration <= SHORT_MOVIE_DURATION)
 			return `${movie?.duration}м`;
 
 		const hours = movie?.duration / 60;
