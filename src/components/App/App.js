@@ -126,9 +126,9 @@ function App() {
 
 	function handleSignOut() {
 		localStorage.removeItem('jwt');
+		localStorage.removeItem('lastSearchString');
 		localStorage.removeItem('combinedMoviesArray');
 		localStorage.removeItem('isShortMovies');
-		localStorage.removeItem('lastSearchString');
 		setLoggedIn(false);
 		navigate('/');
 	};

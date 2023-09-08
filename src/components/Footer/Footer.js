@@ -1,5 +1,7 @@
 import './Footer.css';
 
+import { MY_GITHUB } from '../../utils/links';
+
 function Footer() {
 
 	const setCurrentYear = () => {
@@ -35,7 +37,7 @@ function Footer() {
 					<li>
 						<a
 							className="footer__link footer__text-style link"
-							href="https://github.com/Racio-begin"
+							href={MY_GITHUB}
 							lang="en"
 							target="_blank"
 							rel="noreferrer"
