@@ -47,9 +47,9 @@ function SearchForm({
 				<div className="search__container">
 					<input
 						className="search__input"
-						// name='searchInput'
-						// type="search"
-						type="text"
+						name='searchInput'
+						type="search"
+						// type="text"
 						placeholder="Фильм"
 						required={true}
 						onChange={handleChange}
