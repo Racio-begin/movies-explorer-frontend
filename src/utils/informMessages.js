@@ -1,7 +1,9 @@
 //* Информационные сообщения *//
 const UPDATE_SUCCESS_MESSAGE = 'Профиль успешно обновлен!';
 const MOVIES_NOT_FOUND_MESSAGE = 'По вашему запросу совпадений не найдено.';
-const EMPTY_INPUT_MESSAGE = 'Пожалуйста, введите ключевое слово поиска.';
+const EMPTY_INPUT_MESSAGE = 'Введите ключевое слово поиска.';
+const EMPTY_SAVED_SHORTS_MOVIES = 'У вас еще нет сохранённых короткометражных фильмов';
+const EMPTY_SAVED_MOVIES = 'У вас еще нет сохранённых фильмов';
 
 //* Сообщения об ошибке *//
 const SIGNIN_BAD_DATA_MESSAGE = 'Вы ввели неправильный e-mail или пароль.';
@@ -26,6 +28,8 @@ export {
 	UPDATE_SUCCESS_MESSAGE,
 	MOVIES_NOT_FOUND_MESSAGE,
 	EMPTY_INPUT_MESSAGE,
+	EMPTY_SAVED_SHORTS_MOVIES,
+	EMPTY_SAVED_MOVIES,
 	SERVER_ERROR_500,
 	SERVER_ERROR_404
 };

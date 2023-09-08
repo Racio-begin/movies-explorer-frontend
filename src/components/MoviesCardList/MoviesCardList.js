@@ -4,6 +4,13 @@ import MoviesCard from "../MoviesCard/MoviesCard";
 
 import './MoviesCardList.css';
 
+import {
+	EMPTY_INPUT_MESSAGE,
+	MOVIES_NOT_FOUND_MESSAGE,
+	EMPTY_SAVED_SHORTS_MOVIES,
+	EMPTY_SAVED_MOVIES,
+} from '../../utils/informMessages';
+
 function MoviesCardList({
 	serverResponseError,
 	onSaveMovie,
@@ -29,15 +36,15 @@ function MoviesCardList({
 			filteredMoviesArray.length === 0 &&
 			lastSearchString === null
 		) {
-			return "Нужно ввести ключевое слово";
+			return EMPTY_INPUT_MESSAGE;
 		};
 
 		if (location.pathname === '/movies' && lastSearchString !== '') {
-			return "Ничего не найдено";
+			return MOVIES_NOT_FOUND_MESSAGE;
 		};
 
 		if (location.pathname === '/saved-movies' && searchString !== '') {
-			return "Ничего не найдено";
+			return MOVIES_NOT_FOUND_MESSAGE;
 		};
 
 		if (
@@ -45,14 +52,14 @@ function MoviesCardList({
 			filteredMoviesArray.length === 0 &&
 			isShortMovies
 		) {
-			return "Пока нет сохранённых короткометражных фильмов";
+			return EMPTY_SAVED_SHORTS_MOVIES;
 		};
 
 		if (
 			location.pathname === '/saved-movies' &&
 			filteredMoviesArray.length === 0
 		) {
-			return "Пока нет сохранённых фильмов";
+			return EMPTY_SAVED_MOVIES;
 		};
 
 		return;
