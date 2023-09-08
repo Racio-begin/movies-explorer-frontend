@@ -17,6 +17,13 @@ import PageNotFound from '../PageNotFound/PageNotFound';
 
 import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 
+import {
+	SIGNIN_BAD_DATA_MESSAGE,
+	SIGNUP_BAD_DATA_MESSAGE,
+	SIGNIN_DEFAULT_ERROR,
+	SIGNUP_CONFLICT_MESSAGE,
+	SIGNUP_DEFAULT_ERROR,
+} from '../../utils/informMessages';
 
 import mainApi from '../../utils/MainApi';
 import MoviesApi from '../../utils/MoviesApi';
@@ -86,7 +93,16 @@ function App() {
 				handleLogin(email, password)
 			})
 			.catch((err) => {
-				setServerResponseError(err);
+				if (err === 400) {
+					setServerResponseError(SIGNUP_BAD_DATA_MESSAGE);
+				};
+
+				if (err === 409) {
+					setServerResponseError(SIGNUP_CONFLICT_MESSAGE);
+				} else {
+					setServerResponseError(SIGNUP_DEFAULT_ERROR);
+				};
+
 				console.error(`Регистрация нового пользователя, App`);
 			})
 	};
@@ -99,7 +115,12 @@ function App() {
 				setLoggedIn(true);
 				navigate('/movies');
 			})
-			.catch(() => {
+			.catch((err) => {
+				if (err === 401) {
+					setServerResponseError(SIGNIN_BAD_DATA_MESSAGE);
+				} else {
+					setServerResponseError(SIGNIN_DEFAULT_ERROR);
+				}
 				console.error(`Войти в аккаунт, App`);
 			})
 	};
@@ -107,8 +128,8 @@ function App() {
 	function handleSignOut() {
 		localStorage.removeItem('jwt');
 		localStorage.removeItem('combinedMoviesArray');
-    localStorage.removeItem('isShortMovies');
-    localStorage.removeItem('lastSearchString');
+		localStorage.removeItem('isShortMovies');
+		localStorage.removeItem('lastSearchString');
 		setLoggedIn(false);
 		navigate('/');
 	};
@@ -128,7 +149,7 @@ function App() {
 		])
 			.then(([initialMovies, savedMovies]) => {
 				const combinedMoviesArray = initialMovies.map((initialMovie) => {
-						const savedMovie = savedMovies.find((savedMovieItem) => {
+					const savedMovie = savedMovies.find((savedMovieItem) => {
 						return savedMovieItem.movieId === initialMovie.id;
 					});
 

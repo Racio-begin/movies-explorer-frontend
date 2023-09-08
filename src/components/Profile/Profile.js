@@ -7,6 +7,10 @@ import Header from '../Header/Header';
 
 import { REGEX_EMAIL } from '../../utils/regex';
 import { EMAIL_TITLE_TEXT } from '../../utils/constants';
+import {
+	UPDATE_SUCCESS_MESSAGE,
+	USER_BAD_DATA_ERROR,
+} from '../../utils/informMessages';
 
 import useFormWithValidation from '../../hooks/useFormWithValidation';
 
@@ -36,10 +40,10 @@ function Profile({
 		
 		onUpdateUser(name, email)
 			.then(() => {
-				setSuccessMessage('Профиль успешно обновлен!');
+				setSuccessMessage(UPDATE_SUCCESS_MESSAGE);
 			})
 			.catch((err) => {
-				setErrorMessage('При обновлении профиля произошла ошибка.');
+				setErrorMessage(USER_BAD_DATA_ERROR);
 			})
 	};
 
