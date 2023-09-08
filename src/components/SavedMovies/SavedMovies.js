@@ -64,15 +64,15 @@ function SavedMovies({
 			<main>
 				<SearchForm
 					onSearch={handleSubmitSearch}
-					isShortMovies={isShortMovies}
 					onCheck={handleCheckBox}
 					searchString={searchString}
+					isShortMovies={isShortMovies}
 				/>
 				<MoviesCardList
-					isShortMovies={isShortMovies}
 					onDeleteMovie={onDeleteMovie}
 					filteredMoviesArray={filteredMoviesArray}
 					searchString={searchString}
+					isShortMovies={isShortMovies}
 				/>
 			</main >
 

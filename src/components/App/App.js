@@ -154,7 +154,7 @@ function App() {
 			})
 			.catch((err) => {
 				setServerResponseError(err.message);
-				console.log(`Ошибка Promise.all: ${err.message}`);
+				console.log(`Ошибка при получении фильмов, App: ${err.message}`);
 			});
 	};
 

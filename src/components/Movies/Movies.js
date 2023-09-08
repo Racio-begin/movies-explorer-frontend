@@ -14,13 +14,16 @@ function Movies({
 	onSaveMovie,
 	onDeleteMovie,
 	setCombinedMoviesArray,
-	serverResponceError,
+	serverResponseError,
 }) {
 
 	const [isShortMovies, setIsShortMovies] = useState(false);
 	const [isHideButton, setIsHideButton] = useState(false);
+
 	const [searchString, setSearchString] = useState('');
+
 	const [filteredMoviesArray, setFilteredMoviesArray] = useState([]);
+
 	const [numberToRender, setNumberToRender] = useState(1);
 
 	useEffect(() => {
@@ -125,7 +128,7 @@ function Movies({
 					searchString={searchString}
 				/>
 				<MoviesCardList
-					serverResponceError={serverResponceError}
+					serverResponseError={serverResponseError}
 					onSaveMovie={onSaveMovie}
 					onDeleteMovie={onDeleteMovie}
 					filteredMoviesArray={filteredMoviesArray.slice(0, numberToRender)}

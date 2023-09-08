@@ -5,7 +5,7 @@ import MoviesCard from "../MoviesCard/MoviesCard";
 import './MoviesCardList.css';
 
 function MoviesCardList({
-	serverResponceError,
+	serverResponseError,
 	onSaveMovie,
 	onDeleteMovie,
 	filteredMoviesArray,
@@ -16,12 +16,13 @@ function MoviesCardList({
 }) {
 
 	const location = useLocation();
+
 	const lastSearchString = JSON.parse(localStorage.getItem("lastSearchString"))
 
 	const getSearchErrorText = () => {
-		if (location.pathname === '/movies' && serverResponceError !== "") {
-			return serverResponceError;
-		}
+		if (location.pathname === '/movies' && serverResponseError !== "") {
+			return serverResponseError;
+		};
 
 		if (
 			location.pathname === '/movies' &&
@@ -29,15 +30,15 @@ function MoviesCardList({
 			lastSearchString === null
 		) {
 			return "Нужно ввести ключевое слово";
-		}
+		};
 
 		if (location.pathname === '/movies' && lastSearchString !== '') {
 			return "Ничего не найдено";
-		}
+		};
 
 		if (location.pathname === '/saved-movies' && searchString !== '') {
 			return "Ничего не найдено";
-		}
+		};
 
 		if (
 			location.pathname === '/saved-movies' &&
@@ -45,14 +46,14 @@ function MoviesCardList({
 			isShortMovies
 		) {
 			return "Пока нет сохранённых короткометражных фильмов";
-		}
+		};
 
 		if (
 			location.pathname === '/saved-movies' &&
 			filteredMoviesArray.length === 0
 		) {
 			return "Пока нет сохранённых фильмов";
-		}
+		};
 
 		return;
 	};
