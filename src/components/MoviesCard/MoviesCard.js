@@ -67,11 +67,6 @@ function MoviesCard({
 	return (
 		<li className="card">
 			<div className="card__image-container">
-				{/* <img
-					className="card__image"
-					src={link}
-					alt={alt}
-				/> */}
 				<Link
 					className="movies-card__link"
 					to={movie.trailerLink}
@@ -86,8 +81,6 @@ function MoviesCard({
 					/>
 				</Link>
 				<button
-					// className="card__like"
-					// className={ilLiked ? "card__like_active" : "card__like button"}
 					className={getBtnClassName()}
 					onClick={handleBtnClick}
 					type="button"
