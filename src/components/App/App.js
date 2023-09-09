@@ -38,12 +38,11 @@ import './App.css';
 
 function App() {
 
-	const moviesApi = new MoviesApi(MOVIES_URL);
-
 	const token = localStorage.getItem("jwt");
 
-	//* Стейты *//
+	const moviesApi = new MoviesApi(MOVIES_URL);
 
+	//* Стейты *//
 	const [loggedIn, setLoggedIn] = useState(!!token);
 
 	const [currentUser, setCurrentUser] = useState({});
@@ -57,8 +56,13 @@ function App() {
 	const navigate = useNavigate();
 
 	useEffect(() => {
+		handleCheckToken()
+	}, [loggedIn]);
+
+	const handleCheckToken = () => {
 		if (token) {
-			Auth.checkToken(token)
+			Auth
+				.checkToken(token)
 				.then((res) => {
 					if (!res) {
 						return
@@ -72,12 +76,13 @@ function App() {
 					console.error(`Получение информации профиля, App`);
 				})
 		};
-	}, [loggedIn]);
+	};
 
 	const handleUpdateUser = (name, email) => {
 		setIsLockedButton(true);
 		return (
-			mainApi.updateUserData(name, email)
+			mainApi
+				.updateUserData(name, email)
 				.then((currentUser) => {
 					setCurrentUser(currentUser);
 				})
@@ -87,41 +92,50 @@ function App() {
 	};
 
 	const handleRegister = (name, email, password) => {
-		Auth.register({ name, email, password })
-			.then(res => {
-				handleLogin(email, password)
-			})
-			.catch((err) => {
-				if (err === 400) {
-					setServerResponseError(SIGNUP_BAD_DATA_MESSAGE);
-				};
+		setIsLockedButton(true);
+		return (
+			Auth
+				.register({ name, email, password })
+				.then(res => {
+					handleLogin(email, password)
+				})
+				.catch((err) => {
+					if (err === 400) {
+						setServerResponseError(SIGNUP_BAD_DATA_MESSAGE);
+					};
 
-				if (err === 409) {
-					setServerResponseError(SIGNUP_CONFLICT_MESSAGE);
-				} else {
-					setServerResponseError(SIGNUP_DEFAULT_ERROR);
-				};
+					if (err === 409) {
+						setServerResponseError(SIGNUP_CONFLICT_MESSAGE);
+					} else {
+						setServerResponseError(SIGNUP_DEFAULT_ERROR);
+					};
 
-				console.error(`Регистрация нового пользователя, App`);
-			})
+					console.error(`Регистрация нового пользователя, App`);
+				})
+				.finally(() => setIsLockedButton(false))
+		)
 	};
 
 	const handleLogin = (email, password) => {
-		Auth.login({ email, password })
-			.then((data) => {
-				localStorage.setItem('jwt', data.token);
-				mainApi.setToken(data.token);
-				setLoggedIn(true);
-				navigate('/movies');
-			})
-			.catch((err) => {
-				if (err === 401) {
-					setServerResponseError(SIGNIN_BAD_DATA_MESSAGE);
-				} else {
-					setServerResponseError(SIGNIN_DEFAULT_ERROR);
-				}
-				console.error(`Войти в аккаунт, App`);
-			})
+		return (
+			Auth
+				.login({ email, password })
+				.then((data) => {
+					localStorage.setItem('jwt', data.token);
+					mainApi.setToken(data.token);
+					setLoggedIn(true);
+					navigate('/movies', { replace: true });
+				})
+				.catch((err) => {
+					if (err === 401) {
+						setServerResponseError(SIGNIN_BAD_DATA_MESSAGE);
+					} else {
+						setServerResponseError(SIGNIN_DEFAULT_ERROR);
+					}
+					console.error(`Войти в аккаунт, App`);
+				})
+				.finally(() => setIsLockedButton(false))
+		)
 	};
 
 	function handleSignOut() {
@@ -173,8 +187,8 @@ function App() {
 				return combinedMoviesArray;
 			})
 			.catch((err) => {
-				setServerResponseError(err.message);
-				console.log(`Ошибка при получении фильмов, App: ${err.message}`);
+				setServerResponseError(err);
+				console.log(`Ошибка при получении фильмов, App: ${err}`);
 			});
 	};
 
