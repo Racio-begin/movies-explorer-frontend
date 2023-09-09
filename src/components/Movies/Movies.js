@@ -4,6 +4,8 @@ import Header from '../Header/Header';
 import SearchForm from '../SearchForm/SearchForm';
 import MoviesCardList from '../MoviesCardList/MoviesCardList';
 import Footer from '../Footer/Footer';
+import Preloader from '../Preloader/Preloader';
+
 import filter from '../../utils/filter';
 
 import {
@@ -24,6 +26,8 @@ function Movies({
 
 	const [isShortMovies, setIsShortMovies] = useState(false);
 	const [isHideButton, setIsHideButton] = useState(false);
+
+	const [isLoading, setIsLoading] = useState(false);
 
 	const [searchString, setSearchString] = useState('');
 
@@ -56,6 +60,7 @@ function Movies({
 	}, []);
 
 	const handleSubmitSearch = (searchString, isShortMovies) => {
+		setIsLoading(true);
 		setSearchString(searchString);
 		localStorage.setItem('lastSearchString', JSON.stringify(searchString));
 		onSearch()
@@ -70,7 +75,8 @@ function Movies({
 
 				return filteredMoviesArray;
 			})
-			.catch((err) => console.log(err));
+			.catch((err) => console.log(err))
+			.finally(() => setIsLoading(false));
 
 		return filteredMoviesArray;
 	};
@@ -132,14 +138,17 @@ function Movies({
 					onCheck={handleCheckBox}
 					searchString={searchString}
 				/>
-				<MoviesCardList
-					serverResponseError={serverResponseError}
-					onSaveMovie={onSaveMovie}
-					onDeleteMovie={onDeleteMovie}
-					filteredMoviesArray={filteredMoviesArray.slice(0, numberToRender)}
-					onClick={handleMoreButton}
-					isHideButton={isHideButton}
-				/>
+				{isLoading ? <Preloader /> :
+					<MoviesCardList
+						serverResponseError={serverResponseError}
+						onSaveMovie={onSaveMovie}
+						onDeleteMovie={onDeleteMovie}
+						filteredMoviesArray={filteredMoviesArray.slice(0, numberToRender)}
+						onClick={handleMoreButton}
+						isHideButton={isHideButton}
+						isLoading={isLoading}
+					/>
+				}
 			</main >
 
 			<Footer />
