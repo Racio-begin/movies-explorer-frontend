@@ -1,6 +1,7 @@
 import { useLocation } from 'react-router-dom';
 
 import MoviesCard from "../MoviesCard/MoviesCard";
+import Preloader from '../Preloader/Preloader';
 
 import './MoviesCardList.css';
 
@@ -20,6 +21,7 @@ function MoviesCardList({
 	isHideButton,
 	searchString,
 	isShortMovies,
+	isLoading,
 }) {
 
 	const location = useLocation();
@@ -66,35 +68,40 @@ function MoviesCardList({
 	};
 
 	return (
-		<>
-			{filteredMoviesArray?.length === 0 ? (
-				<p className="movies-card-list__error-text">{getSearchErrorText()}</p>
-			) : null}
-			<ul className="movies-card-list__container ul">
-				{filteredMoviesArray.map((movie, i) => {
-					return (
-						<MoviesCard
-							key={movie.id}
-							movie={movie}
-							onSaveMovie={onSaveMovie}
-							onDeleteMovie={onDeleteMovie}
-						/>
-					);
-				})}
-			</ul>
+		<section>
+			{isLoading
+				? <Preloader />
+				: <>
+					{filteredMoviesArray?.length === 0 ? (
+						<p className="movies-card-list__error-text">{getSearchErrorText()}</p>
+					) : null}
+					<ul className="movies-card-list__container ul">
+						{filteredMoviesArray.map((movie, i) => {
+							return (
+								<MoviesCard
+									key={movie.id}
+									movie={movie}
+									onSaveMovie={onSaveMovie}
+									onDeleteMovie={onDeleteMovie}
+								/>
+							);
+						})}
+					</ul>
 
-			{location.pathname === '/movies' && filteredMoviesArray.length !== 0 && !isHideButton ? (
-				<div className="movies-card-list__more">
-					<button
-						className="movies-card-list__more-button button"
-						type="button"
-						onClick={onClick}
-					>
-						Ещё
-					</button>
-				</div>
-			) : null}
-		</>
+					{location.pathname === '/movies' && filteredMoviesArray.length !== 0 && !isHideButton ? (
+						<div className="movies-card-list__more">
+							<button
+								className="movies-card-list__more-button button"
+								type="button"
+								onClick={onClick}
+							>
+								Ещё
+							</button>
+						</div>
+					) : null}
+				</>
+			}
+		</section>
 	);
 
 };
