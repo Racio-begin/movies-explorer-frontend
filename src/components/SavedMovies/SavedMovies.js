@@ -22,6 +22,10 @@ function SavedMovies({
 
 	const [searchString, setSearchString] = useState('');
 
+	const [isLoading, setIsLoading] = useState(false);
+
+	const [searchMoviesError, setSearchMoviesError] = useState(false);
+
 	useEffect(() => {
 		onSearch()
 			.then((combinedMoviesArray) => {
@@ -35,17 +39,28 @@ function SavedMovies({
 	}, [isShortMovies, combinedMoviesArray]);
 
 	const handleSubmitSearch = (searchString, isShortMovies) => {
-		setSearchString(searchString);
-		const onlySavedMoviesArray = combinedMoviesArray.filter(
-			(movie) => movie._id !== ''
-		);
-		const filteredMoviesArray = filter(
-			onlySavedMoviesArray,
-			searchString,
-			isShortMovies
-		);
-		setFilteredMoviesArray(filteredMoviesArray);
-		return filteredMoviesArray;
+
+		if (searchString.trim() === '') {
+			setSearchMoviesError(true);
+			setCombinedMoviesArray([]);
+			return;
+		}
+		else {
+			setIsLoading(true);
+			setSearchMoviesError(false);
+
+			setSearchString(searchString);
+			const onlySavedMoviesArray = combinedMoviesArray.filter(
+				(movie) => movie._id !== ''
+			);
+			const filteredMoviesArray = filter(
+				onlySavedMoviesArray,
+				searchString,
+				isShortMovies
+			);
+			setFilteredMoviesArray(filteredMoviesArray);
+			return filteredMoviesArray;
+		}
 	};
 
 	const handleCheckBox = (e) => {
@@ -69,10 +84,12 @@ function SavedMovies({
 					isShortMovies={isShortMovies}
 				/>
 				<MoviesCardList
+					isLoading={isLoading}
 					onDeleteMovie={onDeleteMovie}
 					filteredMoviesArray={filteredMoviesArray}
 					searchString={searchString}
 					isShortMovies={isShortMovies}
+					searchMoviesError={searchMoviesError}
 				/>
 			</main >
 

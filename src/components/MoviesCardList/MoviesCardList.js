@@ -40,7 +40,7 @@ function MoviesCardList({
 
 	const getSearchErrorText = () => {
 		if (
-			location.pathname === '/movies' &&
+			// location.pathname === '/movies' &&
 			searchMoviesError
 		) {
 			filteredMoviesArray = ([]);

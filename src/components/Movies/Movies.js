@@ -69,15 +69,17 @@ function Movies({
 
 	const handleSubmitSearch = (searchString, isShortMovies) => {
 
+		// Если запрос пустой, то убираем карточки из блока резуьтатов и выводим информ. сообщение
 		if (searchString.trim() === '') {
 			// setSearchMoviesError(EMPTY_INPUT_MESSAGE);
 			setSearchMoviesError(true);
 			setCombinedMoviesArray([]);
+			// localStorage.setItem('lastSearchString', JSON.stringify(searchString));
 			return;
 		}
 		else {
-			setSearchMoviesError(false);
 			setIsLoading(true);
+			setSearchMoviesError(false);
 			setSearchString(searchString);
 			localStorage.setItem('lastSearchString', JSON.stringify(searchString));
 			onSearch()
