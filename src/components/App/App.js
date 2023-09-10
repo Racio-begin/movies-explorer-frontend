@@ -138,6 +138,46 @@ function App() {
 		)
 	};
 
+	const handleSaveMovie = (movie) => {
+		return mainApi
+			.saveMovie(movie)
+			.then((savedMovie) => {
+				const updatedMoviesArray = combinedMoviesArray.map((serverMovie) => {
+					if (serverMovie.id === savedMovie.movieId) {
+						serverMovie._id = savedMovie._id;
+						serverMovie.thumbnail = savedMovie.thumbnail;
+						serverMovie.image = savedMovie.image;
+					}
+					return serverMovie;
+				});
+				setCombinedMoviesArray(updatedMoviesArray);
+				localStorage.setItem(
+					'combinedMoviesArray',
+					JSON.stringify(updatedMoviesArray)
+				);
+			})
+			.catch((err) => console.log(err));
+	};
+
+	const handleDeleteMovie = (id) => {
+		return mainApi
+			.deleteMovie(id)
+			.then((deletedMovie) => {
+				const updatedMoviesArray = combinedMoviesArray.map((serverMovie) => {
+					if (serverMovie._id === deletedMovie._id) {
+						serverMovie._id = '';
+					}
+					return serverMovie;
+				});
+				setCombinedMoviesArray(updatedMoviesArray);
+				localStorage.setItem(
+					'combinedMoviesArray',
+					JSON.stringify(updatedMoviesArray)
+				);
+			})
+			.catch((err) => console.log(err));
+	};
+
 	function handleSignOut() {
 		localStorage.removeItem('jwt');
 		localStorage.removeItem('lastSearchString');
@@ -190,46 +230,6 @@ function App() {
 				setServerResponseError(err);
 				console.log(`Ошибка при получении фильмов, App: ${err}`);
 			});
-	};
-
-	const handleSaveMovie = (movie) => {
-		return mainApi
-			.saveMovie(movie)
-			.then((savedMovie) => {
-				const updatedMoviesArray = combinedMoviesArray.map((serverMovie) => {
-					if (serverMovie.id === savedMovie.movieId) {
-						serverMovie._id = savedMovie._id;
-						serverMovie.thumbnail = savedMovie.thumbnail;
-						serverMovie.image = savedMovie.image;
-					}
-					return serverMovie;
-				});
-				setCombinedMoviesArray(updatedMoviesArray);
-				localStorage.setItem(
-					'combinedMoviesArray',
-					JSON.stringify(updatedMoviesArray)
-				);
-			})
-			.catch((err) => console.log(err));
-	};
-
-	const handleDeleteMovie = (id) => {
-		return mainApi
-			.deleteMovie(id)
-			.then((deletedMovie) => {
-				const updatedMoviesArray = combinedMoviesArray.map((serverMovie) => {
-					if (serverMovie._id === deletedMovie._id) {
-						serverMovie._id = '';
-					}
-					return serverMovie;
-				});
-				setCombinedMoviesArray(updatedMoviesArray);
-				localStorage.setItem(
-					'combinedMoviesArray',
-					JSON.stringify(updatedMoviesArray)
-				);
-			})
-			.catch((err) => console.log(err));
 	};
 
 	return (

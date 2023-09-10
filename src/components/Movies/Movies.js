@@ -11,6 +11,12 @@ import filter from '../../utils/filter';
 import {
 	WINDOW_WIDTH_1280,
 	WINDOW_WIDTH_768,
+	INITIAL_CARDS_L_SIZE,
+	ADDING_CARDS_L_SIZE,
+	INITIAL_CARDS_M_SIZE,
+	ADDING_CARDS_M_SIZE,
+	INITIAL_CARDS_S_SIZE,
+	ADDING_CARDS_S_SIZE,
 } from '../../utils/constants';
 
 function Movies({
@@ -34,6 +40,8 @@ function Movies({
 	const [filteredMoviesArray, setFilteredMoviesArray] = useState([]);
 
 	const [numberToRender, setNumberToRender] = useState(1);
+
+	const [searchMoviesError, setSearchMoviesError] = useState(false);
 
 	useEffect(() => {
 		if (searchString !== '') {
@@ -60,25 +68,35 @@ function Movies({
 	}, []);
 
 	const handleSubmitSearch = (searchString, isShortMovies) => {
-		setIsLoading(true);
-		setSearchString(searchString);
-		localStorage.setItem('lastSearchString', JSON.stringify(searchString));
-		onSearch()
-			.then((combinedMoviesArray) => {
-				setCombinedMoviesArray(combinedMoviesArray);
-				const filteredMoviesArray = filter(
-					combinedMoviesArray,
-					searchString,
-					isShortMovies
-				);
-				setFilteredMoviesArray(filteredMoviesArray);
 
-				return filteredMoviesArray;
-			})
-			.catch((err) => console.log(err))
-			.finally(() => setIsLoading(false));
+		if (searchString.trim() === '') {
+			// setSearchMoviesError(EMPTY_INPUT_MESSAGE);
+			setSearchMoviesError(true);
+			setCombinedMoviesArray([]);
+			return;
+		}
+		else {
+			setSearchMoviesError(false);
+			setIsLoading(true);
+			setSearchString(searchString);
+			localStorage.setItem('lastSearchString', JSON.stringify(searchString));
+			onSearch()
+				.then((combinedMoviesArray) => {
+					setCombinedMoviesArray(combinedMoviesArray);
+					const filteredMoviesArray = filter(
+						combinedMoviesArray,
+						searchString,
+						isShortMovies
+					);
+					setFilteredMoviesArray(filteredMoviesArray);
 
-		return filteredMoviesArray;
+					return filteredMoviesArray;
+				})
+				.catch((err) => console.log(err))
+				.finally(() => setIsLoading(false));
+
+			return filteredMoviesArray;
+		}
 	};
 
 	const handleCheckBox = (e) => {
@@ -93,25 +111,26 @@ function Movies({
 	const getMoviesConfig = () => {
 		if (window.innerWidth < WINDOW_WIDTH_768) {
 			return {
-				numberOnStart: 5,
-				numberToAdd: 2,
+				numberOnStart: INITIAL_CARDS_S_SIZE,
+				numberToAdd: ADDING_CARDS_S_SIZE,
 			};
 		}
 		if (window.innerWidth < WINDOW_WIDTH_1280) {
 			return {
-				numberOnStart: 8,
-				numberToAdd: 2,
+				numberOnStart: INITIAL_CARDS_M_SIZE,
+				numberToAdd: ADDING_CARDS_M_SIZE,
 			};
 		}
 		if (window.innerWidth >= WINDOW_WIDTH_1280) {
 			return {
-				numberOnStart: 12,
-				numberToAdd: 3,
+				numberOnStart: INITIAL_CARDS_L_SIZE,
+				numberToAdd: ADDING_CARDS_L_SIZE,
 			};
 		}
 	};
 
 	useEffect(() => {
+		// Если число дополнительных фильмов меньше, чем оно задано, то спрятать кнопку "Еще"
 		if (filteredMoviesArray.length <= numberToRender) {
 			return setIsHideButton(true);
 		}
@@ -147,6 +166,7 @@ function Movies({
 						onClick={handleMoreButton}
 						isHideButton={isHideButton}
 						isLoading={isLoading}
+						searchMoviesError={searchMoviesError}
 					/>
 				}
 			</main >

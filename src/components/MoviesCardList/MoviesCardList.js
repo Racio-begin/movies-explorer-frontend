@@ -22,14 +22,45 @@ function MoviesCardList({
 	searchString,
 	isShortMovies,
 	isLoading,
+	searchMoviesError,
 }) {
 
 	const location = useLocation();
 
-	const lastSearchString = JSON.parse(localStorage.getItem("lastSearchString"))
+	//   function showSearchInputError() {
+	//   if (location.pathname === '/movies') {
+	//     setSearchMoviesError(EMPTY_INPUT_MESSAGE);
+	//   } else if (location.pathname === '/saved-movies') {
+	//     setSearchSavedMoviesError(EMPTY_INPUT_MESSAGE);
+	//   }
+	// }
+
+	// Запрашиваем последнюю поисковую строку из localStorage
+	const lastSearchString = JSON.parse(localStorage.getItem("lastSearchString"));
 
 	const getSearchErrorText = () => {
-		if (location.pathname === '/movies' && serverResponseError !== "") {
+		if (
+			location.pathname === '/movies' &&
+			searchMoviesError
+		) {
+			filteredMoviesArray = ([]);
+			return EMPTY_INPUT_MESSAGE;
+		}
+
+		// if (searchString.trim() === '') {
+		//   return EMPTY_INPUT_MESSAGE;
+		// }
+
+		// if (searchString === '') {
+		// 	alert(EMPTY_INPUT_MESSAGE);
+
+		// 	return;
+		// };
+
+		if (
+			location.pathname === '/movies' &&
+			serverResponseError !== ''
+		) {
 			return serverResponseError;
 		};
 
@@ -41,11 +72,17 @@ function MoviesCardList({
 			return EMPTY_INPUT_MESSAGE;
 		};
 
-		if (location.pathname === '/movies' && lastSearchString !== '') {
+		if (
+			location.pathname === '/movies' &&
+			lastSearchString !== ''
+		) {
 			return MOVIES_NOT_FOUND_MESSAGE;
 		};
 
-		if (location.pathname === '/saved-movies' && searchString !== '') {
+		if (
+			location.pathname === '/saved-movies' &&
+			searchString !== ''
+		) {
 			return MOVIES_NOT_FOUND_MESSAGE;
 		};
 
@@ -72,9 +109,11 @@ function MoviesCardList({
 			{isLoading
 				? <Preloader />
 				: <>
-					{filteredMoviesArray?.length === 0 ? (
-						<p className="movies-card-list__error-text">{getSearchErrorText()}</p>
-					) : null}
+					{filteredMoviesArray?.length === 0
+						|| searchMoviesError
+						? (
+							<p className="movies-card-list__error-text">{getSearchErrorText()}</p>
+						) : null}
 					<ul className="movies-card-list__container ul">
 						{filteredMoviesArray.map((movie, i) => {
 							return (

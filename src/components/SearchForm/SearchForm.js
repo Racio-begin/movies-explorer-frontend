@@ -4,6 +4,8 @@ import useFormWithValidation from '../../hooks/useFormWithValidation';
 
 import './SearchForm.css';
 
+import { EMPTY_INPUT_MESSAGE } from '../../utils/informMessages';
+
 function SearchForm({
 	onSearch,
 	onCheck,
@@ -11,11 +13,23 @@ function SearchForm({
 	searchString,
 }) {
 
-	const { values, handleChange, isValid, setValues } =
-		useFormWithValidation();
+	const {
+		values,
+		handleChange,
+		// isValid,
+		setValues,
+	} = useFormWithValidation();
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
+		// if (!isValid || (values.searchInput="")) {
+		// }
+		// if (searchString.trim() === '') {
+
+		// 	if (searchString === '') {
+		// 	return EMPTY_INPUT_MESSAGE;
+		// }
+
 		onSearch(values.searchInput, isShortMovies);
 	};
 
@@ -57,7 +71,7 @@ function SearchForm({
 					<button
 						className="search__find-button button"
 						type="submit"
-						disabled={!isValid}
+					// disabled={!isValid}
 					/>
 				</div>
 
