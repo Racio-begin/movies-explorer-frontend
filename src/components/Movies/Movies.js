@@ -11,6 +11,12 @@ import filter from '../../utils/filter';
 import {
 	WINDOW_WIDTH_1280,
 	WINDOW_WIDTH_768,
+	CARDS_WIDTH_LARGE_START,
+	CARDS_WIDTH_MEDIUM_START,
+	CARDS_WIDTH_SMALL_START,
+	CARDS_WIDTH_LARGE_ADD,
+	CARDS_WIDTH_MEDIUM_ADD,
+	CARDS_WIDTH_SMALL_ADD,
 } from '../../utils/constants';
 
 function Movies({
@@ -93,20 +99,20 @@ function Movies({
 	const getMoviesConfig = () => {
 		if (window.innerWidth < WINDOW_WIDTH_768) {
 			return {
-				numberOnStart: 5,
-				numberToAdd: 2,
+				numberOnStart: CARDS_WIDTH_SMALL_START,
+				numberToAdd: CARDS_WIDTH_SMALL_ADD,
 			};
 		}
 		if (window.innerWidth < WINDOW_WIDTH_1280) {
 			return {
-				numberOnStart: 8,
-				numberToAdd: 2,
+				numberOnStart: CARDS_WIDTH_MEDIUM_START,
+				numberToAdd: CARDS_WIDTH_MEDIUM_ADD,
 			};
 		}
 		if (window.innerWidth >= WINDOW_WIDTH_1280) {
 			return {
-				numberOnStart: 12,
-				numberToAdd: 3,
+				numberOnStart: CARDS_WIDTH_LARGE_START,
+				numberToAdd: CARDS_WIDTH_LARGE_ADD,
 			};
 		}
 	};
