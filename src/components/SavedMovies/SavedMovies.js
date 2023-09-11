@@ -40,13 +40,13 @@ function SavedMovies({
 
 	const handleSubmitSearch = (searchString, isShortMovies) => {
 
-		if (searchString.trim() === '') {
-			setSearchMoviesError(true);
-			setCombinedMoviesArray([]);
-			return;
-		}
-		else {
-			setIsLoading(true);
+		// if (searchString?.trim() === '') {
+		// 	setSearchMoviesError(true);
+		// 	setCombinedMoviesArray([]);
+		// 	return;
+		// }
+		// else {
+			// setIsLoading(true);
 			setSearchMoviesError(false);
 
 			setSearchString(searchString);
@@ -60,7 +60,7 @@ function SavedMovies({
 			);
 			setFilteredMoviesArray(filteredMoviesArray);
 			return filteredMoviesArray;
-		}
+		// }
 	};
 
 	const handleCheckBox = (e) => {

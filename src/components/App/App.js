@@ -188,10 +188,12 @@ function App() {
 	};
 
 	const handleSubmitSearch = () => {
+		// проверка, есть ли массив фильмов в localStorage и не пустой ли он
 		if (
 			localStorage.getItem('combinedMoviesArray') &&
 			JSON.parse(localStorage.getItem('combinedMoviesArray'))?.length !== 0
 		) {
+			// если есть, то преобразовать в объект
 			return Promise.resolve(
 				JSON.parse(localStorage.getItem('combinedMoviesArray'))
 			);

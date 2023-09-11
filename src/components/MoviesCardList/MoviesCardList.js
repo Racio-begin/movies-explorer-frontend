@@ -27,35 +27,16 @@ function MoviesCardList({
 
 	const location = useLocation();
 
-	//   function showSearchInputError() {
-	//   if (location.pathname === '/movies') {
-	//     setSearchMoviesError(EMPTY_INPUT_MESSAGE);
-	//   } else if (location.pathname === '/saved-movies') {
-	//     setSearchSavedMoviesError(EMPTY_INPUT_MESSAGE);
-	//   }
-	// }
-
 	// Запрашиваем последнюю поисковую строку из localStorage
 	const lastSearchString = JSON.parse(localStorage.getItem("lastSearchString"));
 
 	const getSearchErrorText = () => {
 		if (
-			// location.pathname === '/movies' &&
 			searchMoviesError
-		) {
-			filteredMoviesArray = ([]);
-			return EMPTY_INPUT_MESSAGE;
-		}
-
-		// if (searchString.trim() === '') {
-		//   return EMPTY_INPUT_MESSAGE;
-		// }
-
-		// if (searchString === '') {
-		// 	alert(EMPTY_INPUT_MESSAGE);
-
-		// 	return;
-		// };
+			) {
+				filteredMoviesArray = ([]);
+				return EMPTY_INPUT_MESSAGE;
+			}
 
 		if (
 			location.pathname === '/movies' &&

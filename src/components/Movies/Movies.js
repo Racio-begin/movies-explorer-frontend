@@ -49,7 +49,9 @@ function Movies({
 		}
 	}, [isShortMovies]);
 
+
 	useEffect(() => {
+		
 		onSearch()
 			.then((combinedMoviesArray) => {
 				setCombinedMoviesArray(combinedMoviesArray);
@@ -70,11 +72,9 @@ function Movies({
 	const handleSubmitSearch = (searchString, isShortMovies) => {
 
 		// Если запрос пустой, то убираем карточки из блока резуьтатов и выводим информ. сообщение
-		if (searchString.trim() === '') {
-			// setSearchMoviesError(EMPTY_INPUT_MESSAGE);
+		if (searchString?.trim() === '') {
 			setSearchMoviesError(true);
 			setCombinedMoviesArray([]);
-			// localStorage.setItem('lastSearchString', JSON.stringify(searchString));
 			return;
 		}
 		else {
@@ -130,6 +130,8 @@ function Movies({
 			};
 		}
 	};
+
+
 
 	useEffect(() => {
 		// Если число дополнительных фильмов меньше, чем оно задано, то спрятать кнопку "Еще"
