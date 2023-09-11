@@ -107,7 +107,7 @@ function Profile({
 							placeholder="Имя"
 							name="name"
 							minLength={2}
-							maxLength={20}
+							maxLength={40}
 							required={true}
 							value={values.name || ''}
 							onChange={handleChange}
