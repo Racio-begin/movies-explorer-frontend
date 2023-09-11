@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import './Movies.css';
+
 import Header from '../Header/Header';
 import SearchForm from '../SearchForm/SearchForm';
 import MoviesCardList from '../MoviesCardList/MoviesCardList';
@@ -18,6 +18,8 @@ import {
 	INITIAL_CARDS_S_SIZE,
 	ADDING_CARDS_S_SIZE,
 } from '../../utils/constants';
+
+import './Movies.css';
 
 function Movies({
 	menuActive,
@@ -48,7 +50,6 @@ function Movies({
 			handleSubmitSearch(searchString, isShortMovies);
 		}
 	}, [isShortMovies]);
-
 
 	useEffect(() => {
 		onSearch()
@@ -142,49 +143,6 @@ function Movies({
 	const handleMoreButton = () => {
 		setNumberToRender(prevState => prevState + getMoviesConfig().numberToAdd);
 	};
-
-
-	// useEffect(() => {
-	// 	setNumberToRender(() => getMoviesConfig().numberOnStart);
-	// }, []);
-
-	// const getMoviesConfig = () => {
-	// 	if (window.innerWidth < WINDOW_WIDTH_768) {
-	// 		return {
-	// 			numberOnStart: INITIAL_CARDS_S_SIZE,
-	// 			numberToAdd: ADDING_CARDS_S_SIZE,
-	// 		};
-	// 	}
-	// 	if (window.innerWidth < WINDOW_WIDTH_1280) {
-	// 		return {
-	// 			numberOnStart: INITIAL_CARDS_M_SIZE,
-	// 			numberToAdd: ADDING_CARDS_M_SIZE,
-	// 		};
-	// 	}
-	// 	if (window.innerWidth >= WINDOW_WIDTH_1280) {
-	// 		return {
-	// 			numberOnStart: INITIAL_CARDS_L_SIZE,
-	// 			numberToAdd: ADDING_CARDS_L_SIZE,
-	// 		};
-	// 	}
-	// };
-
-	// // useEffect(() => {
-	// // 	getMoviesConfig()
-	// // 	setNumberToRender(getMoviesConfig.numberOnStart)
-	// // }, [filteredMoviesArray]);
-
-	// useEffect(() => {
-	// 	// Если число дополнительных фильмов меньше, чем оно задано, то спрятать кнопку "Еще"
-	// 	if (filteredMoviesArray.length <= numberToRender) {
-	// 		return setIsHideButton(true);
-	// 	}
-	// 	setIsHideButton(false);
-	// }, [numberToRender, filteredMoviesArray, isShortMovies]);
-
-	// const handleMoreButton = () => {
-	// 	setNumberToRender((prevState) => prevState + getMoviesConfig().numberToAdd);
-	// };
 
 	return (
 		<div className="movies">
