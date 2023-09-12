@@ -185,6 +185,7 @@ function App() {
 		localStorage.removeItem('lastSearchString');
 		localStorage.removeItem('combinedMoviesArray');
 		localStorage.removeItem('isShortMovies');
+		setCurrentUser({});
 		setLoggedIn(false);
 		navigate('/');
 	};
