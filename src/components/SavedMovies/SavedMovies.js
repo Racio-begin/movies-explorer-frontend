@@ -22,7 +22,7 @@ function SavedMovies({
 
 	const [searchString, setSearchString] = useState('');
 
-	const [isLoading, setIsLoading] = useState(false);
+	// const [isLoading, setIsLoading] = useState(false);
 
 	const [searchMoviesError, setSearchMoviesError] = useState(false);
 
@@ -84,7 +84,7 @@ function SavedMovies({
 					isShortMovies={isShortMovies}
 				/>
 				<MoviesCardList
-					isLoading={isLoading}
+					// isLoading={isLoading}
 					onDeleteMovie={onDeleteMovie}
 					filteredMoviesArray={filteredMoviesArray}
 					searchString={searchString}

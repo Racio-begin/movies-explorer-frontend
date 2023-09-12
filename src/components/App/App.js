@@ -53,6 +53,8 @@ function App() {
 
 	const [combinedMoviesArray, setCombinedMoviesArray] = useState([]);
 
+	const [flag, setFlag] = useState(false);
+
 	const navigate = useNavigate();
 
 	useEffect(() => {
@@ -187,52 +189,100 @@ function App() {
 		navigate('/');
 	};
 
+	const [runOnce, setRunOnce] = useState(false); // проверка выполнения запроса
+
+	const fetchInitialMovies = async () => { // функция для вызова moviesApi.getInitialMovies
+		try {
+			const initialMovies = await moviesApi.getInitialMovies();
+			const savedMovies = await mainApi.getMovies();
+
+			const combinedMoviesArray = initialMovies.map((initialMovie) => {
+				const savedMovie = savedMovies.find(
+					(savedMovieItem) => savedMovieItem.movieId === initialMovie.id
+				);
+
+				initialMovie.thumbnail =
+					BASE_MOVIES_URL + initialMovie.image.formats.thumbnail.url;
+				initialMovie.image = BASE_MOVIES_URL + initialMovie.image.url;
+
+				if (savedMovie !== undefined) {
+					initialMovie._id = savedMovie._id;
+				} else {
+					initialMovie._id = '';
+				}
+
+				return initialMovie;
+			});
+
+			// сохраняем все фильмы с "beatfilms" в localStorage,
+			// меняем состояние "combinedMoviesArray"
+			localStorage.setItem('combinedMoviesArray', JSON.stringify(combinedMoviesArray));
+			setCombinedMoviesArray(combinedMoviesArray);
+
+			return combinedMoviesArray;
+		} catch (err) {
+			setServerResponseError(err);
+			console.log(`Ошибка при получении фильмов, App: ${err}`);
+		}
+	};
+
 	const handleSubmitSearch = () => {
-		// проверка, есть ли массив фильмов в localStorage и не пустой ли он
 		if (
+			// typeof window !== "undefined" &&
 			localStorage.getItem('combinedMoviesArray') &&
 			JSON.parse(localStorage.getItem('combinedMoviesArray'))?.length !== 0
 		) {
-			// если есть, то преобразовать в объект
-			return Promise.resolve(
-				JSON.parse(localStorage.getItem('combinedMoviesArray'))
-			);
+			return Promise.resolve(JSON.parse(localStorage.getItem('combinedMoviesArray')));
 		}
-		return Promise.all([
-			moviesApi.getInitialMovies(),
-			mainApi.getMovies()
-		])
-			.then(([initialMovies, savedMovies]) => {
-				const combinedMoviesArray = initialMovies.map((initialMovie) => {
-					const savedMovie = savedMovies.find((savedMovieItem) => {
-						return savedMovieItem.movieId === initialMovie.id;
-					});
-
-					initialMovie.thumbnail =
-						BASE_MOVIES_URL + initialMovie.image.formats.thumbnail.url;
-					initialMovie.image = BASE_MOVIES_URL + initialMovie.image.url;
-
-					if (savedMovie !== undefined) {
-						initialMovie._id = savedMovie._id;
-					} else {
-						initialMovie._id = '';
-					}
-
-					return initialMovie;
-				});
-				localStorage.setItem(
-					'combinedMoviesArray',
-					JSON.stringify(combinedMoviesArray)
-				);
-				setServerResponseError('');
-				setCombinedMoviesArray(combinedMoviesArray);
-				return combinedMoviesArray;
-			})
-			.catch((err) => {
-				setServerResponseError(err);
-				console.log(`Ошибка при получении фильмов, App: ${err}`);
-			});
+		 else if (!runOnce) { // Если запрос еще не выполнялся
+			setRunOnce(true); // Установить статус запроса в true
+			return fetchInitialMovies(); // Вызов функции запроса
+		}
 	};
+
+	// const handleSubmitSearch = () => {
+	// 	// проверка, есть ли массив фильмов в localStorage и не пустой ли он
+	// 	if (
+	// 		localStorage.getItem('combinedMoviesArray') &&
+	// 		JSON.parse(localStorage.getItem('combinedMoviesArray'))?.length !== 0
+	// 	) {
+	// 		// если есть, то преобразовать в объект
+	// 		return Promise.resolve(JSON.parse(localStorage.getItem('combinedMoviesArray')));
+	// 	}
+	// 	return Promise.all([
+	// 		moviesApi.getInitialMovies(),
+	// 		mainApi.getMovies()
+	// 	])
+	// 		.then(([initialMovies, savedMovies]) => {
+	// 			const combinedMoviesArray = initialMovies.map((initialMovie) => {
+	// 				const savedMovie = savedMovies.find((savedMovieItem) => {
+	// 					return savedMovieItem.movieId === initialMovie.id;
+	// 				});
+
+	// 				initialMovie.thumbnail =
+	// 					BASE_MOVIES_URL + initialMovie.image.formats.thumbnail.url;
+	// 				initialMovie.image = BASE_MOVIES_URL + initialMovie.image.url;
+
+	// 				if (savedMovie !== undefined) {
+	// 					initialMovie._id = savedMovie._id;
+	// 				} else {
+	// 					initialMovie._id = '';
+	// 				}
+
+	// 				return initialMovie;
+	// 			});
+	// 			localStorage.setItem('combinedMoviesArray', JSON.stringify(combinedMoviesArray));
+
+	// 			setServerResponseError('');
+	// 			setCombinedMoviesArray(combinedMoviesArray);
+
+	// 			return combinedMoviesArray;
+	// 		})
+	// 		.catch((err) => {
+	// 			setServerResponseError(err);
+	// 			console.log(`Ошибка при получении фильмов, App: ${err}`);
+	// 		});
+	// };
 
 	return (
 		<CurrentUserContext.Provider value={currentUser}>

@@ -37,7 +37,7 @@ function MoviesCard({
 		return `${hours.toFixed()}ч ${minutes}м`;
 	};
 
-	const handleBtnClick = () => {
+	const handleButtonClick = () => {
 		if (location.pathname === "/saved-movies") {
 			return onDeleteMovie(movie._id);
 		}
@@ -49,15 +49,15 @@ function MoviesCard({
 		return onSaveMovie(movie);
 	};
 
-	const getBtnClassName = () => {
+	const getButtonClassName = () => {
 		if (location.pathname === "/saved-movies") {
-			return "card__delete";
+			return "card__delete button";
 		}
 
 		if (checkIsMovieSaved())
-			return "card__like_active";
+			return "card__like_active button";
 
-		return "card__like";
+		return "card__like button";
 	};
 
 	const handleImageLoading = (e) => {
@@ -81,8 +81,8 @@ function MoviesCard({
 					/>
 				</Link>
 				<button
-					className={getBtnClassName()}
-					onClick={handleBtnClick}
+					className={getButtonClassName()}
+					onClick={handleButtonClick}
 					type="button"
 				/>
 			</div>

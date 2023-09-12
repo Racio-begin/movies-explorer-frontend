@@ -80,9 +80,9 @@ function SearchForm({
 				</label>
 
 			</form>
-
 		</section>
 	);
+	
 };
 
 export default SearchForm;
