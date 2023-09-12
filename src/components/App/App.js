@@ -141,8 +141,21 @@ function App() {
 	};
 
 	const handleSaveMovie = (movie) => {
+		const movieDataForApiCall = {
+			country: movie.country,
+			director: movie.director,
+			duration: movie.duration,
+			year: movie.year,
+			description: movie.description,
+			image: movie.image,
+			trailerLink: movie.trailerLink,
+			thumbnail: movie.thumbnail,
+			movieId: movie.id,
+			nameRU: movie.nameRU,
+			nameEN: movie.nameEN,
+		};
 		return mainApi
-			.saveMovie(movie)
+			.saveMovie(movieDataForApiCall)
 			.then((savedMovie) => {
 				const updatedMoviesArray = combinedMoviesArray.map((serverMovie) => {
 					if (serverMovie.id === savedMovie.movieId) {
@@ -235,7 +248,7 @@ function App() {
 		) {
 			return Promise.resolve(JSON.parse(localStorage.getItem('combinedMoviesArray')));
 		}
-		 else if (!runOnce) { // Если запрос еще не выполнялся
+		else if (!runOnce) { // Если запрос еще не выполнялся
 			setRunOnce(true); // Установить статус запроса в true
 			return fetchInitialMovies(); // Вызов функции запроса
 		}
