@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 
 import './SearchForm.css';
 
@@ -7,10 +8,13 @@ function SearchForm({
 	viewMode,
 	isEmptyInput,
 	onEmptyInput,
+	isFirstVisit,
 }) {
 
 	const [searchString, setSearchString] = useState('');
 	const [onlyShortMovies, setOnlyShortMovies] = useState(false);
+
+	const location = useLocation();
 
 	useEffect(() => {
 		if (viewMode === "allMovies") {
@@ -24,7 +28,7 @@ function SearchForm({
 		}
 	}, []);
 
-	const handleSubmit = (e) => {
+	function handleSubmit(e) {
 		e.preventDefault();
 		onSearch(searchString, onlyShortMovies);
 		onEmptyInput(false)
@@ -35,13 +39,17 @@ function SearchForm({
 	};
 
 	function handleCheckbox(e) {
-		setOnlyShortMovies(e.target.checked);
-		onSearch(searchString, e.target.checked);
-	}
+		if (location.pathname === '/movies' && !isFirstVisit) {
+			return
+		} else {
+			setOnlyShortMovies(e.target.checked);
+			onSearch(searchString, e.target.checked);
+		}
+	};
 
 	function handleTextInputChange(e) {
 		setSearchString(e.target.value);
-	}
+	};
 
 	return (
 		<section className="search">

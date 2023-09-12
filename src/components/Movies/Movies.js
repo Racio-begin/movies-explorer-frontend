@@ -207,6 +207,7 @@ function Movies({
 					viewMode="allMovies"
 					isEmptyInput={isEmptyInput}
 					onEmptyInput={setIsEmptyInput}
+					isFirstVisit={isFirstVisit}
 				/>
 
 				{isLoading && <Preloader />}
