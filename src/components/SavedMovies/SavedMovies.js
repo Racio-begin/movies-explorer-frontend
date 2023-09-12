@@ -1,71 +1,49 @@
-import { useState, useEffect } from 'react';
+import { useState, useContext } from 'react';
 import './SavedMovies.css';
 import '../Movies/Movies';
 import Header from '../Header/Header';
 import SearchForm from '../SearchForm/SearchForm';
 import MoviesCardList from '../MoviesCardList/MoviesCardList';
 import Footer from '../Footer/Footer';
-import filter from '../../utils/filter';
+import movieFilter from '../../utils/movieFilter';
+
+import { SavedMoviesContext } from '../../contexts/SavedMoviesContext';
+
+import {
+	EMPTY_INPUT_MESSAGE,
+	MOVIES_NOT_FOUND_MESSAGE,
+} from '../../utils/informMessages';
 
 function SavedMovies({
 	menuActive,
 	setMenuActive,
 	loggedIn,
-	onSearch,
-	onDeleteMovie,
-	combinedMoviesArray,
-	setCombinedMoviesArray,
 }) {
-	const [isShortMovies, setIsShortMovies] = useState(false);
 
-	const [filteredMoviesArray, setFilteredMoviesArray] = useState([]);
+	const { savedMovies } = useContext(SavedMoviesContext);
+
+	const [onlyShortMovies, setOnlyShortMovies] = useState(false);
 
 	const [searchString, setSearchString] = useState('');
 
-	// const [isLoading, setIsLoading] = useState(false);
+	const [isEmptyInput, setIsEmptyInput] = useState(false);
 
-	const [searchMoviesError, setSearchMoviesError] = useState(false);
+	function moviesToRender() {
+		const result = savedMovies.filter((item) => { return movieFilter(item, searchString, onlyShortMovies) });
+		result.forEach((item) => {
+			item.imageFull = item.image;
+			item.thumbnailFull = item.thumbnail;
+			item.reactKey = item._id;
+			item.id = item.movieId;
+		}
+		);
+		return result;
+	}
 
-	useEffect(() => {
-		onSearch()
-			.then((combinedMoviesArray) => {
-				setCombinedMoviesArray(combinedMoviesArray);
-			})
-			.catch((err) => console.log(err));
-	}, []);
-
-	useEffect(() => {
-		handleSubmitSearch(searchString, isShortMovies);
-	}, [isShortMovies, combinedMoviesArray]);
-
-	const handleSubmitSearch = (searchString, isShortMovies) => {
-
-		// if (searchString?.trim() === '') {
-		// 	setSearchMoviesError(true);
-		// 	setCombinedMoviesArray([]);
-		// 	return;
-		// }
-		// else {
-			// setIsLoading(true);
-			setSearchMoviesError(false);
-
-			setSearchString(searchString);
-			const onlySavedMoviesArray = combinedMoviesArray.filter(
-				(movie) => movie._id !== ''
-			);
-			const filteredMoviesArray = filter(
-				onlySavedMoviesArray,
-				searchString,
-				isShortMovies
-			);
-			setFilteredMoviesArray(filteredMoviesArray);
-			return filteredMoviesArray;
-		// }
-	};
-
-	const handleCheckBox = (e) => {
-		setIsShortMovies(e.target.checked);
-	};
+	function handleSearch(searchString, onlyShortMovies) {
+		setSearchString(searchString);
+		setOnlyShortMovies(onlyShortMovies);
+	}
 
 	return (
 		<div className="movies">
@@ -78,19 +56,30 @@ function SavedMovies({
 
 			<main className="movies__wrapper">
 				<SearchForm
-					onSearch={handleSubmitSearch}
-					onCheck={handleCheckBox}
-					searchString={searchString}
-					isShortMovies={isShortMovies}
+					onSearch={handleSearch}
+					viewMode="savedMovies"
+					isEmptyInput={isEmptyInput}
+					onEmptyInput={setIsEmptyInput}
 				/>
-				<MoviesCardList
-					// isLoading={isLoading}
-					onDeleteMovie={onDeleteMovie}
-					filteredMoviesArray={filteredMoviesArray}
-					searchString={searchString}
-					isShortMovies={isShortMovies}
-					searchMoviesError={searchMoviesError}
-				/>
+
+				{moviesToRender().length === 0 &&
+					<p className="movies-card-list__error-text">
+						{MOVIES_NOT_FOUND_MESSAGE}
+					</p>}
+
+				{searchString === "" &&
+					isEmptyInput &&
+					<p className="movies-card-list__error-text">
+						{EMPTY_INPUT_MESSAGE}
+					</p>}
+
+				{(moviesToRender().length > 0) &&
+					// searchString !== "" &&
+					<MoviesCardList
+						movies={moviesToRender()}
+						viewMode="savedMovies"
+					/>}
+
 			</main >
 
 			<Footer />

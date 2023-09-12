@@ -1,31 +1,20 @@
-import { useState } from 'react';
-import {
-	Link,
-	useLocation,
-} from 'react-router-dom';
-
-import Preloader from '../Preloader/Preloader';
+import { useContext } from 'react';
+import { Link } from 'react-router-dom';
 
 import { SHORT_MOVIE_DURATION } from '../../utils/constants';
+
+import { SavedMoviesContext } from '../../contexts/SavedMoviesContext';
+
+import { isMovieSaved } from '../../utils/checkSavedMovies';
 
 import './MoviesCard.css';
 
 function MoviesCard({
 	movie,
-	onSaveMovie,
-	onDeleteMovie
+	viewMode,
 }) {
 
-	const location = useLocation();
-
-	const checkIsMovieSaved = () => {
-		if (movie._id !== '')
-			return true;
-
-		return false;
-	};
-
-	const [isLoading, setIsLoading] = useState(true);
+	const { savedMovies, toggleSaveHandler } = useContext(SavedMoviesContext);
 
 	const getMovieDuration = () => {
 		if (movie?.duration <= SHORT_MOVIE_DURATION)
@@ -37,32 +26,22 @@ function MoviesCard({
 		return `${hours.toFixed()}ч ${minutes}м`;
 	};
 
-	const handleButtonClick = () => {
-		if (location.pathname === "/saved-movies") {
-			return onDeleteMovie(movie._id);
+	function getButtonClassName() {
+
+		if (viewMode === "allMovies" && isMovieSaved(movie, savedMovies)) {
+			return "card__like_active button";
 		}
 
-		if (checkIsMovieSaved()) {
-			return onDeleteMovie(movie._id);
-		}
-
-		return onSaveMovie(movie);
-	};
-
-	const getButtonClassName = () => {
-		if (location.pathname === "/saved-movies") {
+		if (viewMode === "savedMovies") {
 			return "card__delete button";
 		}
 
-		if (checkIsMovieSaved())
-			return "card__like_active button";
-
 		return "card__like button";
-	};
+	}
 
-	const handleImageLoading = (e) => {
-		setIsLoading(false);
-	};
+	function handleMovieSave() {
+		toggleSaveHandler(movie);
+	}
 
 	return (
 		<li className="card">
@@ -72,17 +51,16 @@ function MoviesCard({
 					to={movie.trailerLink}
 					target="_blank"
 				>
-					{isLoading && <Preloader />}
 					<img
-						className={`card__image ${isLoading ? 'card__image_inactive' : ''}`}
-						src={movie.image}
+						className={`card__image`
+						}
+						src={movie.imageFull}
 						alt="Rарточка с постером фильма"
-						onLoad={handleImageLoading}
 					/>
 				</Link>
 				<button
 					className={getButtonClassName()}
-					onClick={handleButtonClick}
+					onClick={handleMovieSave}
 					type="button"
 				/>
 			</div>

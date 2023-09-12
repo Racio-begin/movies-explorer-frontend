@@ -7,7 +7,11 @@
 export const BASE_URL = "https://api.giga-movies.nomoreparties.co";
 
 // API-адрес для получения фильмов
-export const MOVIES_URL="https://api.nomoreparties.co/beatfilm-movies";
+export const MOVIES_URL = "https://api.nomoreparties.co/beatfilm-movies";
 
-// API-адрес для получения содержимого фильмов
-export const BASE_MOVIES_URL="https://api.nomoreparties.co";
+// База API-адреса для получения содержимого фильмов
+export const BASE_MOVIES_URL = "https://api.nomoreparties.co";
+
+export function getFullImageURL(urlSuffix) {
+	return `${BASE_MOVIES_URL}${urlSuffix}`;
+};

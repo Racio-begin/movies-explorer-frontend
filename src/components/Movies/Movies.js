@@ -6,7 +6,14 @@ import MoviesCardList from '../MoviesCardList/MoviesCardList';
 import Footer from '../Footer/Footer';
 import Preloader from '../Preloader/Preloader';
 
-import filter from '../../utils/filter';
+import movieFilter from '../../utils/movieFilter';
+
+import MoviesApi from '../../utils/MoviesApi';
+
+import {
+	MOVIES_URL,
+	getFullImageURL,
+} from '../../utils/Url';
 
 import {
 	WINDOW_WIDTH_1280,
@@ -19,130 +26,169 @@ import {
 	ADDING_CARDS_S_SIZE,
 } from '../../utils/constants';
 
+import {
+	EMPTY_INPUT_MESSAGE,
+	MOVIES_NOT_FOUND_MESSAGE,
+	MOVIES_WELCOME,
+	SERVER_ERROR_500,
+} from '../../utils/informMessages';
+
 import './Movies.css';
 
 function Movies({
 	menuActive,
 	setMenuActive,
 	loggedIn,
-	onSearch,
-	onSaveMovie,
-	onDeleteMovie,
-	setCombinedMoviesArray,
-	serverResponseError,
 }) {
-
-	const [isShortMovies, setIsShortMovies] = useState(false);
-	const [isHideButton, setIsHideButton] = useState(false);
 
 	const [isLoading, setIsLoading] = useState(false);
 
-	const [searchString, setSearchString] = useState('');
+	const [serverResponseError, setServerResponseError] = useState(false);
 
-	const [filteredMoviesArray, setFilteredMoviesArray] = useState([]);
+	const [searchData, setSearchData] = useState({});
 
-	const [numberToRender, setNumberToRender] = useState(1);
+	const [maximunCardCount, setMaximunCardCount] = useState(getRenderMoviesOptions().initialCount);
 
-	const [searchMoviesError, setSearchMoviesError] = useState(false);
+	const [isEmptyInput, setIsEmptyInput] = useState(false);
+
+	const [isFirstVisit, setIsFirstVisit] = useState(true);
+	// const [isFirstVisit, setIsFirstVisit] = useState(localStorage.getItem('firstVisit') === 'true');
+
+	const moviesApi = new MoviesApi(MOVIES_URL);
+
+	function getRenderMoviesOptions() {
+		const width = window.innerWidth
+		let initialCount;
+		let extraCount;
+
+		if (width > WINDOW_WIDTH_1280) {
+			initialCount = INITIAL_CARDS_L_SIZE;
+			extraCount = ADDING_CARDS_L_SIZE;
+		} else {
+			if (width > WINDOW_WIDTH_768 && width <= WINDOW_WIDTH_1280) {
+				initialCount = INITIAL_CARDS_M_SIZE;
+				extraCount = ADDING_CARDS_M_SIZE;
+			} else {
+				initialCount = INITIAL_CARDS_S_SIZE;
+				extraCount = ADDING_CARDS_S_SIZE;
+			}
+		} return { initialCount, extraCount };
+	};
 
 	useEffect(() => {
-		if (searchString !== '') {
-			handleSubmitSearch(searchString, isShortMovies);
-		}
-	}, [isShortMovies]);
-
-	useEffect(() => {
-		onSearch()
-			.then((combinedMoviesArray) => {
-				setCombinedMoviesArray(combinedMoviesArray);
-				const search = JSON.parse(localStorage.getItem('lastSearchString'));
-				const isShort = JSON.parse(localStorage.getItem('isShortMovies'));
-				const lastSearchResultArray = filter(
-					combinedMoviesArray,
-					search,
-					isShort
-				);
-				setFilteredMoviesArray(lastSearchResultArray);
-				setSearchString(search);
-				setIsShortMovies(isShort);
-			})
-			.catch((err) => console.log(err));
+		const moviesSearchData = localStorage.getItem('MoviesSearchData');
+		if (moviesSearchData) {
+			setSearchData(JSON.parse(moviesSearchData));
+		};
+		setIsFirstVisit(localStorage.getItem('firstVisit', 'true'));
+		// return isFirstVisit;
 	}, []);
 
-	const handleSubmitSearch = (searchString, isShortMovies) => {
+	function moviesToRender() {
+		const result = (searchData.searchResult ?? []).slice(0, maximunCardCount);
+		result.forEach((item) => {
+			item.imageFull = getFullImageURL(item.image.url);
+			item.thumbnailFull = getFullImageURL(item.image.formats.thumbnail.url);
+			item.reactKey = item.id;
+		});
+		return result;
+	}
 
-		// Если запрос пустой, то убираем карточки из блока резуьтатов и выводим информ. сообщение
-		if (searchString?.trim() === '') {
-			setSearchMoviesError(true);
-			setCombinedMoviesArray([]);
-			return;
-		}
-		else {
-			setIsLoading(true);
-			setSearchMoviesError(false);
-			setSearchString(searchString);
-			localStorage.setItem('lastSearchString', JSON.stringify(searchString));
-			onSearch()
-				.then((combinedMoviesArray) => {
-					setCombinedMoviesArray(combinedMoviesArray);
-					const filteredMoviesArray = filter(
-						combinedMoviesArray,
-						searchString,
-						isShortMovies
-					);
-					setFilteredMoviesArray(filteredMoviesArray);
+	function actualizeMoviesSearchData(searchString, onlyShortMovies, allMovies) {
+		const searchResult = allMovies.filter((item) => { return movieFilter(item, searchString, onlyShortMovies) });
+		return { searchString, onlyShortMovies, searchResult, apiResult: allMovies };
+	}
 
-					return filteredMoviesArray;
-				})
-				.catch((err) => console.log(err))
-				.finally(() => setIsLoading(false));
+	function handleSearch(searchString, onlyShortMovies) {
+		setMaximunCardCount(getRenderMoviesOptions().initialCount);
+		const moviesSearchData = JSON.parse(localStorage.getItem('MoviesSearchData'));
 
-			return filteredMoviesArray;
-		}
-	};
-
-	const handleCheckBox = (e) => {
-		setIsShortMovies(e.target.checked);
-		localStorage.setItem('isShortMovies', e.target.checked);
-	};
-
-	useEffect(() => {
-		setNumberToRender(getMoviesConfig().numberOnStart);
-	}, [filteredMoviesArray]);
-
-	const getMoviesConfig = () => {
-		if (window.innerWidth < WINDOW_WIDTH_768) {
-			return {
-				numberOnStart: INITIAL_CARDS_S_SIZE,
-				numberToAdd: ADDING_CARDS_S_SIZE,
-			};
-		}
-		if (window.innerWidth < WINDOW_WIDTH_1280) {
-			return {
-				numberOnStart: INITIAL_CARDS_M_SIZE,
-				numberToAdd: ADDING_CARDS_M_SIZE,
-			};
-		}
-		if (window.innerWidth >= WINDOW_WIDTH_1280) {
-			return {
-				numberOnStart: INITIAL_CARDS_L_SIZE,
-				numberToAdd: ADDING_CARDS_L_SIZE,
-			};
-		}
-	};
-
-	useEffect(() => {
-		// Если число дополнительных фильмов меньше, чем оно задано, то спрятать кнопку "Еще"
-		if (filteredMoviesArray.length <= numberToRender) {
-			setIsHideButton(true);
+		if (moviesSearchData) {
+			const newSearchData = actualizeMoviesSearchData(searchString, onlyShortMovies, moviesSearchData.apiResult);
+			localStorage.setItem('MoviesSearchData', JSON.stringify(newSearchData));
+			setSearchData(newSearchData);
 		} else {
-			setIsHideButton(false);
+			setServerResponseError(false);
+			setIsLoading(true);
+			moviesApi.getInitialMovies()
+				.then((result) => {
+					const newSearchData = actualizeMoviesSearchData(searchString, onlyShortMovies, result);
+					localStorage.setItem('MoviesSearchData', JSON.stringify(newSearchData));
+					setSearchData(newSearchData);
+					if (!isFirstVisit) {
+						setIsFirstVisit(true);
+						localStorage.setItem('firstVisit', 'false');
+						} else {
+						localStorage.setItem('firstVisit', isFirstVisit);
+						}
+				})
+				.catch((err) => {
+					console.log(err);
+					setServerResponseError(true);
+				})
+				.finally(() => setIsLoading(false));
 		}
-	}, [numberToRender, filteredMoviesArray, isShortMovies]);
+	}
 
-	const handleMoreButton = () => {
-		setNumberToRender(prevState => prevState + getMoviesConfig().numberToAdd);
-	};
+	function handleShowMore() {
+		setMaximunCardCount(maximunCardCount + getRenderMoviesOptions().extraCount);
+	}
+
+	// todo: переделать её в более адекватный вид
+	// const getSearchErrorText = () => {
+	// 	if (
+	// 		searchMoviesError
+	// 	) {
+	// 		filteredMoviesArray = ([]);
+	// 		return EMPTY_INPUT_MESSAGE;
+	// 	}
+
+	// 	if (
+	// 		location.pathname === '/movies' &&
+	// 		serverResponseError !== ''
+	// 	) {
+	// 		return serverResponseError;
+	// 	};
+
+	// 	if (
+	// 		location.pathname === '/movies' &&
+	// 		filteredMoviesArray.length === 0 &&
+	// 		lastSearchString === null
+	// 	) {
+	// 		return EMPTY_INPUT_MESSAGE;
+	// 	};
+
+	// 	if (
+	// 		location.pathname === '/movies' &&
+	// 		lastSearchString !== ''
+	// 	) {
+	// 		return MOVIES_NOT_FOUND_MESSAGE;
+	// 	};
+
+	// 	if (
+	// 		location.pathname === '/saved-movies' &&
+	// 		searchString !== ''
+	// 	) {
+	// 		return MOVIES_NOT_FOUND_MESSAGE;
+	// 	};
+
+	// 	if (
+	// 		location.pathname === '/saved-movies' &&
+	// 		filteredMoviesArray.length === 0 &&
+	// 		isShortMovies
+	// 	) {
+	// 		return EMPTY_SAVED_SHORTS_MOVIES;
+	// 	};
+
+	// 	if (
+	// 		location.pathname === '/saved-movies' &&
+	// 		filteredMoviesArray.length === 0
+	// 	) {
+	// 		return EMPTY_SAVED_MOVIES;
+	// 	};
+
+	// 	return;
+	// };
 
 	return (
 		<div className="movies">
@@ -155,22 +201,60 @@ function Movies({
 
 			<main className="movies__wrapper">
 				<SearchForm
-					onSearch={handleSubmitSearch}
-					isShortMovies={isShortMovies}
-					onCheck={handleCheckBox}
-					searchString={searchString}
+					onSearch={handleSearch}
+					searchString={searchData.searchString ?? ""}
+					onlyShortMovies={searchData.onlyShortMovies ?? ""}
+					viewMode="allMovies"
+					isEmptyInput={isEmptyInput}
+					onEmptyInput={setIsEmptyInput}
 				/>
-				{isLoading ? <Preloader /> :
+
+				{isLoading && <Preloader />}
+
+				{(!isLoading) &&
+					(isFirstVisit) &&
+					moviesToRender().length === 0 &&
+					<p className="movies-card-list__error-text">
+						{MOVIES_NOT_FOUND_MESSAGE}
+					</p>}
+
+				{(!isLoading) &&
+					(searchData.searchString ?? {}) &&
+					(!isFirstVisit) &&
+					moviesToRender().length === 0 &&
+					<p className="movies-card-list__error-text">
+						{MOVIES_WELCOME}
+					</p>}
+
+				{searchData.searchString === "" &&
+					<p className="movies-card-list__error-text">
+						{EMPTY_INPUT_MESSAGE}
+					</p>}
+
+				{serverResponseError &&
+					<p className="movies-card-list__error-text">
+						{SERVER_ERROR_500}
+					</p>}
+
+				{(!isLoading) &&
+					(moviesToRender().length > 0) &&
+					searchData.searchString !== "" &&
 					<MoviesCardList
-						serverResponseError={serverResponseError}
-						onSaveMovie={onSaveMovie}
-						onDeleteMovie={onDeleteMovie}
-						filteredMoviesArray={filteredMoviesArray.slice(0, numberToRender)}
-						onClick={handleMoreButton}
-						isHideButton={isHideButton}
-						isLoading={isLoading}
-						searchMoviesError={searchMoviesError}
-					/>
+						movies={moviesToRender()}
+						viewMode="allMovies"
+					/>}
+
+				{(!isLoading) &&
+					((searchData.searchResult ?? []).length > maximunCardCount) &&
+					searchData.searchString !== "" &&
+					<div className="movies-card-list__more">
+						<button
+							className="movies-card-list__more-button button"
+							type="button"
+							onClick={handleShowMore}>
+							Ещё
+						</button>
+					</div>
 				}
 			</main >
 

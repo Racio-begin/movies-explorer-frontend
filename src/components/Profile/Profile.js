@@ -107,7 +107,7 @@ function Profile({
 							placeholder="Имя"
 							name="name"
 							minLength={2}
-							maxLength={40}
+							maxLength={30}
 							required={true}
 							value={values.name || ''}
 							onChange={handleChange}
@@ -137,7 +137,6 @@ function Profile({
 							titleText={EMAIL_INFO_MESSAGE}
 							onChange={handleChange}
 							onFocus={handleFocus}
-							// titletext={EMAIL_INFO_MESSAGE}
 						/>
 
 

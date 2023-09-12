@@ -118,10 +118,6 @@
 		padding: 0 30px 0;
 	}
 
-	.search__input {
-		/* width: 89%; */
-	}
-
 	.search__filter {
 		margin-top: 42px;
 	}
@@ -142,7 +138,7 @@
 	}
 
 	.search__input {
-		/* width: 79%; */
+		width: 100%;
 		padding-top: 13px;
 		padding-bottom: 13px;
 		padding-left: 13px;
@@ -150,7 +146,6 @@
 
 	.search__find-button {
 		width: 49px;
-		/* margin-right: 5px; */
 	}
 
 	.search__filter {

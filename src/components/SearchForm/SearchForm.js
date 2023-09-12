@@ -1,42 +1,47 @@
-import { useEffect } from 'react';
-
-import useFormWithValidation from '../../hooks/useFormWithValidation';
+import { useState, useEffect } from 'react';
 
 import './SearchForm.css';
 
 function SearchForm({
 	onSearch,
-	onCheck,
-	isShortMovies,
-	searchString,
+	viewMode,
+	isEmptyInput,
+	onEmptyInput,
 }) {
 
-	const {
-		values,
-		handleChange,
-		setValues,
-	} = useFormWithValidation();
+	const [searchString, setSearchString] = useState('');
+	const [onlyShortMovies, setOnlyShortMovies] = useState(false);
+
+	useEffect(() => {
+		if (viewMode === "allMovies") {
+			const moviesSearchData = localStorage.getItem('MoviesSearchData');
+
+			if (moviesSearchData) {
+				const parsedSearchData = JSON.parse(moviesSearchData)
+				setSearchString(parsedSearchData.searchString);
+				setOnlyShortMovies(parsedSearchData.onlyShortMovies);
+			}
+		}
+	}, []);
 
 	const handleSubmit = (e) => {
 		e.preventDefault();
-		onSearch(values.searchInput, isShortMovies);
+		onSearch(searchString, onlyShortMovies);
+		onEmptyInput(false)
+
+		if (searchString === "") {
+			onEmptyInput(true)
+		};
 	};
 
-	const handleCheck = (e) => {
-		onCheck(e)
+	function handleCheckbox(e) {
+		setOnlyShortMovies(e.target.checked);
+		onSearch(searchString, e.target.checked);
 	}
 
-	useEffect(() => {
-		setValues((prevState) => {
-			return { ...prevState, searchInput: searchString };
-		});
-	}, [searchString]);
-
-	useEffect(() => {
-		setValues((prevState) => {
-			return { ...prevState, searchInput: searchString };
-		});
-	}, []);
+	function handleTextInputChange(e) {
+		setSearchString(e.target.value);
+	}
 
 	return (
 		<section className="search">
@@ -54,8 +59,8 @@ function SearchForm({
 						type="search"
 						placeholder="Фильм"
 						required={true}
-						onChange={handleChange}
-						value={values.searchInput}
+						onChange={handleTextInputChange}
+						value={searchString}
 					/>
 					<button
 						className="search__find-button button"
@@ -72,8 +77,8 @@ function SearchForm({
 						id="checkbox"
 						name="checkbox"
 						type="checkbox"
-						checked={isShortMovies}
-						onChange={handleCheck}
+						checked={onlyShortMovies}
+						onChange={handleCheckbox}
 					/>
 
 					<span className="search__span">Короткометражки</span>
@@ -82,7 +87,7 @@ function SearchForm({
 			</form>
 		</section>
 	);
-	
+
 };
 
 export default SearchForm;
