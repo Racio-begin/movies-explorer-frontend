@@ -52,7 +52,6 @@ function Movies({
 	const [isEmptyInput, setIsEmptyInput] = useState(false);
 
 	const [isFirstVisit, setIsFirstVisit] = useState(true);
-	// const [isFirstVisit, setIsFirstVisit] = useState(localStorage.getItem('firstVisit') === 'true');
 
 	const moviesApi = new MoviesApi(MOVIES_URL);
 
@@ -81,7 +80,6 @@ function Movies({
 			setSearchData(JSON.parse(moviesSearchData));
 		};
 		setIsFirstVisit(localStorage.getItem('firstVisit', 'true'));
-		// return isFirstVisit;
 	}, []);
 
 	function moviesToRender() {

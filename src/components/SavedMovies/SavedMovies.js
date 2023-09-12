@@ -74,7 +74,6 @@ function SavedMovies({
 					</p>}
 
 				{(moviesToRender().length > 0) &&
-					// searchString !== "" &&
 					<MoviesCardList
 						movies={moviesToRender()}
 						viewMode="savedMovies"

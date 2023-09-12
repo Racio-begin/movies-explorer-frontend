@@ -1,4 +1,4 @@
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, NavLink, useNavigate } from 'react-router-dom';
 
 import BurgerMenu from '../BurgerMenu/BurgerMenu';
 import ProfileButton from '../ProfileButton/ProfileButton';
@@ -34,22 +34,19 @@ function Navigation({ loggedIn, menuActive, setMenuActive }) {
 			return (
 				<>
 					<nav className="navigation-navbar">
-						<Link
+						<NavLink
 							className="navigation-link link"
-							// className={({ isActive }) =>
-							// 	`navigation-link link ${isActive && 'navigation-link_active'}`
-							// }
+							activeClassName="active"
 							to="/movies">
+							
 							Фильмы
-						</Link>
-						<Link
+						</NavLink>
+						<NavLink
 							className="navigation-link link"
-							// className={({ isActive }) =>
-							// 	`navigation-link link ${isActive && 'navigation-link_active'}`
-							// }
+							activeClassName="active"
 							to="/saved-movies">
 							Сохранённые фильмы
-						</Link>
+						</NavLink>
 					</nav>
 
 					<ProfileButton />

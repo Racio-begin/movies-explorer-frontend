@@ -1,6 +1,9 @@
 import './Footer.css';
 
-import { MY_GITHUB } from '../../utils/links';
+import {
+	MY_GITHUB,
+	YANDEX_URL,
+} from '../../utils/links';
 
 function Footer() {
 
@@ -26,7 +29,7 @@ function Footer() {
 					<li>
 						<a
 							className="footer__link footer__text-style link"
-							href="https://practicum.yandex.ru"
+							href={YANDEX_URL}
 							lang="ru"
 							target="_blank"
 							rel="noreferrer"
