@@ -24,6 +24,7 @@ import {
 	SIGNIN_DEFAULT_ERROR,
 	SIGNUP_CONFLICT_MESSAGE,
 	SIGNUP_DEFAULT_ERROR,
+	SERVER_ERROR_500,
 } from '../../utils/informMessages';
 
 import {
@@ -96,7 +97,12 @@ function App() {
 				.then((currentUser) => {
 					setCurrentUser(currentUser);
 				})
-				.catch((err) => console.log(err))
+				.catch((err) => {
+					console.log(err)
+					if (err === 500) {
+						setServerResponseError(SERVER_ERROR_500)
+					};
+				})
 				.finally(() => setIsLockedButton(false))
 		);
 	};
@@ -255,6 +261,7 @@ function App() {
 								onUpdateUser={handleUpdateUser}
 								onSignOut={handleSignOut}
 								isLockedButton={isLockedButton}
+								serverResponseError={serverResponseError}
 							/>}
 						/>
 

@@ -5,7 +5,7 @@ import { CurrentUserContext } from '../../contexts/CurrentUserContext';
 
 import Header from '../Header/Header';
 
-import { REGEX_EMAIL } from '../../utils/regex';
+import { REGEX_EMAIL, REGEX_NAME } from '../../utils/regex';
 import { EMAIL_INFO_MESSAGE } from '../../utils/informMessages';
 import {
 	UPDATE_SUCCESS_MESSAGE,
@@ -21,6 +21,7 @@ function Profile({
 	onUpdateUser,
 	onSignOut,
 	isLockedButton,
+	serverResponseError,
 }) {
 
 	const currentUser = useContext(CurrentUserContext);
@@ -37,12 +38,15 @@ function Profile({
 
 		const name = values.name;
 		const email = values.email;
-		
+
 		onUpdateUser(name, email)
 			.then(() => {
 				setSuccessMessage(UPDATE_SUCCESS_MESSAGE);
 			})
 			.catch((err) => {
+				if (err) {
+					setErrorMessage(serverResponseError)
+				}
 				setErrorMessage(USER_BAD_DATA_ERROR);
 			})
 	};
@@ -106,10 +110,11 @@ function Profile({
 							className="profile__input"
 							placeholder="Имя"
 							name="name"
-							minLength={2}
-							maxLength={30}
 							required={true}
 							value={values.name || ''}
+							minLength={2}
+							maxLength={30}
+							pattern={REGEX_NAME}
 							onChange={handleChange}
 							onFocus={handleFocus}
 						/>
@@ -147,8 +152,10 @@ function Profile({
 						{readyToSave ? (
 							<>
 								<p
-									className={`profile__submit-message ${successMessage && 'profile__submit-message_type-succsess'
-										} ${errorMessage && 'profile__submit-message_type-error'}`}
+									className={`profile__submit-message
+										${successMessage && 'profile__submit-message_type-succsess'}
+										${serverResponseError && errorMessage && 'profile__submit-message_type-error'}
+									`}
 								>
 									{errorMessage || successMessage}
 								</p>
