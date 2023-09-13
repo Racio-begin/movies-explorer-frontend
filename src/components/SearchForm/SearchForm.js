@@ -6,7 +6,6 @@ import './SearchForm.css';
 function SearchForm({
 	onSearch,
 	viewMode,
-	// isEmptyInput,
 	onEmptyInput,
 	isFirstVisit,
 }) {

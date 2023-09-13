@@ -19,7 +19,7 @@ function ProjectLink({ className, linkProject, linkName }) {
 			</Link>
 		</li>
 	);
-	
+
 };
 
 export default ProjectLink;
