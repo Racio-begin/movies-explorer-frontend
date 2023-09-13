@@ -2,14 +2,23 @@ import MoviesCard from "../MoviesCard/MoviesCard";
 
 import './MoviesCardList.css';
 
-function MoviesCardList({}) {
+function MoviesCardList({
+	movies,
+	viewMode
+}) {
 
-	return(
-		<div className="movies-card-list">
-			MOVIES CARD LIST
-			<MoviesCard />
-		</div>
+	return (
+		<section className="movies-card-list__container ul">
+			{movies.map((item) => (
+				<MoviesCard
+					key={item.reactKey}
+					movie={item}
+					viewMode={viewMode}
+				/>
+			))}
+		</section >
 	);
+
 };
 
 export default MoviesCardList;

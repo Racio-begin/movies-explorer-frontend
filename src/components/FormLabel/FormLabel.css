@@ -9,7 +9,6 @@
 }
 
 .form-label__input {
-	/* height: 46px; */
 	border-radius: 8px;
 	border: none;
 	margin: 14px 0 5px;
@@ -24,11 +23,10 @@
 }
 
 .form-label__input:hover {
-	border: 1px solid #4e8a56;
+	border: 1px solid #ccc;
 }
 
 .form-label__input-error {
-	/* min-height: 22px; */
 	min-height: 15px;
 	color: #EE3465;
 }

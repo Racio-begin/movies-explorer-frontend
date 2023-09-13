@@ -8,7 +8,6 @@ function ProjectLink({ className, linkProject, linkName }) {
 		<li>
 			<Link
 				to={linkProject}
-				// className="project-link link"
 				className={className}
 				target="_blank"
 			>
@@ -20,7 +19,7 @@ function ProjectLink({ className, linkProject, linkName }) {
 			</Link>
 		</li>
 	);
-	
+
 };
 
 export default ProjectLink;

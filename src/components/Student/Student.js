@@ -1,6 +1,8 @@
 import './Student.css';
-// import avatar from '../../images/user/my-avatar_wev-developer_2.jpg'
-import avatar from '../../images/user/pic__COLOR_pic.svg'
+import avatar from '../../images/user/my-avatar_wev-developer_2.jpg'
+// import avatar from '../../images/user/pic__COLOR_pic.svg'
+
+import { MY_GITHUB } from '../../utils/links';
 
 function Student() {
 
@@ -15,7 +17,7 @@ function Student() {
 				</div>
 				<a
 					className="student__github-link link"
-					href="https://github.com/Racio-begin"
+					href={MY_GITHUB}
 					target="_blank" rel="noreferrer"
 				>Github</a>
 			</div>

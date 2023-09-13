@@ -1,8 +1,41 @@
+import { useEffect } from 'react';
 import './Register.css';
 import Form from '../Form/Form';
 import FormLabel from '../FormLabel/FormLabel';
 
-function Register() {
+import { REGEX_EMAIL } from '../../utils/regex';
+import { EMAIL_INFO_MESSAGE } from '../../utils/informMessages';
+
+import useFormWithValidation from '../../hooks/useFormWithValidation';
+
+function Register({
+	onRegister,
+	isLockedButton,
+	serverResponseError,
+	setServerResponseError,
+}) {
+
+	useEffect(() => {
+		setServerResponseError('');
+	}, []);
+
+	const { values, handleChange, errors, isValid } =
+		useFormWithValidation();
+
+	const handleRegisterSubmit = (e) => {
+		e.preventDefault();
+
+		onRegister(
+			values.name,
+			values.email,
+			values.password
+		)
+	};
+
+	const handleChangeInput = (e) => {
+		setServerResponseError('');
+		handleChange(e);
+	};
 
 	return (
 		<main>
@@ -12,42 +45,54 @@ function Register() {
 				questionText="Уже зарегистрированы?"
 				link="/signin"
 				linkText=" Войти"
+				onSubmit={handleRegisterSubmit}
+				isValid={isValid}
+				isLockedButton={isLockedButton}
+				serverResponseError={serverResponseError}
 			>
 
 				<FormLabel
 					labelName="Имя"
 					type="text"
-					inputName="username"
-					id="username"
+					inputName="name"
+					id="name"
+					value={values.name}
 					placeholder="Введите имя"
 					minLength={2}
 					maxLength={40}
 					required={true}
-					spanMessage='Заполните поле "Имя"'
+					spanError={errors.name}
+					onChange={handleChangeInput}
 				/>
 
 				<FormLabel
 					labelName="E-mail"
 					type="email"
 					inputName="email"
-					id="user-email"
+					id="email"
+					value={values.email}
 					placeholder="Введите e-mail"
 					minLength={5}
 					maxLength={40}
 					required={true}
-					spanMessage='Адрес электронной почты должен содержать символ "@".'
+					spanError={errors.email}
+					pattern={REGEX_EMAIL}
+					titleText={EMAIL_INFO_MESSAGE}
+					onChange={handleChangeInput}
 				/>
 
 				<FormLabel
 					labelName="Пароль"
 					type="password"
 					inputName="password"
-					id="user-password"
+					id="password"
+					value={values.password}
 					placeholder="Введите пароль"
 					minLength={5}
 					maxLength={40}
 					required={true}
-					spanMessage='Заполните поле "Пароль"'
+					spanError={errors.password}
+					onChange={handleChangeInput}
 				/>
 
 			</Form>

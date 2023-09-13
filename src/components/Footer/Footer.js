@@ -1,5 +1,10 @@
 import './Footer.css';
 
+import {
+	MY_GITHUB,
+	YANDEX_URL,
+} from '../../utils/links';
+
 function Footer() {
 
 	const setCurrentYear = () => {
@@ -24,7 +29,7 @@ function Footer() {
 					<li>
 						<a
 							className="footer__link footer__text-style link"
-							href="https://practicum.yandex.ru"
+							href={YANDEX_URL}
 							lang="ru"
 							target="_blank"
 							rel="noreferrer"
@@ -35,7 +40,7 @@ function Footer() {
 					<li>
 						<a
 							className="footer__link footer__text-style link"
-							href="https://github.com/Racio-begin"
+							href={MY_GITHUB}
 							lang="en"
 							target="_blank"
 							rel="noreferrer"

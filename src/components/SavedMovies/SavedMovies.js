@@ -1,62 +1,91 @@
+import { useState, useContext } from 'react';
 import './SavedMovies.css';
 import '../Movies/Movies';
 import Header from '../Header/Header';
 import SearchForm from '../SearchForm/SearchForm';
+import MoviesCardList from '../MoviesCardList/MoviesCardList';
 import Footer from '../Footer/Footer';
-import image from '../../images/movies/img1.jpg';
+import movieFilter from '../../utils/movieFilter';
 
-function SavedMovies() {
+import { SavedMoviesContext } from '../../contexts/SavedMoviesContext';
+
+import {
+	EMPTY_INPUT_MESSAGE,
+	MOVIES_NOT_FOUND_MESSAGE,
+} from '../../utils/informMessages';
+
+function SavedMovies({
+	menuActive,
+	setMenuActive,
+	loggedIn,
+}) {
+
+	const { savedMovies } = useContext(SavedMoviesContext);
+
+	const [onlyShortMovies, setOnlyShortMovies] = useState(false);
+
+	const [searchString, setSearchString] = useState('');
+
+	const [isEmptyInput, setIsEmptyInput] = useState(false);
+
+	function moviesToRender() {
+		const result = savedMovies.filter((item) => { return movieFilter(item, searchString, onlyShortMovies) });
+		result.forEach((item) => {
+			item.imageFull = item.image;
+			item.thumbnailFull = item.thumbnail;
+			item.reactKey = item._id;
+			item.id = item.movieId;
+		}
+		);
+		return result;
+	}
+
+	function handleSearch(searchString, onlyShortMovies) {
+		setSearchString(searchString);
+		setOnlyShortMovies(onlyShortMovies);
+	}
 
 	return (
 		<div className="movies">
 
-			<Header />
+			<Header
+				menuActive={menuActive}
+				setMenuActive={setMenuActive}
+				loggedIn={loggedIn}
+			/>
 
-			<main>
+			<main className="movies__wrapper">
+				<SearchForm
+					onSearch={handleSearch}
+					viewMode="savedMovies"
+					isEmptyInput={isEmptyInput}
+					onEmptyInput={setIsEmptyInput}
+				/>
 
-				<SearchForm />
+				{moviesToRender().length === 0 &&
+					<p className="movies-card-list__error-text">
+						{MOVIES_NOT_FOUND_MESSAGE}
+					</p>}
 
-				<section className="movies__list">
+				{searchString === "" &&
+					isEmptyInput &&
+					<p className="movies-card-list__error-text">
+						{EMPTY_INPUT_MESSAGE}
+					</p>}
 
+				{(moviesToRender().length > 0) &&
+					<MoviesCardList
+						movies={moviesToRender()}
+						viewMode="savedMovies"
+					/>}
 
-					<ul className="movies__container ul">
-						<li className="card">
-							<div className="card__image-container">
-								<img
-									className="card__image"
-									src={image}
-									alt="Превью соохраненной карточки"
-								/>
-								<button
-									className="card__delete button"
-									type="submit"
-								/>
-							</div>
-							<div className="card__title-container">
-								<h3 className="card__title" >
-									33 слова про дизайнеров
-								</h3>
-								<div className="card__time">
-									33м
-								</div>
-							</div>
-						</li>
-					</ul>
-
-					<div className="movies__more">
-						<button
-							className="movies__more-button button"
-							type="button">
-							Ещё
-						</button>
-					</div>
-				</section>
-			</main>
+			</main >
 
 			<Footer />
 
 		</div>
 	);
+
 };
 
 export default SavedMovies;
