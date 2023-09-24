@@ -3,7 +3,7 @@
 ## Сервис с поиском фильмов по запросу
 Сайт позволяет регистрироваться, искать и сохранять понравившиеся фильмы, просматривать их youtube-трейлер.
 
-![Главная страница фильмотеки](https://github.com/Racio-begin/movies-explorer-frontend/images/main_page.png)
+![Главная страница фильмотеки](https://github.com/Racio-begin/movies-explorer-frontend/src/images/main_page.png)
 
  --- 
 
