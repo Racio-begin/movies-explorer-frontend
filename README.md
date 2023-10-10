@@ -40,11 +40,11 @@
  --- 
 
 ## Используемые технологии:
-Node.js 19
-React 18
-JS
-HTML 5
-CSS 3
+Node.js 19  
+React 18  
+JS  
+HTML 5  
+CSS 3  
 
 ## Верстка сайта производилась по подготовленному макету
 Для реализации данной части диплома был использован [макет dark-2](https://www.figma.com/file/6FMWkB94wE7KTkcCgUXtnC/light-1?type=design&node-id=1-7266&mode=design&t=zNus89utRChXTMkx-0)
