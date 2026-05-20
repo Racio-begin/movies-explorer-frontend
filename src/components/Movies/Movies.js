@@ -120,8 +120,7 @@ function Movies({
 						localStorage.setItem('firstVisit', isFirstVisit);
 						}
 				})
-				.catch((err) => {
-					console.log(err);
+				.catch(() => {
 					setServerResponseError(true);
 				})
 				.finally(() => setIsLoading(false));

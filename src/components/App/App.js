@@ -75,8 +75,7 @@ function App() {
 					setCurrentUser(res);
 				})
 				.catch(() => {
-					setLoggedIn(false)
-					console.error(`Получение информации профиля, App`);
+					setLoggedIn(false);
 				})
 		};
 	};
@@ -87,7 +86,7 @@ function App() {
 			.then((moviesResponse) => {
 				setSavedMovies(moviesResponse);
 			})
-			.catch((err) => console.log(err));
+			.catch(() => {});
 	}
 
 	const handleUpdateUser = (name, email) => {
@@ -104,7 +103,6 @@ function App() {
 					} else {
 						setServerResponseError(USER_BAD_DATA_ERROR);
 					}
-					console.error('Обновление профиля, App');
 				})
 				.finally(() => setIsLockedButton(false))
 		);
@@ -128,8 +126,6 @@ function App() {
 					} else {
 						setServerResponseError(SIGNUP_DEFAULT_ERROR);
 					}
-
-					console.error(`Регистрация нового пользователя, App`);
 				})
 				.finally(() => setIsLockedButton(false))
 		)
@@ -153,7 +149,6 @@ function App() {
 					} else {
 						setServerResponseError(SIGNIN_DEFAULT_ERROR);
 					}
-					console.error(`Войти в аккаунт, App`);
 				})
 				.finally(() => setIsLockedButton(false))
 		)
@@ -178,14 +173,14 @@ function App() {
 
 			mainApi.saveMovie(movieDataForApiCall)
 				.then((result) => setSavedMovies([result, ...savedMovies]))
-				.catch((err) => console.log(err));
+				.catch(() => {});
 		}
 		else {
 			const myId = getMovieMyId(movie, savedMovies);
 			// удаляем фильм
 			mainApi.deleteMovie(myId)
 				.then(() => setSavedMovies(savedMovies.filter((item) => { return item._id !== myId })))
-				.catch((err) => console.log(err));
+				.catch(() => {});
 		}
 	};
 
