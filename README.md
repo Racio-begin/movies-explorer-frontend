@@ -99,10 +99,21 @@ npm start     # запуск на http://localhost:3000
 
  --- 
 
-## Сборка
+## Сборка и деплой
 
 * ```npm run build``` — production-сборка в каталог `build/`
 * ```npm test``` — запуск тестов
+* ```npm run preview``` — локальный просмотр собранного приложения
+* ```npm run deploy``` — публикация на GitHub Pages (ветка `gh-pages`)
+
+Приложение рассчитано на размещение в подпути
+`https://<пользователь>.github.io/movies-explorer-frontend/` — `base` для
+production-сборки и `basename` роутера заданы соответственно. Глубокие ссылки
+(например, `/movies`) обслуживает `public/404.html` по приёму
+[spa-github-pages](https://github.com/rafgraph/spa-github-pages): GitHub Pages
+отдаёт его на неизвестные пути, а парный скрипт в `index.html` восстанавливает
+исходный адрес. Чтобы деплой заработал, в настройках репозитория включите
+GitHub Pages с источником — ветка `gh-pages`.
 
  --- 
 

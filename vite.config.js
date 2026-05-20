@@ -1,7 +1,11 @@
 import { defineConfig } from 'vitest/config';
 import react from '@vitejs/plugin-react';
 
-export default defineConfig({
+// На GitHub Pages проект отдаётся из подпути /movies-explorer-frontend/,
+// поэтому в production-режиме (build и preview) задаём base.
+// В dev-режиме оставляем '/'.
+export default defineConfig(({ mode }) => ({
+	base: mode === 'production' ? '/movies-explorer-frontend/' : '/',
 	plugins: [react()],
 	server: {
 		port: 3000,
@@ -27,4 +31,4 @@ export default defineConfig({
 		globals: true,
 		environment: 'jsdom',
 	},
-});
+}));

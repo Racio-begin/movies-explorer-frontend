@@ -13,6 +13,21 @@
 		<link rel="apple-touch-icon" href="/logo192.png" />
 		<link rel="manifest" href="/manifest.json" />
 		<title>Фильмотека</title>
+		<!--
+			Парный скрипт к public/404.html: восстанавливает исходный путь,
+			закодированный 404-страницей в query-строку, до запуска приложения.
+		-->
+		<script>
+			(function (l) {
+				if (l.search[1] === '/') {
+					var decoded = l.search.slice(1).split('&').map(function (s) {
+						return s.replace(/~and~/g, '&');
+					}).join('?');
+					window.history.replaceState(null, null,
+						l.pathname.slice(0, -1) + decoded + l.hash);
+				}
+			})(window.location);
+		</script>
 	</head>
 
 	<body class="body">
