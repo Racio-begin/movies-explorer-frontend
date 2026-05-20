@@ -8,9 +8,11 @@ const useFormWithValidation = () => {
   const handleChange = (event) => {
     const name = event.target.name;
     const value = event.target.value;
-    setValues({ ...values, [name]: value });
-    setErrors({ ...errors, [name]: event.target.validationMessage });
-    setIsValid(event.target.closest('form').checkValidity());
+    const validationMessage = event.target.validationMessage;
+    const isFormValid = event.target.closest('form').checkValidity();
+    setValues((prev) => ({ ...prev, [name]: value }));
+    setErrors((prev) => ({ ...prev, [name]: validationMessage }));
+    setIsValid(isFormValid);
   };
 
   const resetForm = useCallback(
