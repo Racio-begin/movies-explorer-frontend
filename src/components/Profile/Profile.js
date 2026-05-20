@@ -139,7 +139,7 @@ function Profile({
 							required={true}
 							value={values.email || ''}
 							pattern={REGEX_EMAIL}
-							titleText={EMAIL_INFO_MESSAGE}
+							title={EMAIL_INFO_MESSAGE}
 							onChange={handleChange}
 							onFocus={handleFocus}
 						/>
