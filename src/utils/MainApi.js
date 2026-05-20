@@ -1,74 +1,34 @@
-import { BASE_URL } from "./Url";
-import request from "./request";
+// Фасад собственного бэкенда (профиль, сохранённые фильмы).
+// Делегирует в выбранный провайдер — см. src/backend/index.js.
+// Экспортируется синглтоном `mainApi`; сигнатуры методов сохранены
+// ради совместимости с компонентами.
 
-class MainApi {
-	constructor(config) {
-		this._url = config.url;
-		this._headers = {
-			'Content-Type': 'application/json'
-		};
-		this.setToken(config.token);
-	};
+import provider from "../backend";
 
-	_request(urlEndpoint, options) {
-		return request(this._url + urlEndpoint, options);
-	};
-
+const mainApi = {
 	getUserData() {
-		return this._request('/users/me', {
-			method: "GET",
-			headers: this._headers
-		});
-	};
+		return provider.getUserData();
+	},
 
 	updateUserData(name, email) {
-		return this._request('/users/me', {
-			method: "PATCH",
-			headers: this._headers,
-			body: JSON.stringify({
-				name,
-				email,
-			})
-		});
-	};
+		return provider.updateUserData(name, email);
+	},
 
 	getMovies() {
-		return this._request('/movies/', {
-			method: 'GET',
-			headers: this._headers
-		});
-	};
+		return provider.getSavedMovies();
+	},
 
 	saveMovie(movie) {
-		return this._request('/movies/', {
-			method: 'POST',
-			headers: this._headers,
-			body: JSON.stringify(movie)
-		});
-	};
+		return provider.saveMovie(movie);
+	},
 
 	deleteMovie(id) {
-		return this._request(`/movies/${id}/`, {
-			method: 'DELETE',
-			headers: this._headers
-		});
-	};
+		return provider.deleteMovie(id);
+	},
 
 	setToken(token) {
-		if (token) {
-			this._headers['Authorization'] = `Bearer ${token}`;
-		} else {
-			delete this._headers['Authorization'];
-		}
-	};
-
+		provider.setToken(token);
+	},
 };
-
-const token = localStorage.getItem("jwt");
-
-const mainApi = new MainApi({
-	url: BASE_URL,
-	token: token
-});
 
 export default mainApi;

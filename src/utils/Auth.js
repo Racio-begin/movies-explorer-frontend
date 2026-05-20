@@ -1,48 +1,25 @@
-import { BASE_URL } from "../utils/Url";
-import request from "./request";
+// Фасад авторизации. Делегирует в выбранный провайдер бэкенда
+// (mock или Supabase) — см. src/backend/index.js.
+// Сигнатуры экспорта сохранены ради совместимости с компонентами.
+
+import provider from "../backend";
 
 // Регистрация //
 export function register({ name, email, password }) {
-	return request(`${BASE_URL}/signup`, {
-		method: 'POST',
-		headers: {
-			'Content-Type': 'application/json'
-		},
-		body: JSON.stringify({ name, email, password }),
-	});
+	return provider.register({ name, email, password });
 };
 
 // Вход //
 export function login({ email, password }) {
-	return request(`${BASE_URL}/signin`, {
-		method: 'POST',
-		headers: {
-			'Accept': 'application/json',
-			'Content-Type': 'application/json'
-		},
-		body: JSON.stringify({ email, password })
-	});
+	return provider.login({ email, password });
 };
 
 // Выход //
 export function logout() {
-	return request(`${BASE_URL}/signout`, {
-		method: 'POST',
-		headers: {
-			'Accept': 'application/json',
-			'Content-Type': 'application/json'
-		}
-	});
-}
+	return provider.logout();
+};
 
 // Проверка токена //
 export function checkToken(jwt) {
-	return request(`${BASE_URL}/users/me`, {
-		method: 'GET',
-		headers: {
-			'Accept': 'application/json',
-			'Content-Type': 'application/json',
-			authorization: `Bearer ${jwt}`
-		},
-	});
+	return provider.checkToken(jwt);
 };
