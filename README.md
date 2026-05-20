@@ -91,8 +91,8 @@ npm start     # запуск на http://localhost:3000
    **Project Settings → API**:
 
    ```
-   REACT_APP_SUPABASE_URL=https://<ваш-проект>.supabase.co
-   REACT_APP_SUPABASE_ANON_KEY=<anon public key>
+   VITE_SUPABASE_URL=https://<ваш-проект>.supabase.co
+   VITE_SUPABASE_ANON_KEY=<anon public key>
    ```
 
 5. Перезапустите `npm start`. В консоли появится строка `[backend] режим: Supabase`.
