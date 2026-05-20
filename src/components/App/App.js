@@ -185,6 +185,10 @@ function App() {
 	};
 
 	function handleSignOut() {
+		// Завершаем сессию на стороне провайдера: для Supabase это очищает
+		// его собственное хранилище сессии, иначе она пережила бы «выход».
+		Auth.logout().catch(() => {});
+		mainApi.setToken(null);
 		localStorage.removeItem('jwt');
 		localStorage.removeItem('MoviesSearchData');
 		localStorage.removeItem('firstVisit');
