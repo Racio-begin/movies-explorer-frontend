@@ -35,15 +35,15 @@ function Navigation({ loggedIn, menuActive, setMenuActive }) {
 				<>
 					<nav className="navigation-navbar">
 						<NavLink
-							className="navigation-link link"
-							activeClassName="active"
+							className={({ isActive }) =>
+								`navigation-link link${isActive ? ' active' : ''}`}
 							to="/movies">
-							
+
 							Фильмы
 						</NavLink>
 						<NavLink
-							className="navigation-link link"
-							activeClassName="active"
+							className={({ isActive }) =>
+								`navigation-link link${isActive ? ' active' : ''}`}
 							to="/saved-movies">
 							Сохранённые фильмы
 						</NavLink>
