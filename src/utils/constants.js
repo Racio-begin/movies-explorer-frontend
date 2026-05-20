@@ -3,6 +3,9 @@ const WINDOW_WIDTH_768 = 768;
 
 const SHORT_MOVIE_DURATION = 40;
 
+// Таймаут сетевого запроса, мс — после него запрос прерывается
+const REQUEST_TIMEOUT = 8000;
+
 const INITIAL_CARDS_L_SIZE = 12;
 const ADDING_CARDS_L_SIZE = 3;
 
@@ -16,6 +19,7 @@ export {
 	WINDOW_WIDTH_1280,
 	WINDOW_WIDTH_768,
 	SHORT_MOVIE_DURATION,
+	REQUEST_TIMEOUT,
 	INITIAL_CARDS_L_SIZE,
 	ADDING_CARDS_L_SIZE,
 	INITIAL_CARDS_M_SIZE,

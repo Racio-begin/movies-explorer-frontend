@@ -24,7 +24,8 @@ import {
 	SIGNIN_DEFAULT_ERROR,
 	SIGNUP_CONFLICT_MESSAGE,
 	SIGNUP_DEFAULT_ERROR,
-	SERVER_ERROR_500,
+	USER_BAD_DATA_ERROR,
+	CONNECTION_ERROR_MESSAGE,
 } from '../../utils/informMessages';
 
 import {
@@ -98,10 +99,12 @@ function App() {
 					setCurrentUser(currentUser);
 				})
 				.catch((err) => {
-					console.log(err)
-					if (err === 500) {
-						setServerResponseError(SERVER_ERROR_500)
-					};
+					if (err === 'network') {
+						setServerResponseError(CONNECTION_ERROR_MESSAGE);
+					} else {
+						setServerResponseError(USER_BAD_DATA_ERROR);
+					}
+					console.error('Обновление профиля, App');
 				})
 				.finally(() => setIsLockedButton(false))
 		);
@@ -116,15 +119,15 @@ function App() {
 					handleLogin(email, password)
 				})
 				.catch((err) => {
-					if (err === 400) {
+					if (err === 'network') {
+						setServerResponseError(CONNECTION_ERROR_MESSAGE);
+					} else if (err === 400) {
 						setServerResponseError(SIGNUP_BAD_DATA_MESSAGE);
-					};
-
-					if (err === 409) {
+					} else if (err === 409) {
 						setServerResponseError(SIGNUP_CONFLICT_MESSAGE);
 					} else {
 						setServerResponseError(SIGNUP_DEFAULT_ERROR);
-					};
+					}
 
 					console.error(`Регистрация нового пользователя, App`);
 				})
@@ -143,7 +146,9 @@ function App() {
 					navigate('/movies', { replace: true });
 				})
 				.catch((err) => {
-					if (err === 401) {
+					if (err === 'network') {
+						setServerResponseError(CONNECTION_ERROR_MESSAGE);
+					} else if (err === 401) {
 						setServerResponseError(SIGNIN_BAD_DATA_MESSAGE);
 					} else {
 						setServerResponseError(SIGNIN_DEFAULT_ERROR);
@@ -216,6 +221,7 @@ function App() {
 							path='/signin'
 							element={<Login
 								onLogin={handleLogin}
+								isLockedButton={isLockedButton}
 								serverResponseError={serverResponseError}
 								setServerResponseError={setServerResponseError}
 							/>}
@@ -225,6 +231,7 @@ function App() {
 							path='signup'
 							element={<Register
 								onRegister={handleRegister}
+								isLockedButton={isLockedButton}
 								serverResponseError={serverResponseError}
 								setServerResponseError={setServerResponseError}
 							/>}

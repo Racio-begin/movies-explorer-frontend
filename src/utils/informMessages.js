@@ -16,6 +16,7 @@ const SIGNUP_DEFAULT_ERROR = 'При регистрации пользовате
 const USER_BAD_DATA_ERROR = 'При обновлении профиля произошла ошибка.';
 const SERVER_ERROR_500 = '500: Во время запроса произошла ошибка. Возможно, проблема с соединением или сервер недоступен. Подождите немного и попробуйте ещё раз.';
 const SERVER_ERROR_404 = '404: Страница по указанному маршруту не найдена.';
+const CONNECTION_ERROR_MESSAGE = 'Не удалось связаться с сервером. Проверьте подключение к интернету или попробуйте позже.';
 
 
 export {
@@ -32,6 +33,7 @@ export {
 	EMPTY_SAVED_MOVIES,
 	SERVER_ERROR_500,
 	SERVER_ERROR_404,
+	CONNECTION_ERROR_MESSAGE,
 	EMAIL_INFO_MESSAGE,
 	MOVIES_WELCOME,
 };

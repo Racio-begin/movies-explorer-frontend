@@ -37,7 +37,7 @@ function Form({
 					type="submit"
 					disabled={!isValid || isLockedButton}
 				>
-					{buttonText}
+					{isLockedButton ? 'Подождите...' : buttonText}
 				</button>
 
 				<p className="form__redirect">

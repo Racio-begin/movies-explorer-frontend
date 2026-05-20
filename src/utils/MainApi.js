@@ -1,4 +1,5 @@
 import { BASE_URL } from "./Url";
+import request from "./request";
 
 class MainApi {
 	constructor(config) {
@@ -10,15 +11,7 @@ class MainApi {
 	};
 
 	_request(urlEndpoint, options) {
-		return fetch(this._url + urlEndpoint, options)
-			.then(this._getResponseData)
-	};
-
-	_getResponseData(res) {
-		if (res.ok) {
-			return res.json();
-		};
-		return Promise.reject(res.status);
+		return request(this._url + urlEndpoint, options);
 	};
 
 	getUserData() {
