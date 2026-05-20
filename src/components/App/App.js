@@ -113,7 +113,7 @@ function App() {
 		return (
 			Auth
 				.register({ name, email, password })
-				.then(res => {
+				.then(() => {
 					handleLogin(email, password)
 				})
 				.catch((err) => {

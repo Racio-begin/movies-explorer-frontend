@@ -2,7 +2,6 @@ import { Navigate } from "react-router-dom";
 
 const ProtectedRoute = ({
 	element: Component,
-	isLoading = true,
 	...props }) => {
 
 	return props.loggedIn
