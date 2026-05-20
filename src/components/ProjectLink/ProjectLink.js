@@ -10,6 +10,7 @@ function ProjectLink({ className, linkProject, linkName }) {
 				to={linkProject}
 				className={className}
 				target="_blank"
+				rel="noopener noreferrer"
 			>
 				<h4 className="project-link__link-name">{linkName}</h4>
 				<img

@@ -50,6 +50,7 @@ function MoviesCard({
 					className="movies-card__link"
 					to={movie.trailerLink}
 					target="_blank"
+					rel="noopener noreferrer"
 				>
 					<img
 						className={`card__image`
