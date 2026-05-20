@@ -17,12 +17,16 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Архитектура
 
-### Источники данных (два разных API)
-- **MainApi** (`src/utils/MainApi.js`) — собственный бэкенд (`BASE_URL` в `src/utils/Url.js`): аутентификация по JWT, профиль пользователя, CRUD сохранённых фильмов. Экспортируется как синглтон `mainApi`; токен задаётся через `mainApi.setToken()`.
-- **MoviesApi** (`src/utils/MoviesApi.js`) — сторонний beatfilm-movies API (`MOVIES_URL`): полный каталог фильмов. Создаётся как инстанс класса в компоненте `Movies`.
-- **Auth** (`src/utils/Auth.js`) — функции `register`/`login`/`checkToken` для собственного бэкенда.
+### Источники данных
+- **Каталог фильмов** — `MoviesApi` (`src/utils/MoviesApi.js`), сторонний beatfilm-movies API (`MOVIES_URL` в `src/utils/Url.js`). Создаётся как инстанс класса в компоненте `Movies`.
+- **Бэкенд** (авторизация, профиль, сохранённые фильмы) — слой абстракции `src/backend/`:
+  - `index.js` выбирает провайдера по наличию ключей Supabase в `.env` (`REACT_APP_SUPABASE_URL` + `REACT_APP_SUPABASE_ANON_KEY`). Оба заданы → `supabaseProvider`, иначе → `mockProvider`.
+  - `mockProvider.js` — эмуляция на `localStorage` (используется по умолчанию).
+  - `supabaseProvider.js` — реальный бэкенд на Supabase (SQL-схема в `supabase/schema.sql`).
+  - Контракт провайдера описан в шапке `index.js`.
+- **Фасады** `MainApi` (`src/utils/MainApi.js`, синглтон `mainApi`) и `Auth` (`src/utils/Auth.js`) — тонкие обёртки, делегирующие в выбранный провайдер. Их сигнатуры экспорта неизменны, компоненты работают с ними как раньше.
 
-Все API при ошибке делают `Promise.reject(res.status)` — обработка ошибок в компонентах построена на сравнении с числовыми кодами (400, 401, 409, 500).
+Провайдеры при ошибке делают `Promise.reject(<числовой статус>)` (400, 401, 409, 500) — обработка ошибок в компонентах построена на сравнении с этими кодами. `request.js` дополнительно может реджектить строкой `'network'`.
 
 ### Состояние и контексты
 - Всё ключевое состояние (`loggedIn`, `currentUser`, `savedMovies` и т.д.) живёт в `src/components/App/App.js` и передаётся через пропсы и контексты.
@@ -57,4 +61,4 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 - Вёрстка по БЭМ; компоненты — папка на компонент (`Component.js` + `Component.css`).
 - Отступы — табы.
-- При смене окружения бэкенда переключать `BASE_URL` в `src/utils/Url.js` (закомментированный localhost-вариант присутствует).
+- Режим бэкенда переключается ключами Supabase в `.env.local` (см. `.env.example`); без них проект работает в mock-режиме.
